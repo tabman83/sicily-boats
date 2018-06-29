@@ -6,16 +6,24 @@ import { AppComponent } from './app.component';
 import { AppConfig } from './_shared/models/app-config.model';
 import { environment } from '../environments/environment';
 import { AppConfigLoader } from './_shared/services/app-config-loader.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './_shared/services/auth.service';
+import { CallbackComponent } from './callback/callback.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        CallbackComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        HttpClientModule
     ],
     providers: [
+        AuthService,
         AppConfigLoader,
         AppConfig,
         {
