@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './_shared/services/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { HomeComponent } from './home/home.component';
+import { ContractComponent } from './contract/contract.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CallbackComponent,
-        HomeComponent
+        HomeComponent,
+        ContractComponent
     ],
     imports: [
         BrowserModule,
