@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 import { AppConfig } from '../models/app-config.model';
 
@@ -14,10 +13,10 @@ export class AuthService {
         private appConfig: AppConfig
     ) {
         this.auth0 = new auth0.WebAuth({
-            clientID: appConfig.clientId,
-            domain: appConfig.domain,
+            clientID: this.appConfig.clientId,
+            domain: this.appConfig.domain,
             responseType: 'token id_token',
-            audience: `https://${appConfig.domain}/userinfo`,
+            audience: `https://${this.appConfig.domain}/userinfo`,
             redirectUri: `${window.location.origin}/callback`,
             scope: 'openid'
         });
