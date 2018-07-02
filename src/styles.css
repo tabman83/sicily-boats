@@ -2,11 +2,6 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 /* Show it is fixed to the top */
-html,
-body {
-    height: 100%;
-    overflow-y: hidden;
-}
 body {
     padding-top: 4.5rem;
 }

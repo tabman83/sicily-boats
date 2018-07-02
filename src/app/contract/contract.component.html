@@ -1,1 +1,183 @@
-nuovo contratto
+<form>
+    <h4>Contratto di Locazione</h4>
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="datetime-local" class="form-control" id="data" aria-describedby="Data" placeholder="Data">
+    </div>
+
+    <h4>Anagrafica Locatore</h4>
+    <div class="form-group">
+        <textarea class="form-control"></textarea>
+    </div>
+
+    <h4>Dati natante locato</h4>
+    <div class="form-group">
+        <label for="boat_name">Nome</label>
+        <select class="form-control" id="boat_name"></select>
+    </div>
+    <div class="form-group">
+        <label for="boat_type">Natante</label>
+        <input type="text" class="form-control" id="boat_type" aria-describedby="Natante" placeholder="Natante">
+    </div>
+    <div class="form-group">
+        <label for="boat_vin">Matricola</label>
+        <input type="text" class="form-control" id="boat_vin" aria-describedby="Matricola natante" placeholder="Matricola natante">
+    </div>
+    <div class="form-group">
+        <label for="engine">Engine</label>
+        <input type="text" class="form-control" id="engine" aria-describedby="Motore" placeholder="Motore">
+    </div>
+    <div class="form-group">
+        <label for="engine_vin">Matricola</label>
+        <input type="text" class="form-control" id="engine_vin" aria-describedby="Matricola motore" placeholder="Matricola motore">
+    </div>
+    <div class="form-group">
+        <label for="registration_number">Targa</label>
+        <input type="text" class="form-control" id="registration_number" aria-describedby="Targa" placeholder="Targa">
+    </div>
+    <div class="form-group">
+        <label for="tank_size">Serbatoio</label>
+        <input type="text" class="form-control" id="tank_size" aria-describedby="Serbatoio" placeholder="Serbatoio">
+    </div>
+
+    <h4>Anagrafica Locatario/Conduttore</h4>
+    <div class="form-group">
+        <label for="renter_name">Nome locatario</label>
+        <input type="text" class="form-control" id="renter_name">
+    </div>
+    <div class="form-group">
+        <label for="birth_place">Luogo di nascita</label>
+        <input type="text" class="form-control" id="birth_place">
+    </div>
+    <div class="form-group">
+        <label for="birth_date">Data di nascita</label>
+        <input type="datetime-local" class="form-control" id="birth_date">
+    </div>
+    <div class="form-group">
+        <label for="home_place">Citt&agrave; di residenza</label>
+        <input type="text" class="form-control" id="home_place">
+    </div>
+    <div class="form-group">
+        <label for="home_address">Indirizzo di residenza</label>
+        <input type="text" class="form-control" id="home_address">
+    </div>
+    <div class="form-group">
+        <label for="ssn">Codice Fiscale</label>
+        <input type="text" class="form-control" id="ssn">
+    </div>
+    <div class="form-group">
+        <label for="phone">Telefono</label>
+        <input type="phone" class="form-control" id="phone">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="id_type">Tipo documento</label>
+        <input type="text" class="form-control" id="id_type">
+    </div>
+    <div class="form-group">
+        <label for="id_number">Numero documento</label>
+        <input type="text" class="form-control" id="id_number">
+    </div>
+    <div class="form-group">
+        <label for="id_issuer">Rilasciato da</label>
+        <input type="text" class="form-control" id="id_issuer">
+    </div>
+    <div class="form-group">
+        <label for="id_issue_date">Data rilascio</label>
+        <input type="datetime-local" class="form-control" id="id_issue_date">
+    </div>
+
+    <h4>Dettagli locazione</h4>
+    <div class="form-group">
+        <label for="start_date">Data inizio</label>
+        <input type="datetime-local" class="form-control" id="start_date">
+    </div>
+    <div class="form-group">
+        <label for="start_time">Ora inizio</label>
+        <input type="time" class="form-control" id="start_time">
+    </div>
+    <div class="form-group">
+        <label for="end_date">Data fine</label>
+        <input type="datetime-local" class="form-control" id="end_date">
+    </div>
+    <div class="form-group">
+        <label for="end_time">Ora fine</label>
+        <input type="time" class="form-control" id="end_time">
+    </div>
+    <div class="form-group">
+        <label for="start_fuel">Carburante inizio</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">LT</span>
+            </div>
+            <input type="text" class="form-control" id="start_fuel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="end_fuel">Carburante fine</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">LT</span>
+            </div>
+            <input type="text" class="form-control" id="end_fuel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="fuel_cost">Costo carburante</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€ / LT</span>
+            </div>
+            <input type="number" class="form-control" id="fuel_cost">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="total_fuel_cost">Totale carburante</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            <input type="number" class="form-control" id="total_fuel_cost">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="rent_price">Importo locazione</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            <input type="number" class="form-control" id="rent_price">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="security_deposit">Cauzione</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            <input type="number" class="form-control" id="security_deposit">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="desposit">Importo in acconto</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            <input type="number" class="form-control" id="desposit">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="balance">Importo a saldo</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            <input type="number" class="form-control" id="balance">
+        </div>
+    </div>
+
+</form>
