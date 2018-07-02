@@ -12,6 +12,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { HomeComponent } from './home/home.component';
 import { ContractComponent } from './contract/contract.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     imports: [
         NgbModule.forRoot(),
         BrowserModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         HttpClientModule
     ],

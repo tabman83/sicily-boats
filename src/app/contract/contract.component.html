@@ -1,43 +1,51 @@
-<form>
+<form [formGroup]="contractForm">
     <h4>Contratto di Locazione</h4>
     <div class="form-group">
-        <label for="data">Data</label>
-        <input type="datetime-local" class="form-control" id="data" aria-describedby="Data" placeholder="Data">
+        <label for="date">Data</label>
+        <input formControlName="date" type="date" class="form-control" id="date" aria-describedby="Data" placeholder="Data">
     </div>
 
     <h4>Anagrafica Locatore</h4>
     <div class="form-group">
-        <textarea class="form-control"></textarea>
+        <textarea class="form-control" formControlName="rentalDescription"></textarea>
     </div>
 
     <h4>Dati natante locato</h4>
     <div class="form-group">
         <label for="boat_name">Nome</label>
-        <select class="form-control" id="boat_name"></select>
+        <select class="form-control" formControlName="boatName" id="boat_name">
+            <option *ngFor="let boat of boats" [ngValue]="boat">{{boat.name}}</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="boat_type">Natante</label>
-        <input type="text" class="form-control" id="boat_type" aria-describedby="Natante" placeholder="Natante">
+        <input type="text" class="form-control" formControlName="boatType" id="boat_type" aria-describedby="Natante" placeholder="Natante">
     </div>
     <div class="form-group">
         <label for="boat_vin">Matricola</label>
-        <input type="text" class="form-control" id="boat_vin" aria-describedby="Matricola natante" placeholder="Matricola natante">
+        <input type="text" class="form-control" formControlName="boatVin" id="boat_vin" aria-describedby="Matricola natante" placeholder="Matricola natante">
     </div>
     <div class="form-group">
         <label for="engine">Engine</label>
-        <input type="text" class="form-control" id="engine" aria-describedby="Motore" placeholder="Motore">
+        <input type="text" class="form-control" formControlName="engine" id="engine" aria-describedby="Motore" placeholder="Motore">
     </div>
     <div class="form-group">
         <label for="engine_vin">Matricola</label>
-        <input type="text" class="form-control" id="engine_vin" aria-describedby="Matricola motore" placeholder="Matricola motore">
+        <input type="text" class="form-control" formControlName="engineVin" id="engine_vin" aria-describedby="Matricola motore" placeholder="Matricola motore">
     </div>
     <div class="form-group">
         <label for="registration_number">Targa</label>
-        <input type="text" class="form-control" id="registration_number" aria-describedby="Targa" placeholder="Targa">
+        <input type="text" class="form-control" formControlName="registrationNumber" id="registration_number" aria-describedby="Targa"
+            placeholder="Targa">
     </div>
     <div class="form-group">
         <label for="tank_size">Serbatoio</label>
-        <input type="text" class="form-control" id="tank_size" aria-describedby="Serbatoio" placeholder="Serbatoio">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">LT</span>
+            </div>
+            <input type="number" class="form-control" formControlName="tankSize" id="tank_size" aria-describedby="Serbatoio" placeholder="Serbatoio">
+        </div>
     </div>
 
     <h4>Anagrafica Locatario/Conduttore</h4>
