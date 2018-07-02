@@ -7,6 +7,7 @@ import { AppConfig } from '../models/app-config.model';
 export class AuthService {
 
     private auth0: any;
+    public userProfile: any;
 
     constructor(
         public router: Router,
@@ -18,12 +19,26 @@ export class AuthService {
             responseType: 'token id_token',
             audience: `https://${this.appConfig.domain}/userinfo`,
             redirectUri: `${window.location.origin}/callback`,
-            scope: 'openid'
+            scope: 'openid profile'
         });
     }
 
     public login(): void {
         this.auth0.authorize();
+    }
+
+    public getProfile(cb): void {
+        const accessToken = localStorage.getItem('access_token');
+        if (!accessToken) {
+            throw new Error('Access Token must exist to fetch profile');
+        }
+
+        this.auth0.client.userInfo(accessToken, (err, profile) => {
+            if (profile) {
+                this.userProfile = profile;
+            }
+            cb(err, profile);
+        });
     }
 
     public handleAuthentication(): void {

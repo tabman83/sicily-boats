@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './_shared/models/app-config.model';
@@ -11,15 +11,18 @@ import { AuthService } from './_shared/services/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { HomeComponent } from './home/home.component';
 import { ContractComponent } from './contract/contract.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CallbackComponent,
         HomeComponent,
-        ContractComponent
+        ContractComponent,
+        NavBarComponent
     ],
     imports: [
+        NgbModule.forRoot(),
         BrowserModule,
         AppRoutingModule,
         HttpClientModule

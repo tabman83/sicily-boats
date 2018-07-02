@@ -6,3 +6,11 @@ body {
     min-height: 75rem;
     padding-top: 4.5rem;
 }
+
+/*** Angular 2 link without href ***/
+a:not([href]) {
+    cursor: pointer; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    user-select: none
+}
