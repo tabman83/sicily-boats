@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { DatePipe } from '@angular/common';
 import { Boat } from '../_shared/models/boat.model';
 import { SsnNumberService } from '../_shared/services/ssn-number.service';
+import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-contract',
@@ -14,6 +15,7 @@ export class ContractComponent implements OnInit {
 
     public contractForm: FormGroup;
     public boats: Boat[];
+    public firstStep = true;
 
     private readonly datePipe = new DatePipe(navigator.language);
 
@@ -31,7 +33,6 @@ export class ContractComponent implements OnInit {
 
         this.contractForm = this.formBuilder.group({
             date: [todayDate, Validators.required],
-            rentalDescription: [this.appConfig.rentalDescription, Validators.required],
             boatName: null,
             boat: this.formBuilder.group({
                 boatType: ['', Validators.required],
@@ -41,31 +42,31 @@ export class ContractComponent implements OnInit {
                 registrationNumber: ['', Validators.required],
                 tankSize: [0, Validators.required],
             }),
-            renterName: ['', Validators.required],
-            sex: ['M', Validators.required],
-            birthPlace: ['', Validators.required],
-            birthDate: ['', Validators.required],
-            homeTown: ['', Validators.required],
-            homeAddress: ['', Validators.required],
-            ssn: ['', Validators.required],
-            phone: ['', Validators.required],
-            email: ['', Validators.required],
-            idType: ['', Validators.required],
-            idNumber: ['', Validators.required],
-            idIssuer: ['', Validators.required],
-            idIssueDate: ['', Validators.required],
-            startDate: ['', Validators.required],
-            startTime: ['', Validators.required],
-            endDate: '',
-            endTime: '',
-            startFuel: '',
-            endFuel: '',
-            fuelCost: '',
-            totalFuelCost: '',
-            rentPrice: '',
-            securityDeposit: '',
-            deposit: '',
-            balance: ''
+            renterName: [environment.contract.renterName, Validators.required],
+            sex: [environment.contract.sex, Validators.required],
+            birthPlace: [environment.contract.birthPlace, Validators.required],
+            birthDate: [environment.contract.birthDate, Validators.required],
+            homeTown: [environment.contract.homeTown, Validators.required],
+            homeAddress: [environment.contract.homeAddress, Validators.required],
+            ssn: [environment.contract.ssn, Validators.required],
+            phone: [environment.contract.phone, Validators.required],
+            email: [environment.contract.email, Validators.required],
+            idType: [environment.contract.idType, Validators.required],
+            idNumber: [environment.contract.idNumber, Validators.required],
+            idIssuer: [environment.contract.idIssuer, Validators.required],
+            idIssueDate: [environment.contract.idIssueDate, Validators.required],
+            startDate: [environment.contract.startDate, Validators.required],
+            startTime: [environment.contract.startTime, Validators.required],
+            endDate: environment.contract.endDate,
+            endTime: environment.contract.endTime,
+            startFuel: environment.contract.startFuel,
+            endFuel: environment.contract.endFuel,
+            fuelCost: environment.contract.fuelCost,
+            totalFuelCost: environment.contract.totalFuelCost,
+            rentPrice: environment.contract.rentPrice,
+            securityDeposit: environment.contract.securityDeposit,
+            deposit: environment.contract.deposit,
+            balance: environment.contract.balance
         });
         this.contractForm.get('boatName').valueChanges.subscribe(x => this.changeBoat(x));
 
@@ -94,6 +95,14 @@ export class ContractComponent implements OnInit {
         const sex = this.contractForm.get('sex').value;
 
         this.ssnNumberService.get(firstName, lastName, birthPlace, birthDate, sex).subscribe(x => this.contractForm.patchValue({ ssn: x }));
+    }
+
+    submit() {
+        this.firstStep = false;
+    }
+
+    back() {
+        this.firstStep = true;
     }
 
     ngOnInit() {

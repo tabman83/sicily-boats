@@ -1,13 +1,8 @@
-<form [formGroup]="contractForm">
+<form [formGroup]="contractForm" (submit)="submit()" *ngIf="firstStep">
     <h4>Contratto di Locazione</h4>
     <div class="form-group">
         <label for="date">Data</label>
         <input formControlName="date" type="date" class="form-control" id="date" aria-describedby="Data" placeholder="Data">
-    </div>
-
-    <h4>Anagrafica Locatore</h4>
-    <div class="form-group">
-        <textarea class="form-control" formControlName="rentalDescription"></textarea>
     </div>
 
     <h4>Dati natante locato</h4>
@@ -66,11 +61,11 @@
     <div class="form-group">
         <label for="sex">Sesso</label>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sex_m" value="M">
+            <input class="form-check-input" type="radio" id="sex_m" formControlName="sex" value="M">
             <label class="form-check-label" for="sex_m">M</label>
         </div>
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sex_f" value="F">
+            <input class="form-check-input" type="radio" id="sex_f" formControlName="sex" value="F">
             <label class="form-check-label" for="sex_f">F</label>
         </div>
     </div>
@@ -212,3 +207,12 @@
     </button>
 
 </form>
+
+<div *ngIf="!firstStep">
+
+
+    <button (click)="back()" class="btn btn-primary">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        Indietro
+    </button>
+</div>
