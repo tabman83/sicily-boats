@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.css';
 
 /* Show it is fixed to the top */
 body {
     padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
 }
 
 /*** Angular 2 link without href ***/
