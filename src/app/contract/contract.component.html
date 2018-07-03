@@ -64,6 +64,17 @@
         <input type="date" class="form-control" formControlName="birthDate" id="birth_date">
     </div>
     <div class="form-group">
+        <label for="sex">Sesso</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sex_m" value="M">
+            <label class="form-check-label" for="sex_m">M</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="sex_f" value="F">
+            <label class="form-check-label" for="sex_f">F</label>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="home_town">Citt&agrave; di residenza</label>
         <input type="text" class="form-control" formControlName="homeTown" id="home_town">
     </div>
@@ -73,7 +84,12 @@
     </div>
     <div class="form-group">
         <label for="ssn">Codice Fiscale</label>
-        <input type="text" class="form-control" formControlName="ssn" id="ssn">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" formControlName="ssn" id="ssn">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="getSsn()" type="button">Calcola</button>
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label for="phone">Telefono</label>
@@ -103,7 +119,7 @@
     <h4>Dettagli locazione</h4>
     <div class="form-group">
         <label for="start_date">Data inizio</label>
-        <input type="datetime-local" class="form-control" formControlName="startDate" id="start_date">
+        <input type="date" class="form-control" formControlName="startDate" id="start_date">
     </div>
     <div class="form-group">
         <label for="start_time">Ora inizio</label>
@@ -111,7 +127,7 @@
     </div>
     <div class="form-group">
         <label for="end_date">Data fine</label>
-        <input type="datetime-local" class="form-control" formControlName="endDate" id="end_date">
+        <input type="date" class="form-control" formControlName="endDate" id="end_date">
     </div>
     <div class="form-group">
         <label for="end_time">Ora fine</label>
