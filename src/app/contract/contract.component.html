@@ -17,7 +17,7 @@
             <option *ngFor="let boat of boats" [ngValue]="boat">{{boat.name}}</option>
         </select>
     </div>
-    <fieldset formGroupName="boatGroup">
+    <!-- <fieldset formGroupName="boatGroup">
         <div class="form-group">
             <label for="boat_type">Natante</label>
             <input type="text" class="form-control" formControlName="boatType" id="boat_type" aria-describedby="Natante" placeholder="Natante">
@@ -48,7 +48,7 @@
                 <input type="number" class="form-control" formControlName="tankSize" id="tank_size" aria-describedby="Serbatoio" placeholder="Serbatoio">
             </div>
         </div>
-    </fieldset>
+    </fieldset> -->
 
     <h4>Anagrafica Locatario/Conduttore</h4>
     <div class="form-group">
@@ -224,7 +224,7 @@
 
 </form>
 
-<div *ngIf="!firstStep">
+<div class="preview" *ngIf="!firstStep">
 
     <img src="assets/logo_wide.png" class="logo">
 
@@ -286,99 +286,208 @@
         </tr>
     </table>
 
-    <h4 class="text-center text-uppercase"><strong>Anagrafica Locatario/Conduttore</strong></h4>
+    <h4 class="text-center text-uppercase">
+        <strong>Anagrafica Locatario/Conduttore</strong>
+    </h4>
 
     <table>
         <tr>
-            <td class="text-right"><strong>Locatario:</strong></td>
+            <td class="text-right">
+                <strong>Locatario:</strong>
+            </td>
             <td colspan="3">{{contract.renterName}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Nato a:</strong></td>
+            <td class="text-right">
+                <strong>Nato a:</strong>
+            </td>
             <td>{{contract.birthPlace}}</td>
-            <td class="text-right"><strong>Il:</strong></td>
+            <td class="text-right">
+                <strong>Il:</strong>
+            </td>
             <td>{{contract.birthDate}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Citta di residenza:</strong></td>
+            <td class="text-right">
+                <strong>Citta di residenza:</strong>
+            </td>
             <td>{{contract.homeTown}}</td>
-            <td class="text-right"><strong>Indirizzo:</strong></td>
+            <td class="text-right">
+                <strong>Indirizzo:</strong>
+            </td>
             <td>{{contract.homeAddress}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Codice Fiscale:</strong></td>
+            <td class="text-right">
+                <strong>Codice Fiscale:</strong>
+            </td>
             <td>{{contract.ssn}}</td>
-            <td class="text-right"><strong>Patente nautica:</strong></td>
+            <td class="text-right">
+                <strong>Patente nautica:</strong>
+            </td>
             <td>{{contract.boatLicense}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Telefono:</strong></td>
+            <td class="text-right">
+                <strong>Telefono:</strong>
+            </td>
             <td>{{contract.phone}}</td>
-            <td class="text-right"><strong>Email:</strong></td>
+            <td class="text-right">
+                <strong>Email:</strong>
+            </td>
             <td>{{contract.email}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Tipo documento:</strong></td>
+            <td class="text-right">
+                <strong>Tipo documento:</strong>
+            </td>
             <td>{{contract.idType}}</td>
-            <td class="text-right"><strong>Nr. documento:</strong></td>
+            <td class="text-right">
+                <strong>Nr. documento:</strong>
+            </td>
             <td>{{contract.idNumber}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Rilasciato da:</strong></td>
+            <td class="text-right">
+                <strong>Rilasciato da:</strong>
+            </td>
             <td>{{contract.idIssuer}}</td>
-            <td class="text-right"><strong>Data rilascio:</strong></td>
+            <td class="text-right">
+                <strong>Data rilascio:</strong>
+            </td>
             <td>{{contract.idIssueDate}}</td>
         </tr>
     </table>
 
-    <h4 class="text-center text-uppercase"><strong>Dettagli Locazione</strong></h4>
+    <h4 class="text-center text-uppercase">
+        <strong>Dettagli Locazione</strong>
+    </h4>
 
     <table>
         <tr>
-            <td class="text-right"><strong>Data inizio:</strong></td>
+            <td class="text-right">
+                <strong>Data inizio:</strong>
+            </td>
             <td>{{contract.startDate}}</td>
-            <td class="text-right"><strong>Data fine:</strong></td>
+            <td class="text-right">
+                <strong>Data fine:</strong>
+            </td>
             <td>{{contract.endDate}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Ora inizio:</strong></td>
+            <td class="text-right">
+                <strong>Ora inizio:</strong>
+            </td>
             <td>{{contract.startTime}}</td>
-            <td class="text-right"><strong>Ora fine:</strong></td>
+            <td class="text-right">
+                <strong>Ora fine:</strong>
+            </td>
             <td>{{contract.endTime}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Carburante inizio:</strong></td>
+            <td class="text-right">
+                <strong>Carburante inizio:</strong>
+            </td>
             <td>LT. {{contract.startFuel}}</td>
-            <td class="text-right"><strong>Carburante fine:</strong></td>
+            <td class="text-right">
+                <strong>Carburante fine:</strong>
+            </td>
             <td>LT. {{contract.endFuel}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Costo carburante:</strong></td>
+            <td class="text-right">
+                <strong>Costo carburante:</strong>
+            </td>
             <td>€/LT. {{contract.fuelCost}}</td>
-            <td class="text-right"><strong>Totale carburante:</strong></td>
+            <td class="text-right">
+                <strong>Totale carburante:</strong>
+            </td>
             <td>€ {{contract.totalFuelCost}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Importo locazione:</strong></td>
+            <td class="text-right">
+                <strong>Importo locazione:</strong>
+            </td>
             <td>€ {{contract.rentPrice}}</td>
-            <td class="text-right"><strong>Cauzione:</strong></td>
+            <td class="text-right">
+                <strong>Cauzione:</strong>
+            </td>
             <td>€ {{contract.securityDeposit}}</td>
         </tr>
         <tr>
-            <td class="text-right"><strong>Importo in acconto:</strong></td>
+            <td class="text-right">
+                <strong>Importo in acconto:</strong>
+            </td>
             <td>€ {{contract.deposit}}</td>
-            <td class="text-right"><strong>Importo a saldo:</strong></td>
+            <td class="text-right">
+                <strong>Importo a saldo:</strong>
+            </td>
             <td>€ {{contract.balance}}</td>
         </tr>
     </table>
 
-    <p>
-        <strong>{{contract.conditions}}</strong>
-    </p>
+    <p class="conditions"><strong>{{contract.conditions}}</strong></p>
+
+    <table>
+        <tr>
+            <td colspan="2"><p class="text-center">Il Locatario/Conduttore</p></td>
+            <td colspan="2"><p class="text-center">Il Locatore</p></td>
+        </tr>
+        <tr>
+            <td colspan="2"><p class="text-center">{{contract.renterName}}</p></td>
+            <td colspan="2"><p class="text-center">{{contract.rentalName}}</p></td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <p class="text-uppercase">Allegato D</p>
+
+    <h4 class="text-center text-uppercase">
+        <strong>schema di informazione sull'attivita di locazione</strong>
+    </h4>
+
+    <table>
+        <tr>
+            <td class="text-right">
+                <strong>Il sottoscritto:</strong>
+            </td>
+            <td colspan="3">{{contract.renterName}}</td>
+        </tr>
+        <tr>
+            <td class="text-right">
+                <strong>Nato a:</strong>
+            </td>
+            <td>{{contract.birthPlace}}</td>
+            <td class="text-right">
+                <strong>Il:</strong>
+            </td>
+            <td>{{contract.birthDate}}</td>
+        </tr>
+        <tr>
+            <td class="text-right">
+                <strong>Citta di residenza:</strong>
+            </td>
+            <td>{{contract.homeTown}}</td>
+            <td class="text-right">
+                <strong>Indirizzo:</strong>
+            </td>
+            <td>{{contract.homeAddress}}</td>
+        </tr>
+    </table>
+
+    <p>intende aderire alla proposta di locazione di un natante da diporto come segue:</p>
+
+
+
+
+
+
 
 
     <button (click)="back()" class="btn btn-primary">
         <i class="fa fa-arrow-left" aria-hidden="true"></i>
         Indietro
     </button>
+    
 </div>

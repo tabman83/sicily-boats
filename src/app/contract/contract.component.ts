@@ -35,15 +35,15 @@ export class ContractComponent implements OnInit {
         this.contractForm = this.formBuilder.group({
             registryNumber: [environment.contract.registryNumber, Validators.required],
             date: [todayDate, Validators.required],
-            boat: '',
-            boatGroup: this.formBuilder.group({
-                boatType: ['', Validators.required],
-                boatVin: ['', Validators.required],
-                engine: ['', Validators.required],
-                engineVin: ['', Validators.required],
-                registrationNumber: ['', Validators.required],
-                tankSize: [0, Validators.required],
-            }),
+            boat: this.boats[0],
+            // boatGroup: this.formBuilder.group({
+            //     boatType: ['', Validators.required],
+            //     boatVin: ['', Validators.required],
+            //     engine: ['', Validators.required],
+            //     engineVin: ['', Validators.required],
+            //     registrationNumber: ['', Validators.required],
+            //     tankSize: [0, Validators.required],
+            // }),
             renterName: [environment.contract.renterName, Validators.required],
             sex: [environment.contract.sex, Validators.required],
             boatLicense: [environment.contract.boatLicense, Validators.required],
@@ -71,24 +71,24 @@ export class ContractComponent implements OnInit {
             deposit: environment.contract.deposit,
             balance: environment.contract.balance
         });
-        this.contractForm.get('boat').valueChanges.subscribe(x => this.changeBoat(x));
+        // this.contractForm.get('boat').valueChanges.subscribe(x => this.changeBoat(x));
 
-        this.contractForm.patchValue({
-            boat: this.boats[0]
-        });
+        // this.contractForm.patchValue({
+        //     boat: this.boats[0]
+        // });
 
         this.mergeData();
     }
 
-    changeBoat(boat: Boat) {
-        const boatGroup = this.contractForm.get('boatGroup');
-        boatGroup.patchValue(boat);
-        if (boat.name === 'Altro') {
-            boatGroup.enable();
-        } else {
-            boatGroup.disable();
-        }
-    }
+    // changeBoat(boat: Boat) {
+    //     const boatGroup = this.contractForm.get('boatGroup');
+    //     boatGroup.patchValue(boat);
+    //     if (boat.name === 'Altro') {
+    //         boatGroup.enable();
+    //     } else {
+    //         boatGroup.disable();
+    //     }
+    // }
 
     getSsn() {
         const renterName = this.contractForm.get('renterName').value;
@@ -110,15 +110,16 @@ export class ContractComponent implements OnInit {
 
     mergeData() {
         this.contract = Object.assign({
+            rentalName: this.appConfig.rentalName,
             rentalDescription: this.appConfig.rentalDescription,
             conditions: this.appConfig.conditions
         }, this.contractForm.value);
 
-        const boatGroup = this.contractForm.get('boatGroup');
-        if (boatGroup.enabled) {
-            Object.assign(this.contract.boat, boatGroup.value);
-        }
-        delete this.contract.boatGroup;
+        // const boatGroup = this.contractForm.get('boatGroup');
+        // if (boatGroup.enabled) {
+        //     Object.assign(this.contract.boat, boatGroup.value);
+        // }
+        // delete this.contract.boatGroup;
     }
 
     back() {

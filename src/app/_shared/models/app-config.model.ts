@@ -5,6 +5,7 @@ import { Boat } from './boat.model';
 export class AppConfig {
     domain: string = undefined;
     clientId: string = undefined;
+    rentalName: string = undefined;
     rentalDescription: string = undefined;
     conditions: string = undefined;
     boats: Boat[] = undefined;
