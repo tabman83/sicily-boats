@@ -7,5 +7,6 @@ export class AppConfig {
     clientId: string = undefined;
     rentalName: string = undefined;
     rentalDescription: string = undefined;
+    emergencyContacts: string = undefined;
     boats: Boat[] = undefined;
 }
