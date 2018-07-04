@@ -112,6 +112,7 @@ export class ContractComponent implements OnInit {
         this.contract = Object.assign({
             rentalName: this.appConfig.rentalName,
             rentalDescription: this.appConfig.rentalDescription,
+            rentalEmail: this.appConfig.rentalEmail,
             emergencyContacts: this.appConfig.emergencyContacts
         }, this.contractForm.value);
 
