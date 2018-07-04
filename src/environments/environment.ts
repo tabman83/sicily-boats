@@ -6,8 +6,10 @@ export const environment = {
     production: false,
     configFile: 'appconfig.json',
     contract: {
+        registryNumber: '005L',
         renterName: 'Antonino Parisi',
         sex: 'M',
+        boatLicense: false,
         birthPlace: 'Albenga (SV)',
         birthDate: '31/01/1983',
         homeTown: 'Noto',

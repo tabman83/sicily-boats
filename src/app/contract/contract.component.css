@@ -1,0 +1,12 @@
+img.logo {
+    width: 90%;
+    display: block;
+    margin: 0px auto;
+}
+table {
+    width: 100%;
+}
+table td {
+    width: 25%;
+    padding: 2px;
+}

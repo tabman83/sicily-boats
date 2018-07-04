@@ -15,9 +15,10 @@ export class ContractComponent implements OnInit {
 
     public contractForm: FormGroup;
     public boats: Boat[];
-    public firstStep = true;
+    public firstStep = false;
 
     private readonly datePipe = new DatePipe(navigator.language);
+    private contract: any = {};
 
     constructor(
         private formBuilder: FormBuilder,
@@ -32,9 +33,10 @@ export class ContractComponent implements OnInit {
         this.boats = this.appConfig.boats.slice();
 
         this.contractForm = this.formBuilder.group({
+            registryNumber: [environment.contract.registryNumber, Validators.required],
             date: [todayDate, Validators.required],
-            boatName: null,
-            boat: this.formBuilder.group({
+            boat: '',
+            boatGroup: this.formBuilder.group({
                 boatType: ['', Validators.required],
                 boatVin: ['', Validators.required],
                 engine: ['', Validators.required],
@@ -44,6 +46,7 @@ export class ContractComponent implements OnInit {
             }),
             renterName: [environment.contract.renterName, Validators.required],
             sex: [environment.contract.sex, Validators.required],
+            boatLicense: [environment.contract.boatLicense, Validators.required],
             birthPlace: [environment.contract.birthPlace, Validators.required],
             birthDate: [environment.contract.birthDate, Validators.required],
             homeTown: [environment.contract.homeTown, Validators.required],
@@ -68,19 +71,22 @@ export class ContractComponent implements OnInit {
             deposit: environment.contract.deposit,
             balance: environment.contract.balance
         });
-        this.contractForm.get('boatName').valueChanges.subscribe(x => this.changeBoat(x));
+        this.contractForm.get('boat').valueChanges.subscribe(x => this.changeBoat(x));
 
         this.contractForm.patchValue({
-            boatName: this.boats[0]
+            boat: this.boats[0]
         });
+
+        this.mergeData();
     }
 
     changeBoat(boat: Boat) {
-        this.contractForm.get('boat').patchValue(boat);
+        const boatGroup = this.contractForm.get('boatGroup');
+        boatGroup.patchValue(boat);
         if (boat.name === 'Altro') {
-            this.contractForm.get('boat').enable();
+            boatGroup.enable();
         } else {
-            this.contractForm.get('boat').disable();
+            boatGroup.disable();
         }
     }
 
@@ -98,7 +104,21 @@ export class ContractComponent implements OnInit {
     }
 
     submit() {
+        this.mergeData();
         this.firstStep = false;
+    }
+
+    mergeData() {
+        this.contract = Object.assign({
+            rentalDescription: this.appConfig.rentalDescription,
+            conditions: this.appConfig.conditions
+        }, this.contractForm.value);
+
+        const boatGroup = this.contractForm.get('boatGroup');
+        if (boatGroup.enabled) {
+            Object.assign(this.contract.boat, boatGroup.value);
+        }
+        delete this.contract.boatGroup;
     }
 
     back() {

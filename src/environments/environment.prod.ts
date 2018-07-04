@@ -2,8 +2,10 @@ export const environment = {
     production: true,
     configFile: 'appconfig.json',
     contract: {
+        registryNumber: '',
         renterName: '',
         sex: 'M',
+        boatLicense: false,
         birthPlace: '',
         birthDate: '',
         homeTown: '',
