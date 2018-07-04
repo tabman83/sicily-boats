@@ -494,7 +494,7 @@
             <ol>
                 <li>Condizioni di Locazione;</li>
                 <li>Condizioni Natante in Locazione;</li>
-                <li>Schema di informazione sull'attività di locazione;</li>
+                <li>Schema di informazione sull'attivit&agrave; di locazione;</li>
                 <li>Informativa sulla privacy dei dati personali.</li>
             </ol>
             Tali documenti fanno parte integrante del presente contratto e sono stati letti, compresi ed approvati dalle parti.
@@ -516,7 +516,7 @@
 
     <p class="text-uppercase">Allegato D</p>
 
-    <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attivita di locazione</h4>
+    <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attivit&agrave; di locazione</h4>
 
     <p>
         Io sottoscritto {{contract.renterName}} nato a {{contract.birthPlace}} il {{contract.birthDate}} e residente a {{contract.homeTown}}
@@ -630,7 +630,132 @@
 
     <div class="page-break"></div>
 
+    <h4 class="text-center text-uppercase font-weight-bold">allegato 2 - condizioni natante in locazione</h4>
 
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Data:</div>
+                <div class="col-6">{{contract.date | date : 'd/M/yyyy'}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Nr. Registro:</div>
+                <div class="col-6">{{contract.registryNumber}}</div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="text-center text-uppercase font-weight-bold">dati natante locato</h4>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Natante:</div>
+                <div class="col-6">{{contract.boat.boatType}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Matricola:</div>
+                <div class="col-6">{{contract.boat.boatVin}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Motore:</div>
+                <div class="col-6">{{contract.boat.engine}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Matricola:</div>
+                <div class="col-6">{{contract.boat.engineVin}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Targa:</div>
+                <div class="col-6">{{contract.boat.registrationNumber}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Serbatoio:</div>
+                <div class="col-6">LT. {{contract.boat.tankSize}}</div>
+
+            </div>
+        </div>
+    </div>
+
+    <h4 class="text-center text-uppercase font-weight-bold">condizioni del natante al momento del ritiro</h4>
+
+    <div class="row small">
+        <div class="font-weight-bold text-center col-sm-3">
+            Condizioni strutturali del natante
+        </div>
+        <div class="col-sm-9">
+            {{contract.boat.descStructural}}
+        </div>
+    </div>
+    <hr>
+    <div class="row small">
+        <div class="font-weight-bold text-center col-sm-3">
+            Cuscineria
+        </div>
+        <div class="col-sm-9">
+            {{contract.boat.descCushions}}
+        </div>
+    </div>
+    <hr>
+    <div class="row small">
+        <div class="font-weight-bold text-center col-sm-3">
+            Strumentazione
+        </div>
+        <div class="col-sm-9">
+            {{contract.boat.descEquipment}}
+        </div>
+    </div>
+    <hr>
+    <div class="row small">
+        <div class="font-weight-bold text-center col-sm-3">
+            Motore
+        </div>
+        <div class="col-sm-9">
+            {{contract.boat.descEngine}}
+        </div>
+    </div>
+    <hr>
+    <div class="row small">
+        <div class="font-weight-bold text-center col-sm-3">
+            Dotazioni
+        </div>
+        <div class="col-sm-9">
+            {{contract.boat.descFacilities}}
+        </div>
+    </div>
+    <p class="mt-5">
+        Sottoscrivendo il presente atto il conduttore dichiara espressamente di confermare le condizioni del natante al momento del
+        ritiro, della cuscineria, della strumentazione, del motore, delle dotazioni e dichiara di aver preso adeguata visione
+        e conoscenza della sopra elencata documentazione.
+    </p>
+    <div class="row mt-5">
+        <div class="col-sm">
+            <p class="text-center font-weight-bold">Il Locatario/Conduttore</p>
+            <p class="text-center">{{contract.renterName}}</p>
+        </div>
+        <div class="col-sm">
+            <p class="text-center font-weight-bold">Il Locatore</p>
+            <p class="text-center">{{contract.rentalName}}</p>
+        </div>
+    </div>
 
 
     <button (click)="back()" class="btn btn-primary">
