@@ -111,8 +111,7 @@ export class ContractComponent implements OnInit {
     mergeData() {
         this.contract = Object.assign({
             rentalName: this.appConfig.rentalName,
-            rentalDescription: this.appConfig.rentalDescription,
-            conditions: this.appConfig.conditions
+            rentalDescription: this.appConfig.rentalDescription
         }, this.contractForm.value);
 
         // const boatGroup = this.contractForm.get('boatGroup');

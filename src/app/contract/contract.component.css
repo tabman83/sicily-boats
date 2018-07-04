@@ -14,7 +14,7 @@ div.preview h4 {
     margin: 40px 0px 10px 0px;
     border-bottom: solid 2px #888;
 }
-div.preview p {
+div.preview .pre {
     white-space: pre;
 }
 div.preview p.conditions {

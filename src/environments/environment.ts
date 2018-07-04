@@ -11,7 +11,7 @@ export const environment = {
         sex: 'M',
         boatLicense: false,
         birthPlace: 'Albenga (SV)',
-        birthDate: '31/01/1983',
+        birthDate: '1983-01-31',
         homeTown: 'Noto',
         homeAddress: 'Via Alessio Di Giovanni 22',
         ssn: 'PRSNNN83A31A145R',
