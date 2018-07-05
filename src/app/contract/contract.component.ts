@@ -15,7 +15,8 @@ export class ContractComponent implements OnInit {
 
     public contractForm: FormGroup;
     public boats: Boat[];
-    public firstStep = false;
+    public idTypes: string[];
+    public firstStep = true;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -30,65 +31,44 @@ export class ContractComponent implements OnInit {
 
     createForm() {
         const todayDate = this.datePipe.transform(new Date(), 'y-MM-dd');
-        this.boats = this.appConfig.boats.slice();
+        this.boats = this.appConfig.boats;
+        this.idTypes = this.appConfig.idTypes;
 
         this.contractForm = this.formBuilder.group({
             registryNumber: [environment.contract.registryNumber, Validators.required],
             date: [todayDate, Validators.required],
             boat: this.boats[0],
-            // boatGroup: this.formBuilder.group({
-            //     boatType: ['', Validators.required],
-            //     boatVin: ['', Validators.required],
-            //     engine: ['', Validators.required],
-            //     engineVin: ['', Validators.required],
-            //     registrationNumber: ['', Validators.required],
-            //     tankSize: [0, Validators.required],
-            // }),
             renterName: [environment.contract.renterName, Validators.required],
             sex: [environment.contract.sex, Validators.required],
             boatLicense: [environment.contract.boatLicense, Validators.required],
+            boatLicenseDetails: environment.contract.boatLicenseDetails,
             birthPlace: [environment.contract.birthPlace, Validators.required],
+            birthState: [environment.contract.birthState, Validators.required],
             birthDate: [environment.contract.birthDate, Validators.required],
             homeTown: [environment.contract.homeTown, Validators.required],
+            homeState: [environment.contract.homeState, Validators.required],
             homeAddress: [environment.contract.homeAddress, Validators.required],
-            ssn: [environment.contract.ssn, Validators.required],
+            ssn: [environment.contract.ssn],
             phone: [environment.contract.phone, Validators.required],
-            email: [environment.contract.email, Validators.required],
+            email: [environment.contract.email],
             idType: [environment.contract.idType, Validators.required],
             idNumber: [environment.contract.idNumber, Validators.required],
             idIssuer: [environment.contract.idIssuer, Validators.required],
             idIssueDate: [environment.contract.idIssueDate, Validators.required],
             startDate: [environment.contract.startDate, Validators.required],
             startTime: [environment.contract.startTime, Validators.required],
-            endDate: environment.contract.endDate,
-            endTime: environment.contract.endTime,
-            startFuel: environment.contract.startFuel,
-            endFuel: environment.contract.endFuel,
-            fuelCost: environment.contract.fuelCost,
-            totalFuelCost: environment.contract.totalFuelCost,
-            rentPrice: environment.contract.rentPrice,
-            securityDeposit: environment.contract.securityDeposit,
-            deposit: environment.contract.deposit,
-            balance: environment.contract.balance
+            startFuel: [environment.contract.startFuel, Validators.required],
+            fuelCost: [environment.contract.fuelCost, Validators.required],
+            rentPrice: [environment.contract.rentPrice, Validators.required],
+            securityDeposit: [environment.contract.securityDeposit, Validators.required]
         });
-        // this.contractForm.get('boat').valueChanges.subscribe(x => this.changeBoat(x));
 
-        // this.contractForm.patchValue({
-        //     boat: this.boats[0]
-        // });
+        this.contractForm.get('boatLicense').valueChanges.subscribe(x => {
+            console.log(x);
+        });
 
         this.mergeData();
     }
-
-    // changeBoat(boat: Boat) {
-    //     const boatGroup = this.contractForm.get('boatGroup');
-    //     boatGroup.patchValue(boat);
-    //     if (boat.name === 'Altro') {
-    //         boatGroup.enable();
-    //     } else {
-    //         boatGroup.disable();
-    //     }
-    // }
 
     getSsn() {
         const renterName = this.contractForm.get('renterName').value;
@@ -113,7 +93,9 @@ export class ContractComponent implements OnInit {
             rentalName: this.appConfig.rentalName,
             rentalDescription: this.appConfig.rentalDescription,
             rentalEmail: this.appConfig.rentalEmail,
-            emergencyContacts: this.appConfig.emergencyContacts
+            emergencyContacts: this.appConfig.emergencyContacts,
+            deposit: this.contractForm.value.rentPrice + this.contractForm.value.securityDeposit,
+            endDate: this.contractForm.value.startDate
         }, this.contractForm.value);
 
         // const boatGroup = this.contractForm.get('boatGroup');

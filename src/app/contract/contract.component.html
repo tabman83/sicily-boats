@@ -17,38 +17,6 @@
             <option *ngFor="let boat of boats" [ngValue]="boat">{{boat.name}}</option>
         </select>
     </div>
-    <!-- <fieldset formGroupName="boatGroup">
-        <div class="form-group">
-            <label for="boat_type">Natante</label>
-            <input type="text" class="form-control" formControlName="boatType" id="boat_type" aria-describedby="Natante" placeholder="Natante">
-        </div>
-        <div class="form-group">
-            <label for="boat_vin">Matricola</label>
-            <input type="text" class="form-control" formControlName="boatVin" id="boat_vin" aria-describedby="Matricola natante" placeholder="Matricola natante">
-        </div>
-        <div class="form-group">
-            <label for="engine">Engine</label>
-            <input type="text" class="form-control" formControlName="engine" id="engine" aria-describedby="Motore" placeholder="Motore">
-        </div>
-        <div class="form-group">
-            <label for="engine_vin">Matricola</label>
-            <input type="text" class="form-control" formControlName="engineVin" id="engine_vin" aria-describedby="Matricola motore" placeholder="Matricola motore">
-        </div>
-        <div class="form-group">
-            <label for="registration_number">Targa</label>
-            <input type="text" class="form-control" formControlName="registrationNumber" id="registration_number" aria-describedby="Targa"
-                placeholder="Targa">
-        </div>
-        <div class="form-group">
-            <label for="tank_size">Serbatoio</label>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">LT</span>
-                </div>
-                <input type="number" class="form-control" formControlName="tankSize" id="tank_size" aria-describedby="Serbatoio" placeholder="Serbatoio">
-            </div>
-        </div>
-    </fieldset> -->
 
     <h4>Anagrafica Locatario/Conduttore</h4>
     <div class="form-group">
@@ -60,23 +28,33 @@
         <input type="text" class="form-control" formControlName="birthPlace" id="birth_place">
     </div>
     <div class="form-group">
+        <label for="birth_state">Provincia di nascita o Stato Estero</label>
+        <input type="text" class="form-control" formControlName="birthState" id="birth_state">
+    </div>
+    <div class="form-group">
         <label for="birth_date">Data di nascita</label>
         <input type="date" class="form-control" formControlName="birthDate" id="birth_date">
     </div>
     <div class="form-group">
         <label for="sex">Sesso</label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="sex_m" formControlName="sex" value="M">
-            <label class="form-check-label" for="sex_m">M</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="sex_f" formControlName="sex" value="F">
-            <label class="form-check-label" for="sex_f">F</label>
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="sex_m" formControlName="sex" value="M">
+                <label class="form-check-label" for="sex_m">M</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="sex_f" formControlName="sex" value="F">
+                <label class="form-check-label" for="sex_f">F</label>
+            </div>
         </div>
     </div>
     <div class="form-group">
         <label for="home_town">Citt&agrave; di residenza</label>
         <input type="text" class="form-control" formControlName="homeTown" id="home_town">
+    </div>
+    <div class="form-group">
+        <label for="home_state">Provincia di residenza o Stato Estero</label>
+        <input type="text" class="form-control" formControlName="homeState" id="home_state">
     </div>
     <div class="form-group">
         <label for="home_address">Indirizzo di residenza</label>
@@ -93,14 +71,20 @@
     </div>
     <div class="form-group">
         <label for="boat_license">Patente nautica</label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="boat_license_yes" formControlName="boatLicense" [value]="true">
-            <label class="form-check-label" for="boat_license_yes">SI</label>
+        <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="boat_license_yes" formControlName="boatLicense" [value]="true">
+                <label class="form-check-label" for="boat_license_yes">SI</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="boat_license_no" formControlName="boatLicense" [value]="false">
+                <label class="form-check-label" for="boat_license_no">NO</label>
+            </div>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="boat_license_no" formControlName="boatLicense" [value]="false">
-            <label class="form-check-label" for="boat_license_no">NO</label>
-        </div>
+    </div>
+    <div class="form-group" [hidden]="!contractForm.value.boatLicense">
+        <label for="boat_license_details">Estremi patente nautica</label>
+        <input type="text" class="form-control" formControlName="boatLicenseDetails" id="boat_license_details">
     </div>
     <div class="form-group">
         <label for="phone">Telefono</label>
@@ -112,7 +96,9 @@
     </div>
     <div class="form-group">
         <label for="id_type">Tipo documento</label>
-        <input type="text" class="form-control" formControlName="idType" id="id_type">
+        <select class="form-control" formControlName="idType" id="id_type">
+            <option *ngFor="let idType of idTypes" [value]="idType">{{idType}}</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="id_number">Numero documento</label>
@@ -136,14 +122,7 @@
         <label for="start_time">Ora inizio</label>
         <input type="time" class="form-control" formControlName="startTime" id="start_time">
     </div>
-    <div class="form-group">
-        <label for="end_date">Data fine</label>
-        <input type="date" class="form-control" formControlName="endDate" id="end_date">
-    </div>
-    <div class="form-group">
-        <label for="end_time">Ora fine</label>
-        <input type="time" class="form-control" formControlName="endTime" id="end_time">
-    </div>
+
     <div class="form-group">
         <label for="start_fuel">Carburante inizio</label>
         <div class="input-group mb-3">
@@ -153,15 +132,7 @@
             <input type="text" class="form-control" formControlName="startFuel" id="start_fuel">
         </div>
     </div>
-    <div class="form-group">
-        <label for="end_fuel">Carburante fine</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">LT</span>
-            </div>
-            <input type="text" class="form-control" formControlName="endFuel" id="end_fuel">
-        </div>
-    </div>
+
     <div class="form-group">
         <label for="fuel_cost">Costo carburante</label>
         <div class="input-group mb-3">
@@ -171,15 +142,7 @@
             <input type="number" class="form-control" formControlName="fuelCost" id="fuel_cost">
         </div>
     </div>
-    <div class="form-group">
-        <label for="total_fuel_cost">Totale carburante</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">€</span>
-            </div>
-            <input type="number" class="form-control" formControlName="totalFuelCost" id="total_fuel_cost">
-        </div>
-    </div>
+
     <div class="form-group">
         <label for="rent_price">Importo locazione</label>
         <div class="input-group mb-3">
@@ -198,24 +161,7 @@
             <input type="number" class="form-control" formControlName="securityDeposit" id="security_deposit">
         </div>
     </div>
-    <div class="form-group">
-        <label for="desposit">Importo in acconto</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">€</span>
-            </div>
-            <input type="number" class="form-control" formControlName="deposit" id="desposit">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="balance">Importo a saldo</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">€</span>
-            </div>
-            <input type="number" class="form-control" formControlName="balance" id="balance">
-        </div>
-    </div>
+
 
     <button type="submit" class="btn btn-primary">
         Continua
@@ -308,7 +254,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Luogo di nascita:</div>
-                <div class="col-6">{{contract.birthPlace}}</div>
+                <div class="col-6">{{contract.birthPlace}} ({{contract.birthState}})</div>
             </div>
         </div>
         <div class="col-sm-6">
@@ -323,7 +269,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Citt&agrave; di residenza:</div>
-                <div class="col-6">{{contract.homeTown}}</div>
+                <div class="col-6">{{contract.homeTown}} ({{contract.homeState}})</div>
             </div>
         </div>
         <div class="col-sm-6">
@@ -343,7 +289,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Patente nautica:</div>
-                <div class="col-6">{{contract.boatLicense ? 'SI' : 'NO'}}</div>
+                <div class="col-6">{{contract.boatLicense ? contract.boatLicenseDetails : 'NO'}}</div>
             </div>
         </div>
     </div>
@@ -400,13 +346,13 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Data inizio:</div>
-                <div class="col-6">{{contract.startDate}}</div>
+                <div class="col-6">{{contract.startDate | date : 'd/M/yyyy'}}</div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Data fine:</div>
-                <div class="col-6">{{contract.endDate}}</div>
+                <div class="col-6">{{contract.endDate | date : 'd/M/yyyy'}}</div>
 
             </div>
         </div>
@@ -421,7 +367,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Ora fine:</div>
-                <div class="col-6">{{contract.endTime}}</div>
+                <div class="col-6"></div>
 
             </div>
         </div>
@@ -436,7 +382,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Carburante fine:</div>
-                <div class="col-6">LT. {{contract.endFuel}}</div>
+                <div class="col-6">LT.</div>
 
             </div>
         </div>
@@ -451,7 +397,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Totale carburante:</div>
-                <div class="col-6">€ {{contract.totalFuelCost}}</div>
+                <div class="col-6">€</div>
 
             </div>
         </div>
@@ -481,7 +427,7 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-6 text-right font-weight-bold">Importo a saldo:</div>
-                <div class="col-6">€ {{contract.balance}}</div>
+                <div class="col-6">€</div>
 
             </div>
         </div>
@@ -519,8 +465,9 @@
     <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attivit&agrave; di locazione</h4>
 
     <p>
-        Io sottoscritto {{contract.renterName}} nato a {{contract.birthPlace}} il {{contract.birthDate}} e residente a {{contract.homeTown}}
-        in {{contract.homeAddress}} intendo aderire alla proposta di locazione di un natante da diporto come segue:
+        Io sottoscritto {{contract.renterName}} nato a {{contract.birthPlace}} ({{contract.birthState}}) il {{contract.birthDate}}
+        e residente a {{contract.homeTown}} in {{contract.homeAddress}} intendo aderire alla proposta di locazione di un
+        natante da diporto come segue:
     </p>
 
     <div class="bordered">
@@ -595,7 +542,414 @@
         </li>
         <li>
             di
-            <strong>{{contract.boatLicense ? '' : 'NON' }}</strong> essere in possesso di patente nautica;
+            <strong>{{contract.boatLicense ? '' : 'NON' }}</strong> essere in possesso di patente nautica{{contract.boatLicense ?
+            ': ' + contract.boatLicenseDetails : '' }};
+        </li>
+        <li>
+            che in caso di necessit&agrave;, durante lo svolgimento dell'attivit&agrave; di locazione, sono disponibili i seguenti numeri
+            di telefonia cellulare:
+            <strong>{{contract.emergencyContacts}}</strong>;
+        </li>
+        <li>
+            estremi di un documento d'identit&agrave; in corso di validit&agrave;:
+            <strong>{{contract.idType}} {{contract.idNumber}}</strong>;
+        </li>
+        <li>
+            di saper nuotare e vogare.
+        </li>
+
+    </ol>
+
+    <div class="row mt-4 mb-5">
+        <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
+        <div class="col-sm"></div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-sm">
+            <p class="text-center font-weight-bold">Il Locatario/Conduttore</p>
+            <p class="text-center">{{contract.renterName}}</p>
+        </div>
+        <div class="col-sm">
+            <p class="text-center font-weight-bold">Il Locatore</p>
+            <p class="text-center">{{contract.rentalName}}</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <img src="assets/logo_wide.png" class="logo">
+
+    <h2 class="text-center text-uppercase font-weight-bold">Contratto di Locazione</h2>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Data:</div>
+                <div class="col-6">{{contract.date | date : 'd/M/yyyy'}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Nr. Registro:</div>
+                <div class="col-6">{{contract.registryNumber}}</div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="text-center text-uppercase font-weight-bold">anagrafica locatore</h4>
+
+    <p class="text-center">{{contract.rentalDescription}}</p>
+
+    <h4 class="text-center text-uppercase font-weight-bold">dati natante locato</h4>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Natante:</div>
+                <div class="col-6">{{contract.boat.boatType}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Matricola:</div>
+                <div class="col-6">{{contract.boat.boatVin}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Motore:</div>
+                <div class="col-6">{{contract.boat.engine}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Matricola:</div>
+                <div class="col-6">{{contract.boat.engineVin}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Targa:</div>
+                <div class="col-6">{{contract.boat.registrationNumber}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Serbatoio:</div>
+                <div class="col-6">LT. {{contract.boat.tankSize}}</div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <h4 class="text-center text-uppercase font-weight-bold">anagrafica locatario / conduttore</h4>
+
+    <div class="row">
+        <div class="col-sm-3 col-6 text-right font-weight-bold">Locatario:</div>
+        <div class="col-sm-9 col-6">{{contract.renterName}}</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Luogo di nascita:</div>
+                <div class="col-6">{{contract.birthPlace}} ({{contract.birthState}})</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Data di nascita:</div>
+                <div class="col-6">{{contract.birthDate | date : 'd/M/yyyy'}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Citt&agrave; di residenza:</div>
+                <div class="col-6">{{contract.homeTown}} ({{contract.homeState}})</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Indirizzo:</div>
+                <div class="col-6">{{contract.homeAddress}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Codice Fiscale:</div>
+                <div class="col-6">{{contract.ssn}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Patente nautica:</div>
+                <div class="col-6">{{contract.boatLicense ? contract.boatLicenseDetails : 'NO'}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Telefono:</div>
+                <div class="col-6">{{contract.phone}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Email:</div>
+                <div class="col-6">{{contract.email}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Tipo documento:</div>
+                <div class="col-6">{{contract.idType}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Nr. documento:</div>
+                <div class="col-6">{{contract.idNumber}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Rilasciato da:</div>
+                <div class="col-6">{{contract.idIssuer}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Data rilascio:</div>
+                <div class="col-6">{{contract.idIssueDate}}</div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <h4 class="text-center text-uppercase font-weight-bold">dettagli locazione</h4>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Data inizio:</div>
+                <div class="col-6">{{contract.startDate | date : 'd/M/yyyy'}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Data fine:</div>
+                <div class="col-6">{{contract.endDate | date : 'd/M/yyyy'}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Ora inizio:</div>
+                <div class="col-6">{{contract.startTime}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Ora fine:</div>
+                <div class="col-6"></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Carburante inizio:</div>
+                <div class="col-6">LT. {{contract.startFuel}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Carburante fine:</div>
+                <div class="col-6">LT.</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Costo carburante:</div>
+                <div class="col-6">€/LT. {{contract.fuelCost}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Totale carburante:</div>
+                <div class="col-6">€</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Importo locazione:</div>
+                <div class="col-6">€ {{contract.rentPrice}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Cauzione:</div>
+                <div class="col-6">€ {{contract.securityDeposit}}</div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Importo in acconto:</div>
+                <div class="col-6">€ {{contract.deposit}}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-6 text-right font-weight-bold">Importo a saldo:</div>
+                <div class="col-6">€</div>
+
+            </div>
+        </div>
+    </div>
+
+    <p class="bordered mt-5">
+        <strong>
+            Le parti convengono e stipulano il presente contratto di locazione alle condizioni contenute ivi e nei documenti allegati
+            di seguito elencati:
+            <ol>
+                <li>Condizioni di Locazione;</li>
+                <li>Condizioni Natante in Locazione;</li>
+                <li>Schema di informazione sull'attivit&agrave; di locazione;</li>
+                <li>Informativa sulla privacy dei dati personali.</li>
+            </ol>
+            Tali documenti fanno parte integrante del presente contratto e sono stati letti, compresi ed approvati dalle parti.
+        </strong>
+    </p>
+
+    <div class="row">
+        <div class="col-sm">
+            <p class="text-center font-weight-bold">Il Locatario/Conduttore</p>
+            <p class="text-center">{{contract.renterName}}</p>
+        </div>
+        <div class="col-sm">
+            <p class="text-center font-weight-bold">Il Locatore</p>
+            <p class="text-center">{{contract.rentalName}}</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <p class="text-uppercase">Allegato D</p>
+
+    <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attivit&agrave; di locazione</h4>
+
+    <p>
+        Io sottoscritto {{contract.renterName}} nato a {{contract.birthPlace}} ({{contract.birthState}}) il {{contract.birthDate}}
+        e residente a {{contract.homeTown}} in {{contract.homeAddress}} intendo aderire alla proposta di locazione di un
+        natante da diporto come segue:
+    </p>
+
+    <div class="bordered">
+
+        <div class="row">
+            <div class="col-sm-3">Tipo di natante: {{contract.boat.detailedBoatType}}</div>
+            <div class="col-sm-3">Marca: {{contract.boat.detailedBrand}}</div>
+            <div class="col-sm-3">Modello: {{contract.boat.detailedModel}}</div>
+            <div class="col-sm-3">Omolog. C.E.: {{contract.boat.ceCertification}}</div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">L.F.T.: {{contract.boat.length}} mt</div>
+            <div class="col-sm-3">Max pers. trasp.: {{contract.boat.people}}</div>
+            <div class="col-sm-6">Kg.: {{contract.boat.weight}}</div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-sm-3">Motori: n. 1</div>
+            <div class="col-sm-3">Marca/Mod.: {{contract.boat.engineBrand}}</div>
+            <div class="col-sm-3">Pot. max appl. (KW): {{contract.boat.enginePower}}</div>
+            <div class="col-sm-3">Matricola n.: {{contract.boat.engineVin}}</div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">Assic. R.C.: {{contract.boat.insurer}}</div>
+            <div class="col-sm-3">Polizza n.: {{contract.boat.insuranceNumber}}</div>
+            <div class="col-sm-6">Scadenza: {{contract.boat.insuranceExpiration}}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">Certificato di idoneit&agrave; al noleggio / Certificato di sicurezza: {{contract.boat.otherCertification}}</div>
+        </div>
+    </div>
+
+    <h5 class="text-center text-uppercase font-weight-bold my-4">dichiaro</h5>
+
+    <ol>
+        <li>
+            di aver preso visione e ricevuto copia dell'Ordinanza n. 11/2015, dell'Ordinanza di Sicurezza Balneare vigente e dell'Ordinanza
+            di interdizione dei tratti di costa e degli specchi acquei ricadenti nei Comuni di giurisdizione del Circondario
+            Marittimo di Siracusa, emanate dalla Capitaneria di porto di Siracusa, che disciplinano a livello locale l'esercizio
+            del diporto nautico per finalit&agrave; turistico ricreative e, in particolare, per quanto concerne le unit&agrave;
+            a motore, di essere a conoscenza:
+            <ul>
+                <li>
+                    che lo specchio acqueo di 250 metri dalle spiagge e di 100 metri dalle scogliere, durante la stagione estiva, &egrave; riservato
+                    esclusivamente alla balneazione e conseguentemente interdetto alle unit&agrave; a motore, cos&igrave;
+                    come interdetti sono gli ulteriori 50 metri da tale limite verso il largo (costituenti la fascia di rispetto
+                    e di sicurezza per evitare commistioni tra attivit&agrave; di balneazione e navigazione);
+                </li>
+                <li>che l'atterraggio e la partenza delle unit&agrave; a motore deve avvenire utilizzando i previsti corridoi
+                    di uscita alla velocit&agrave; prescritta (non superiore a 3 nodi);
+                </li>
+                <li>dei limiti di velocit&agrave; vigenti nella fascia di mare compresa tra i 300 e i 1000 metri dalla riva (non
+                    superiore ai 10 nodi, con scafo in dislocamento);
+                </li>
+                <li>
+                    del divieto di balneazione, di navigazione, e di ogni attivit&agrave; incompatibile con la natura del rischio accertato o
+                    esistente, nella fascia di mare come meglio specificata dall'art. 1 dell'Ord. 38/2014 e ss. mm. ed ii.
+                    (frane e smottamenti);
+                </li>
+            </ul>
+        </li>
+        <li>
+            di aver ricevuto copia della tabella "B" riportante le dotazioni di sicurezza previste dal D.M. n. 146/2008 del Ministero
+            delle Infrastrutture e dei Trasporti;
+        </li>
+        <li>
+            di intendere effettuare una navigazione entro 6 miglia dalla costa in relazione alla quale ricevo dal locatore le dotazioni
+            di sicurezza descritte nella sopracitata tabella;
+        </li>
+        <li>
+            di
+            <strong>{{contract.boatLicense ? '' : 'NON' }}</strong> essere in possesso di patente nautica{{contract.boatLicense ?
+            ': ' + contract.boatLicenseDetails : '' }};
         </li>
         <li>
             che in caso di necessit&agrave;, durante lo svolgimento dell'attivit&agrave; di locazione, sono disponibili i seguenti numeri
@@ -900,7 +1254,7 @@
 
     <h4 class="text-center text-uppercase font-weight-bold">allegato 1 - condizioni generali di locazione</h4>
 
-    <div class="small">
+    <div class="terms">
         <h6>Art. 1 - Oggetto del contratto</h6>
         <p>
             Oggetto del presente contratto &egrave; la locazione dell'unit&agrave; da diporto (natante) indicata nel contratto. Il locatore
@@ -926,8 +1280,8 @@
         <h6>Art. 3 - Assicurazione</h6>
         <p>
             E' quella elencata all'Art. 2; assicura i danni provocati a terzi entro il massimale ed alle condizioni indicati nella polizza.
-            La polizza assicurativa del natante non copre il furto, intero o parziale, del natante, n&acute; l'incendio,
-            n&acute; i danni alle persone trasportate. Non sono coperti dall'assicurazione gli effetti personali, gli abiti,
+            La polizza assicurativa del natante non copre il furto, intero o parziale, del natante, n&eacute; l'incendio,
+            n&eacute; i danni alle persone trasportate. Non sono coperti dall'assicurazione gli effetti personali, gli abiti,
             i bagagli o altri oggetti trasportati dagli occupanti; l'assicurazione &egrave; nulla in caso di guida in stato
             di ebbrezza, o sotto l'effetto di stupefacenti o qualora il Locatario avesse fornito false informazioni sulla
             sua identit&agrave; o sulla validit&agrave; della patente ove prevista. Il natante non &egrave; assicurato con
@@ -1011,7 +1365,6 @@
             ed esterna. In difetto, i costi di manodopera e materiali per il ripristino alle condizioni richieste saranno
             addebitati al Locatario.
         </p>
-
         <h6>Art. 10 - Danni e perdite dotazioni</h6>
         <p>
             In caso di danni o perdita di tutta o parte delle dotazioni di bordo, al Locatario sar&agrave; addebitato il costo delle
@@ -1238,7 +1591,7 @@
         </div>
     </div>
 
-    <p class="font-weight-bold mt-5">
+    <p class="font-weight-bold mt-3 small">
         Ai sensi degli artt. 1341 e 1342 C.C. il conduttore dichiara espressamente di aver letto, compreso ed approvato gli Art.
         3 (Assicurazione), 4 (Abilitazione alla conduzione dell'unit&agrave;), 5 (Consegna e riconsegna), 6 (Rischio di trasferimento
         del natante), 7 (Ritardi), 9 (Condizioni del natante), 10 (Danni e perdite dotazioni), 14 (Uso del natante), 15 (Responsabilit&agrave;
@@ -1247,12 +1600,12 @@
         (Foro esclusivo), e per accettazione le sottoscrive.
     </p>
 
-    <div class="row mt-4 mb-5">
+    <div class="row mt-4 mb-3">
         <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
         <div class="col-sm"></div>
     </div>
 
-    <div class="row mt-5">
+    <div class="row mt-3">
         <div class="col-sm">
             <p class="text-center font-weight-bold">Il Locatario/Conduttore</p>
             <p class="text-center">{{contract.renterName}}</p>

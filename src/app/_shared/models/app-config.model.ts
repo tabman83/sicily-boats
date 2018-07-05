@@ -6,6 +6,7 @@ export class AppConfig {
     domain: string = undefined;
     clientId: string = undefined;
     rentalName: string = undefined;
+    idTypes: string[] = undefined;
     rentalDescription: string = undefined;
     rentalEmail: string = undefined;
     emergencyContacts: string = undefined;

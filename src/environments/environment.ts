@@ -10,9 +10,12 @@ export const environment = {
         renterName: 'Antonino Parisi',
         sex: 'M',
         boatLicense: false,
-        birthPlace: 'Albenga (SV)',
+        boatLicenseDetails: 'AZ 1554',
+        birthPlace: 'Albenga',
+        birthState: 'SV',
         birthDate: '1983-01-31',
         homeTown: 'Noto',
+        homeState: 'SR',
         homeAddress: 'Via Alessio Di Giovanni 22',
         ssn: 'PRSNNN83A31A145R',
         phone: '00353 83 1620370',
@@ -23,16 +26,10 @@ export const environment = {
         idIssueDate: '2008-06-15',
         startDate: '2018-08-04',
         startTime: '09:20',
-        endDate: '2018-08-04',
-        endTime: '15:10',
-        startFuel: '30',
-        endFuel: '15',
+        startFuel: '',
         fuelCost: 1.8,
-        totalFuelCost: 40,
         rentPrice: 150,
-        securityDeposit: 50,
-        deposit: 50,
-        balance: 100
+        securityDeposit: 100
     }
 };
 

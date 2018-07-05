@@ -24,3 +24,21 @@ div.preview .bordered {
 div.preview .page-break {
     page-break-after: always;
 }
+div.preview .terms {
+    font-size: 55%;
+}
+div.preview .terms h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+}
+div.preview .terms h6+p {
+    page-break-before: avoid;
+}
+@media print
+{
+    footer {
+         display: block; 
+         position: fixed; 
+         bottom: 0;
+    } 
+}

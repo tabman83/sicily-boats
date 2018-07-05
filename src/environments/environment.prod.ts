@@ -6,9 +6,12 @@ export const environment = {
         renterName: '',
         sex: 'M',
         boatLicense: false,
+        boatLicenseDetails: '',
         birthPlace: '',
+        birthState: '',
         birthDate: '',
         homeTown: '',
+        homeState: '',
         homeAddress: '',
         ssn: '',
         phone: '',
@@ -19,15 +22,9 @@ export const environment = {
         idIssueDate: '',
         startDate: '',
         startTime: '',
-        endDate: '',
-        endTime: '',
-        startFuel: 0,
-        endFuel: 0,
+        startFuel: '',
         fuelCost: 1.8,
-        totalFuelCost: 0,
         rentPrice: 0,
-        securityDeposit: 0,
-        deposit: 0,
-        balance: 0
+        securityDeposit: 100
     }
 };
