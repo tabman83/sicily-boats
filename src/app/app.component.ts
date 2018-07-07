@@ -1,3 +1,4 @@
+import { AppConfig } from './_shared/models/app-config.model';
 import { AuthService } from './_shared/services/auth.service';
 import { Component } from '@angular/core';
 
@@ -10,8 +11,10 @@ export class AppComponent {
     title = 'Sicily Boats';
 
     constructor(
-        public auth: AuthService
+        public auth: AuthService,
+        private appConfig: AppConfig
     ) {
         auth.handleAuthentication();
+        window['emailjs'].init(appConfig.emailJsApiKey);
     }
 }

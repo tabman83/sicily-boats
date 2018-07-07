@@ -4,6 +4,8 @@ import { Boat } from './boat.model';
 @Injectable()
 export class AppConfig {
     domain: string = undefined;
+    emailJsApiKey: string = undefined;
+    emailJsTemplateName: string = undefined;
     clientId: string = undefined;
     rentalName: string = undefined;
     idTypes: string[] = undefined;

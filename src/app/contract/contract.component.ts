@@ -1,5 +1,5 @@
 import { AppConfig } from './../_shared/models/app-config.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { Boat } from '../_shared/models/boat.model';
@@ -12,6 +12,9 @@ import { environment } from '../../environments/environment';
     styleUrls: ['./contract.component.css']
 })
 export class ContractComponent implements OnInit {
+
+    @ViewChild('contractEl')
+    contractRef: ElementRef;
 
     public contractForm: FormGroup;
     public boats: Boat[];
@@ -107,6 +110,21 @@ export class ContractComponent implements OnInit {
 
     back() {
         this.firstStep = true;
+    }
+
+    sendMail() {
+        const templateParams = {
+            renterName: this.contract.renterName,
+            date: this.contract.date,
+            content: this.contractRef.nativeElement.htmlContent
+        };
+
+        window['emailjs'].send('sendgrid', this.appConfig.emailJsTemplateName, templateParams)
+            .then(function(response) {
+               console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+               console.log('FAILED...', error);
+            });
     }
 
     ngOnInit() {
