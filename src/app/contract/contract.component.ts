@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { Boat } from '../_shared/models/boat.model';
 import { SsnNumberService } from '../_shared/services/ssn-number.service';
 import { environment } from '../../environments/environment';
+import { ContractService } from '../_shared/services/contract.service';
 
 @Component({
     selector: 'app-contract',
@@ -19,7 +20,6 @@ export class ContractComponent implements OnInit {
     public contractForm: FormGroup;
     public boats: Boat[];
     public idTypes: string[];
-    public firstStep = true;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -27,7 +27,8 @@ export class ContractComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private appConfig: AppConfig,
-        private ssnNumberService: SsnNumberService
+        private ssnNumberService: SsnNumberService,
+        private contractService: ContractService
     ) {
         this.createForm();
     }
@@ -70,7 +71,6 @@ export class ContractComponent implements OnInit {
             console.log(x);
         });
 
-        this.mergeData();
     }
 
     getSsn() {
@@ -87,29 +87,24 @@ export class ContractComponent implements OnInit {
     }
 
     submit() {
-        this.mergeData();
-        this.firstStep = false;
+        this.contractService.get(this.contractForm.value).subscribe(x => console.log(x));
     }
 
     mergeData() {
-        this.contract = Object.assign({
-            rentalName: this.appConfig.rentalName,
-            rentalDescription: this.appConfig.rentalDescription,
-            rentalEmail: this.appConfig.rentalEmail,
-            emergencyContacts: this.appConfig.emergencyContacts,
-            deposit: this.contractForm.value.rentPrice + this.contractForm.value.securityDeposit,
-            endDate: this.contractForm.value.startDate
-        }, this.contractForm.value);
+        // this.contract = Object.assign({
+        //     rentalName: this.appConfig.rentalName,
+        //     rentalDescription: this.appConfig.rentalDescription,
+        //     rentalEmail: this.appConfig.rentalEmail,
+        //     emergencyContacts: this.appConfig.emergencyContacts,
+        //     deposit: this.contractForm.value.rentPrice + this.contractForm.value.securityDeposit,
+        //     endDate: this.contractForm.value.startDate
+        // }, this.contractForm.value);
 
         // const boatGroup = this.contractForm.get('boatGroup');
         // if (boatGroup.enabled) {
         //     Object.assign(this.contract.boat, boatGroup.value);
         // }
         // delete this.contract.boatGroup;
-    }
-
-    back() {
-        this.firstStep = true;
     }
 
     sendMail() {

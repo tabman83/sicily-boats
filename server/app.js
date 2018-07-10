@@ -21,6 +21,12 @@ app.post('/api', function(req, res, next) {
     // query a database and save data
     res.status(200).send(data);
 });
+app.post('/api/contract', function(req, res, next) {  
+    let data = req.body;
+    console.log(data);
+    // query a database and save data
+    res.status(200).send(data);
+});
 
 /**
  * STATIC FILES

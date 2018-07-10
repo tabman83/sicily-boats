@@ -14,6 +14,7 @@ import { ContractComponent } from './contract/contract.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SsnNumberService } from './_shared/services/ssn-number.service';
+import { ContractService } from './_shared/services/contract.service';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { SsnNumberService } from './_shared/services/ssn-number.service';
     providers: [
         AuthService,
         SsnNumberService,
+        ContractService,
         AppConfigLoader,
         AppConfig,
         {
