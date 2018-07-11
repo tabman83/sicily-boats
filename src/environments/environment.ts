@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    configFile: 'appconfig.json',
+    configFile: '/api/config',
     contract: {
         registryNumber: '005L',
         renterName: 'Antonino Parisi',

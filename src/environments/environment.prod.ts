@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    configFile: 'appconfig.json',
+    configFile: '/api/config',
     contract: {
         registryNumber: '',
         renterName: '',

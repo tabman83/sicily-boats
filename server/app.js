@@ -1,12 +1,13 @@
 // app.js
-const express = require('express');  
-const app = express();  
-const path = require('path');  
+const express = require('express');
+const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
+const request = require('request');
 
 // HTTPS only middleware
-const forceSSL = function() { 
-    return function(req, res, next) {
+const forceSSL = function () {
+    return function (req, res, next) {
         if (req.headers['x-forwarded-proto'] !== 'https') {
             return res.redirect(
                 ['https://', req.get('Host'), req.url].join('')
@@ -15,31 +16,37 @@ const forceSSL = function() {
         next();
     }
 };
-app.use(forceSSL());
+// app.use(forceSSL());
 
-app.use(bodyParser.json());  
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * API
  */
-app.get('/api', function(req, res, next) {  
-    let data = {
-        message: 'Hello World!'
-    };
-    res.status(200).send(data);
-});
-app.post('/api', function(req, res, next) {  
-    let data = req.body;
-    // query a database and save data
-    res.status(200).send(data);
-});
-app.post('/api/contract', function(req, res, next) {  
+// app.get('/api', function(req, res, next) {  
+//     let data = {
+//         message: 'Hello World!'
+//     };
+//     res.status(200).send(data);
+// });
+// app.post('/api', function(req, res, next) {  
+//     let data = req.body;
+//     // query a database and save data
+//     res.status(200).send(data);
+// });
+app.post('/api/contract', function (req, res, next) {
     let data = req.body;
     console.log(data);
     // query a database and save data
     res.status(200).send(data);
 });
+
+app.get('/api/config', function (req, res, next) {
+    const url = 'https://drive.google.com/uc?export=download&id=' + process.env.CONFIG_FILE_ID;
+    req.pipe(request(url)).pipe(res);
+});
+//
 
 /**
  * STATIC FILES
@@ -47,7 +54,7 @@ app.post('/api/contract', function(req, res, next) {
 app.use('/', express.static('dist'));
 
 // Default every route except the above to serve the index.html
-app.get('*', function(req, res) {  
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '..', 'dist/index.html'));
 });
 
