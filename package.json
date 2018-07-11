@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
     "@ng-bootstrap/ng-bootstrap": "^2.2.0",
+    "@sendgrid/mail": "^6.3.1",
     "auth0-js": "^9.6.1",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
