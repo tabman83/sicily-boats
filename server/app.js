@@ -31,11 +31,11 @@ app.post('/api/contract', function(req, res, next) {
 /**
  * STATIC FILES
  */
-app.use('/', express.static('dist/sicily-boats'));
+app.use('/', express.static('dist'));
 
 // Default every route except the above to serve the index.html
 app.get('*', function(req, res) {  
-    res.sendFile(path.join(__dirname, '..', 'dist/sicily-boats/index.html'));
+    res.sendFile(path.join(__dirname, '..', 'dist/index.html'));
 });
 
 module.exports = app;  
