@@ -4,6 +4,19 @@ const app = express();
 const path = require('path');  
 const bodyParser = require('body-parser');
 
+// HTTPS only middleware
+const forceSSL = function() { 
+    return function(req, res, next) {
+        if (req.headers['x-forwarded-proto'] !== 'https') {
+            return res.redirect(
+                ['https://', req.get('Host'), req.url].join('')
+            );
+        }
+        next();
+    }
+};
+app.use(forceSSL());
+
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded({ extended: false }));
 
