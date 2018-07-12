@@ -4,6 +4,9 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const request = require('request');
+const createPdf = require('./create-pdf');
+const sendMail = require('./send-mail');
+const fs = require('fs');
 
 // HTTPS only middleware
 const forceSSL = function () {
@@ -21,25 +24,28 @@ const forceSSL = function () {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-/**
- * API
- */
-// app.get('/api', function(req, res, next) {  
-//     let data = {
-//         message: 'Hello World!'
-//     };
-//     res.status(200).send(data);
-// });
-// app.post('/api', function(req, res, next) {  
-//     let data = req.body;
-//     // query a database and save data
-//     res.status(200).send(data);
-// });
+
 app.post('/api/contract', function (req, res, next) {
-    let data = req.body;
+    const data = req.body;
     console.log(data);
-    // query a database and save data
-    res.status(200).send(data);
+
+    try {
+        // const stream = fs.createWriteStream('output.pdf');
+        // stream.on("finish", () => {
+        //     console.log("Finished writing to disk. Only now can the memory be freed.");
+        //     resolve();
+        // });
+        res.status(200);
+        res.setHeader('Content-type', 'application/pdf');
+        createPdf(data, res);
+        // sendMail(pdf);
+    }
+    catch (exception) {
+        res.status(500).send({ message: exception.message });
+        return;
+    }
+
+    res.status(200);
 });
 
 app.get('/api/config', function (req, res, next) {

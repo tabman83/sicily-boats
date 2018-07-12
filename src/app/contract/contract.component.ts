@@ -71,6 +71,8 @@ export class ContractComponent implements OnInit {
             console.log(x);
         });
 
+        this.mergeData();
+
     }
 
     getSsn() {
@@ -91,14 +93,14 @@ export class ContractComponent implements OnInit {
     }
 
     mergeData() {
-        // this.contract = Object.assign({
-        //     rentalName: this.appConfig.rentalName,
-        //     rentalDescription: this.appConfig.rentalDescription,
-        //     rentalEmail: this.appConfig.rentalEmail,
-        //     emergencyContacts: this.appConfig.emergencyContacts,
-        //     deposit: this.contractForm.value.rentPrice + this.contractForm.value.securityDeposit,
-        //     endDate: this.contractForm.value.startDate
-        // }, this.contractForm.value);
+        this.contract = Object.assign({
+            rentalName: this.appConfig.rentalName,
+            rentalDescription: this.appConfig.rentalDescription,
+            rentalEmail: this.appConfig.rentalEmail,
+            emergencyContacts: this.appConfig.emergencyContacts,
+            deposit: this.contractForm.value.rentPrice + this.contractForm.value.securityDeposit,
+            endDate: this.contractForm.value.startDate
+        }, this.contractForm.value);
 
         // const boatGroup = this.contractForm.get('boatGroup');
         // if (boatGroup.enabled) {
