@@ -1,9 +1,7 @@
 'use strict';
 
 const PDFDocument = require('pdfkit');
-const leftColStart = 150;
-const rightColStart = 350;
-const colPadding = 10;
+const colPadding = 5;
 
 class PDFDocumentExtended extends PDFDocument {
     constructor (options) {
@@ -13,40 +11,54 @@ class PDFDocumentExtended extends PDFDocument {
     headerText(content) {
         this
             .moveDown()
+            .moveDown()
             .fontSize(this.options.headerFontSize)
             .font(this.options.boldFontName)
-            .text(content, this.page.margins.right, this.y, { align: 'center'})
-            .moveTo(this.page.margins.left, this.y - 2)
+            .text(content.toUpperCase(), this.page.margins.right, this.y, { align: 'center'})
+            .moveTo(this.page.margins.left, this.y - 4)
             .lineTo(this.page.width - this.page.margins.right, this.y - 2)
             .stroke();
+        this.y = this.y + 6;
         return this;
     }
 
-    leftCol(header, value) {
+    leftCol(content, value) {
         this
-            .font(this.options.boldFontName)
-            .text(header + ':', leftColStart, this.y)
+            .fontSize(this.options.paragraphFontSize)
+            .font(this.options.boldFontName);
+
+        const text = content + ':';
+        const textWidth = this.widthOfString(text);
+        const position = this.page.margins.left + 100;
+        this
+            .text(text, position - textWidth, this.y)
             .moveUp()
             .font(this.options.regularFontName)
-            .text(value, leftColStart + colPadding + this.widthOfString(header + ':'), this.y);
+            .text(value, position + colPadding, this.y);
         return this;
     }
 
     twoCol(leftHeader, leftValue, rightHeader, rightValue) {
-        this
-            .leftCol(leftHeader, leftValue)
-            .moveUp()
-            .rightCol(rightHeader, rightValue);
+        const savedY = this.y;
+        this.leftCol(leftHeader, leftValue);
+        this.y = savedY;
+        this.rightCol(rightHeader, rightValue);
         return this;
     }
 
-    rightCol(header, value) {
+    rightCol(content, value) {
         this
-            .font(this.options.boldFontName)
-            .text(header + ':', rightColStart, this.y)
+            .fontSize(this.options.paragraphFontSize)
+            .font(this.options.boldFontName);
+
+        const text = content + ':';
+        const textWidth = this.widthOfString(text);
+        const position = (this.page.width / 2) + 100;
+        this
+            .text(text, position - textWidth, this.y)
             .moveUp()
             .font(this.options.regularFontName)
-            .text(value, rightColStart + colPadding + this.widthOfString(header + ':'), this.y);
+            .text(value, position + colPadding, this.y);
         return this;
     }
 }

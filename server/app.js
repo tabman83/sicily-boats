@@ -28,24 +28,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/api/contract', function (req, res, next) {
     const data = req.body;
     console.log(data);
-
-    try {
-        // const stream = fs.createWriteStream('output.pdf');
-        // stream.on("finish", () => {
-        //     console.log("Finished writing to disk. Only now can the memory be freed.");
-        //     resolve();
-        // });
-        res.status(200);
-        res.setHeader('Content-type', 'application/pdf');
-        createPdf(data, res);
-        // sendMail(pdf);
-    }
-    catch (exception) {
-        res.status(500).send({ message: exception.message });
-        return;
-    }
-
     res.status(200);
+    createPdf(data, res);
 });
 
 app.get('/api/config', function (req, res, next) {
