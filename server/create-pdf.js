@@ -1,19 +1,31 @@
 const PDFDocumentExtended = require('./pdfkit-extension');
 const language = require('./lang.js');
 
-const titleFontSize = 22;
-const headerFontSize = 14;
+const titleFontSize = 18;
+const headerFontSize = 13;
 const paragraphFontSize = 10;
 const regularFontName = 'Helvetica';
 const boldFontName = 'Helvetica-Bold';
 
-
 module.exports = function (data, stream) {
+
+    const printSignatures = function() {
+        savedY = doc.y + 60;
+        doc.fontSize(paragraphFontSize).font(boldFontName)
+        doc.text(text.THE_CUSTOMER, doc.page.margins.left, savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.left });
+        doc.text(text.THE_LEASEHOLDER, (doc.page.width / 2), savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.right});
+    
+        savedY = doc.y + 10;
+        doc.fontSize(paragraphFontSize).font(regularFontName)
+        doc.text(data.renterName, doc.page.margins.left, savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.left });
+        doc.text(data.rentalName, (doc.page.width / 2), savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.right});
+    }
+
     const doc = new PDFDocumentExtended({
         size: 'A4',
         margins: {
             left: 40,
-            top: 25,
+            top: 40,
             bottom: 25,
             right: 40
         },
@@ -24,6 +36,7 @@ module.exports = function (data, stream) {
         paragraphFontSize: paragraphFontSize
     });
     const text = language.it;
+    let savedY = doc.y;
 
     doc.pipe(stream);
 
@@ -31,6 +44,7 @@ module.exports = function (data, stream) {
         
     });
 
+    doc.image('dist/assets/logo_wide.png', (doc.page.width / 2) - 110, 40, { width: 220 }).moveDown();
     doc.fontSize(titleFontSize).font(boldFontName).text(text.LEASE_CONTRACT.toUpperCase(), { align: 'center'});
 
     doc.fontSize(paragraphFontSize);
@@ -62,7 +76,17 @@ module.exports = function (data, stream) {
     doc.twoCol(text.RENT_PRICE, '€ ' + data.rentPrice, text.SECURITY_DEPOSIT, '€ ' + data.securityDeposit);
     doc.twoCol(text.DEPOSIT, '€ ' + data.deposit, text.BALANCE, '€');
 
-        
+    doc.moveDown();
+    doc.moveDown();
+    savedY = doc.y;
+    const padding = 10;
+    const pageWidth = doc.page.width - doc.page.margins.right - doc.page.margins.left;
+    doc.formattedText(text.AGREEMENT, doc.page.margins.left + padding, doc.y + padding, pageWidth - padding - padding, boldFontName);
+    doc.rect(doc.page.margins.left, savedY, doc.page.width - doc.page.margins.right - doc.page.margins.left, doc.y - savedY + padding).stroke();
+
+    // firme locatario e conduttore
+    printSignatures();
+    // end firme locatario e conduttore
 
     doc.end();
 };

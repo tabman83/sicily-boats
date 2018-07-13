@@ -37,6 +37,11 @@ module.exports = {
         RENT_PRICE: 'Importo locazione',
         SECURITY_DEPOSIT: 'Cauzione',
         DEPOSIT: 'Importo in acconto',
-        BALANCE: 'Importo a saldo'
+        BALANCE: 'Importo a saldo',
+        AGREEMENT: 'Le parti convengono e stipulano il presente contratto di locazione alle condizioni contenute ivi e nei documenti allegati di seguito elencati: [Condizioni di Locazione;][Condizioni Natante in Locazione;][Schema di informazione sull\'attività di locazione;][Informativa sulla privacy dei dati personali.]Tali documenti fanno parte integrante del presente contratto e sono stati letti, compresi ed approvati dalle parti.',
+        THE_CUSTOMER: 'Il Locatario/Conduttore',
+        THE_LEASEHOLDER: 'Il Locatore'
+
+
     }
 };
