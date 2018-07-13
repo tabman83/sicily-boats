@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="home_town">Citt&agrave; di residenza</label>
+        <label for="home_town">Città di residenza</label>
         <input type="text" class="form-control" formControlName="homeTown" id="home_town">
     </div>
     <div class="form-group">
@@ -269,7 +269,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="row">
-                    <div class="col-6 text-right font-weight-bold">Citt&agrave; di residenza:</div>
+                    <div class="col-6 text-right font-weight-bold">Città di residenza:</div>
                     <div class="col-6">{{contract.homeTown}} ({{contract.homeState}})</div>
                 </div>
             </div>
@@ -441,7 +441,7 @@
                 <ol>
                     <li>Condizioni di Locazione;</li>
                     <li>Condizioni Natante in Locazione;</li>
-                    <li>Schema di informazione sull'attivit&agrave; di locazione;</li>
+                    <li>Schema di informazione sull'attività di locazione;</li>
                     <li>Informativa sulla privacy dei dati personali.</li>
                 </ol>
                 Tali documenti fanno parte integrante del presente contratto e sono stati letti, compresi ed approvati dalle parti.
@@ -463,7 +463,7 @@
 
         <p class="text-uppercase">Allegato D</p>
 
-        <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attivit&agrave; di locazione</h4>
+        <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attività di locazione</h4>
 
         <p>
             Io sottoscritto {{contract.renterName}} nato a {{contract.birthPlace}} ({{contract.birthState}}) il {{contract.birthDate}}
@@ -500,7 +500,7 @@
                 <div class="col-sm-6">Scadenza: {{contract.boat.insuranceExpiration}}</div>
             </div>
             <div class="row">
-                <div class="col-sm-12">Certificato di idoneit&agrave; al noleggio / Certificato di sicurezza: {{contract.boat.otherCertification}}</div>
+                <div class="col-sm-12">Certificato di idoneità al noleggio / Certificato di sicurezza: {{contract.boat.otherCertification}}</div>
             </div>
         </div>
 
@@ -511,23 +511,23 @@
                 di aver preso visione e ricevuto copia dell'Ordinanza n. 11/2015, dell'Ordinanza di Sicurezza Balneare vigente e dell'Ordinanza
                 di interdizione dei tratti di costa e degli specchi acquei ricadenti nei Comuni di giurisdizione del Circondario
                 Marittimo di Siracusa, emanate dalla Capitaneria di porto di Siracusa, che disciplinano a livello locale
-                l'esercizio del diporto nautico per finalit&agrave; turistico ricreative e, in particolare, per quanto concerne
-                le unit&agrave; a motore, di essere a conoscenza:
+                l'esercizio del diporto nautico per finalità turistico ricreative e, in particolare, per quanto concerne
+                le unità a motore, di essere a conoscenza:
                 <ul>
                     <li>
-                        che lo specchio acqueo di 250 metri dalle spiagge e di 100 metri dalle scogliere, durante la stagione estiva, &egrave; riservato
-                        esclusivamente alla balneazione e conseguentemente interdetto alle unit&agrave; a motore, cos&igrave;
+                        che lo specchio acqueo di 250 metri dalle spiagge e di 100 metri dalle scogliere, durante la stagione estiva, è riservato
+                        esclusivamente alla balneazione e conseguentemente interdetto alle unità a motore, così
                         come interdetti sono gli ulteriori 50 metri da tale limite verso il largo (costituenti la fascia
-                        di rispetto e di sicurezza per evitare commistioni tra attivit&agrave; di balneazione e navigazione);
+                        di rispetto e di sicurezza per evitare commistioni tra attività di balneazione e navigazione);
                     </li>
-                    <li>che l'atterraggio e la partenza delle unit&agrave; a motore deve avvenire utilizzando i previsti corridoi
-                        di uscita alla velocit&agrave; prescritta (non superiore a 3 nodi);
+                    <li>che l'atterraggio e la partenza delle unità a motore deve avvenire utilizzando i previsti corridoi
+                        di uscita alla velocità prescritta (non superiore a 3 nodi);
                     </li>
-                    <li>dei limiti di velocit&agrave; vigenti nella fascia di mare compresa tra i 300 e i 1000 metri dalla riva
+                    <li>dei limiti di velocità vigenti nella fascia di mare compresa tra i 300 e i 1000 metri dalla riva
                         (non superiore ai 10 nodi, con scafo in dislocamento);
                     </li>
                     <li>
-                        del divieto di balneazione, di navigazione, e di ogni attivit&agrave; incompatibile con la natura del rischio accertato o
+                        del divieto di balneazione, di navigazione, e di ogni attività incompatibile con la natura del rischio accertato o
                         esistente, nella fascia di mare come meglio specificata dall'art. 1 dell'Ord. 38/2014 e ss. mm. ed
                         ii. (frane e smottamenti);
                     </li>
@@ -547,12 +547,12 @@
                 ? ': ' + contract.boatLicenseDetails : '' }};
             </li>
             <li>
-                che in caso di necessit&agrave;, durante lo svolgimento dell'attivit&agrave; di locazione, sono disponibili i seguenti numeri
+                che in caso di necessità, durante lo svolgimento dell'attività di locazione, sono disponibili i seguenti numeri
                 di telefonia cellulare:
                 <strong>{{contract.emergencyContacts}}</strong>;
             </li>
             <li>
-                estremi di un documento d'identit&agrave; in corso di validit&agrave;:
+                estremi di un documento d'identità in corso di validità:
                 <strong>{{contract.idType}} {{contract.idNumber}}</strong>;
             </li>
             <li>
@@ -562,7 +562,7 @@
         </ol>
 
         <div class="row mt-4 mb-5">
-            <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
+            <div class="col-sm text-center">Avola, lì {{contract.date | date : 'd/M/yyyy'}}</div>
             <div class="col-sm"></div>
         </div>
 
@@ -675,7 +675,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="row">
-                    <div class="col-6 text-right font-weight-bold">Citt&agrave; di residenza:</div>
+                    <div class="col-6 text-right font-weight-bold">Città di residenza:</div>
                     <div class="col-6">{{contract.homeTown}} ({{contract.homeState}})</div>
                 </div>
             </div>
@@ -847,7 +847,7 @@
                 <ol>
                     <li>Condizioni di Locazione;</li>
                     <li>Condizioni Natante in Locazione;</li>
-                    <li>Schema di informazione sull'attivit&agrave; di locazione;</li>
+                    <li>Schema di informazione sull'attività di locazione;</li>
                     <li>Informativa sulla privacy dei dati personali.</li>
                 </ol>
                 Tali documenti fanno parte integrante del presente contratto e sono stati letti, compresi ed approvati dalle parti.
@@ -869,7 +869,7 @@
 
         <p class="text-uppercase">Allegato D</p>
 
-        <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attivit&agrave; di locazione</h4>
+        <h4 class="text-center text-uppercase font-weight-bold">schema di informazione sull'attività di locazione</h4>
 
         <p>
             Io sottoscritto {{contract.renterName}} nato a {{contract.birthPlace}} ({{contract.birthState}}) il {{contract.birthDate}}
@@ -906,7 +906,7 @@
                 <div class="col-sm-6">Scadenza: {{contract.boat.insuranceExpiration}}</div>
             </div>
             <div class="row">
-                <div class="col-sm-12">Certificato di idoneit&agrave; al noleggio / Certificato di sicurezza: {{contract.boat.otherCertification}}</div>
+                <div class="col-sm-12">Certificato di idoneità al noleggio / Certificato di sicurezza: {{contract.boat.otherCertification}}</div>
             </div>
         </div>
 
@@ -917,23 +917,23 @@
                 di aver preso visione e ricevuto copia dell'Ordinanza n. 11/2015, dell'Ordinanza di Sicurezza Balneare vigente e dell'Ordinanza
                 di interdizione dei tratti di costa e degli specchi acquei ricadenti nei Comuni di giurisdizione del Circondario
                 Marittimo di Siracusa, emanate dalla Capitaneria di porto di Siracusa, che disciplinano a livello locale
-                l'esercizio del diporto nautico per finalit&agrave; turistico ricreative e, in particolare, per quanto concerne
-                le unit&agrave; a motore, di essere a conoscenza:
+                l'esercizio del diporto nautico per finalità turistico ricreative e, in particolare, per quanto concerne
+                le unità a motore, di essere a conoscenza:
                 <ul>
                     <li>
-                        che lo specchio acqueo di 250 metri dalle spiagge e di 100 metri dalle scogliere, durante la stagione estiva, &egrave; riservato
-                        esclusivamente alla balneazione e conseguentemente interdetto alle unit&agrave; a motore, cos&igrave;
+                        che lo specchio acqueo di 250 metri dalle spiagge e di 100 metri dalle scogliere, durante la stagione estiva, è riservato
+                        esclusivamente alla balneazione e conseguentemente interdetto alle unità a motore, così
                         come interdetti sono gli ulteriori 50 metri da tale limite verso il largo (costituenti la fascia
-                        di rispetto e di sicurezza per evitare commistioni tra attivit&agrave; di balneazione e navigazione);
+                        di rispetto e di sicurezza per evitare commistioni tra attività di balneazione e navigazione);
                     </li>
-                    <li>che l'atterraggio e la partenza delle unit&agrave; a motore deve avvenire utilizzando i previsti corridoi
-                        di uscita alla velocit&agrave; prescritta (non superiore a 3 nodi);
+                    <li>che l'atterraggio e la partenza delle unità a motore deve avvenire utilizzando i previsti corridoi
+                        di uscita alla velocità prescritta (non superiore a 3 nodi);
                     </li>
-                    <li>dei limiti di velocit&agrave; vigenti nella fascia di mare compresa tra i 300 e i 1000 metri dalla riva
+                    <li>dei limiti di velocità vigenti nella fascia di mare compresa tra i 300 e i 1000 metri dalla riva
                         (non superiore ai 10 nodi, con scafo in dislocamento);
                     </li>
                     <li>
-                        del divieto di balneazione, di navigazione, e di ogni attivit&agrave; incompatibile con la natura del rischio accertato o
+                        del divieto di balneazione, di navigazione, e di ogni attività incompatibile con la natura del rischio accertato o
                         esistente, nella fascia di mare come meglio specificata dall'art. 1 dell'Ord. 38/2014 e ss. mm. ed
                         ii. (frane e smottamenti);
                     </li>
@@ -953,12 +953,12 @@
                 ? ': ' + contract.boatLicenseDetails : '' }};
             </li>
             <li>
-                che in caso di necessit&agrave;, durante lo svolgimento dell'attivit&agrave; di locazione, sono disponibili i seguenti numeri
+                che in caso di necessità, durante lo svolgimento dell'attività di locazione, sono disponibili i seguenti numeri
                 di telefonia cellulare:
                 <strong>{{contract.emergencyContacts}}</strong>;
             </li>
             <li>
-                estremi di un documento d'identit&agrave; in corso di validit&agrave;:
+                estremi di un documento d'identità in corso di validità:
                 <strong>{{contract.idType}} {{contract.idNumber}}</strong>;
             </li>
             <li>
@@ -968,7 +968,7 @@
         </ol>
 
         <div class="row mt-4 mb-5">
-            <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
+            <div class="col-sm text-center">Avola, lì {{contract.date | date : 'd/M/yyyy'}}</div>
             <div class="col-sm"></div>
         </div>
 
@@ -1120,22 +1120,22 @@
             Informativa resa ai sensi degli articoli 13-14 del GDPR 2016/679 (General Data Protection Regulation).
         </p>
         <p>
-            Gentile Signore/a, ai sensi dell'art. 13 del Regolamento U.E. 2016/679 ed in relazione alle informazioni di cui si entrer&agrave;
+            Gentile Signore/a, ai sensi dell'art. 13 del Regolamento U.E. 2016/679 ed in relazione alle informazioni di cui si entrerà
             in possesso, ai fini della tutela delle persone e altri soggetti in materia di trattamento di dati personali,
             si informa quanto segue:
         </p>
         <ol class="small">
             <li>
-                <p class="font-weight-bold mb-0">Finalit&agrave; del trattamento</p>
+                <p class="font-weight-bold mb-0">Finalità del trattamento</p>
                 <p>
                     I dati da Lei forniti verranno utilizzati allo scopo di fornire il servizio da Lei richiesto, ovvero la locazione o il noleggio
                     di natanti da diporto.
                 </p>
             </li>
             <li>
-                <p class="font-weight-bold mb-0">Modalit&agrave; del trattamento</p>
+                <p class="font-weight-bold mb-0">Modalità del trattamento</p>
                 <p>
-                    Le modalit&agrave; con la quale verranno trattati i dati personali contemplano l'ausilio di mezzi informatici quali tablet,
+                    Le modalità con la quale verranno trattati i dati personali contemplano l'ausilio di mezzi informatici quali tablet,
                     smartphone o PC, e supporti cartacei. I dati saranno conservati, ai soli fini fiscali, in archivi sia
                     cartacei che elettronici.
                 </p>
@@ -1143,28 +1143,28 @@
             <li>
                 <p class="font-weight-bold mb-0">Conferimento dei dati</p>
                 <p>
-                    Il conferimento dei dati per le finalit&agrave; di cui al precedente punto 1 sono obbligatori poich&eacute; richiesti dalle
-                    Autorit&agrave; competenti (Guardia Costiera) e l'eventuale rifiuto dell'autorizzazione comporta la mancata
+                    Il conferimento dei dati per le finalità di cui al precedente punto 1 sono obbligatori poiché richiesti dalle
+                    Autorità competenti (Guardia Costiera) e l'eventuale rifiuto dell'autorizzazione comporta la mancata
                     locazione del natante da diporto richiesto.
                 </p>
             </li>
             <li>
                 <p class="font-weight-bold mb-0">Comunicazione e diffusione dei dati</p>
                 <p>
-                    I dati forniti potranno essere comunicati, qualora richiesti, alle Autorit&agrave; di controllo quali la Guardia Costiera,
+                    I dati forniti potranno essere comunicati, qualora richiesti, alle Autorità di controllo quali la Guardia Costiera,
                     la Capitaneria di Porto, la Guardia di Finanza.
                 </p>
             </li>
             <li>
                 <p class="font-weight-bold mb-0">Titolare del trattamento</p>
                 <p>
-                    Il titolare del trattamento dei dati personali &egrave; {{contract.rentalDescription}}.
+                    Il titolare del trattamento dei dati personali è {{contract.rentalDescription}}.
                 </p>
             </li>
             <li>
                 <p class="font-weight-bold mb-0">Diritti dell'interessato</p>
                 <p>
-                    In ogni momento, Lei potr&agrave; esercitare, ai sensi degli articoli dal 15 al 22 del Regolamento U.E. n. 2016/679, il diritto
+                    In ogni momento, Lei potrà esercitare, ai sensi degli articoli dal 15 al 22 del Regolamento U.E. n. 2016/679, il diritto
                     di:
                 </p>
                 <ul>
@@ -1172,7 +1172,7 @@
                         chiedere la conferma dell'esistenza o meno di propri dati personali;
                     </li>
                     <li>
-                        ottenere le indicazioni circa le finalit&agrave; del trattamento, le categorie dei dati personali, i destinatari o le categorie
+                        ottenere le indicazioni circa le finalità del trattamento, le categorie dei dati personali, i destinatari o le categorie
                         di destinatari a cui i dati personali sono stati o saranno comunicati e, quando possibile, il periodo
                         di conservazione;
                     </li>
@@ -1182,25 +1182,25 @@
                     <li>
                         ottenere la limitazione del trattamento;
                     </li>
-                    <li>ottenere la portabilit&agrave; dei dati, ossia riceverli da un titolare del trattamento, in un formato
+                    <li>ottenere la portabilità dei dati, ossia riceverli da un titolare del trattamento, in un formato
                         strutturato, di uso comune e leggibile da dispositivo automatico, e trasmetterli a un altro titolare
                         del trattamento senza impedimenti;
                     </li>
                     <li>
-                        opporsi al trattamento in qualsiasi momento ed anche nel caso di trattamento per finalit&agrave; di marketing diretto ad
+                        opporsi al trattamento in qualsiasi momento ed anche nel caso di trattamento per finalità di marketing diretto ad
                         un processo decisionale automatizzato relativo alle persone fisiche, compresa la profilazione;
                     </li>
                     <li>
                         chiedere al titolare del trattamento l'accesso ai dati personali e la rettifica o la cancellazione degli stessi o la limitazione
-                        del trattamento che lo riguardano o di opporsi al loro trattamento, oltre al diritto alla portabilit&agrave;
+                        del trattamento che lo riguardano o di opporsi al loro trattamento, oltre al diritto alla portabilità
                         dei dati;
                     </li>
                     <li>
-                        revocare il consenso in qualsiasi momento senza pregiudicare la liceit&agrave; del trattamento basata sul consenso prestato
+                        revocare il consenso in qualsiasi momento senza pregiudicare la liceità del trattamento basata sul consenso prestato
                         prima della revoca;
                     </li>
                     <li>
-                        proporre reclamo a un'autorit&agrave; di controllo.
+                        proporre reclamo a un'autorità di controllo.
                     </li>
                 </ul>
             </li>
@@ -1223,20 +1223,20 @@
         <div class="row">
             <div class="col-sm-3 text-uppercase">esprime il consenso</div>
             <div class="col-sm-3 text-uppercase">non esprime il consenso</div>
-            <div class="col-sm-6">alla comunicazione dei propri dati personali a enti pubblici e societ&agrave; di natura privata per le finalit&agrave;
+            <div class="col-sm-6">alla comunicazione dei propri dati personali a enti pubblici e società di natura privata per le finalità
                 indicate nell'informativa.</div>
         </div>
 
         <div class="row">
             <div class="col-sm-3 text-uppercase">esprime il consenso</div>
             <div class="col-sm-3 text-uppercase">non esprime il consenso</div>
-            <div class="col-sm-6">al trattamento delle categorie particolari dei propri dati personali cos&igrave; come indicati nell'informativa
+            <div class="col-sm-6">al trattamento delle categorie particolari dei propri dati personali così come indicati nell'informativa
                 che precede.
             </div>
         </div>
 
         <div class="row mt-4 mb-5">
-            <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
+            <div class="col-sm text-center">Avola, lì {{contract.date | date : 'd/M/yyyy'}}</div>
             <div class="col-sm"></div>
         </div>
 
@@ -1258,10 +1258,10 @@
         <div class="terms">
             <h6>Art. 1 - Oggetto del contratto</h6>
             <p>
-                Oggetto del presente contratto &egrave; la locazione dell'unit&agrave; da diporto (natante) indicata nel contratto. Il locatore
-                si obbliga a far godere al locatario-conduttore l'unit&agrave; da diporto di cui dispone, per il dato periodo
-                di tempo e a fronte del pagamento del corrispettivo fissato. L'unit&agrave; passa in godimento autonomo del
-                conduttore il quale esercita con essa la navigazione e ne assume la responsabilit&agrave; ed i rischi.
+                Oggetto del presente contratto è la locazione dell'unità da diporto (natante) indicata nel contratto. Il locatore
+                si obbliga a far godere al locatario-conduttore l'unità da diporto di cui dispone, per il dato periodo
+                di tempo e a fronte del pagamento del corrispettivo fissato. L'unità passa in godimento autonomo del
+                conduttore il quale esercita con essa la navigazione e ne assume la responsabilità ed i rischi.
             </p>
 
             <h6>Art. 2 - Corrispettivo</h6>
@@ -1274,38 +1274,38 @@
             </ol>
             <p>
                 Sono esclusi dal costo della locazione: carburante, pulizia al rientro e quant'altro non espressamente previsto. Il costo
-                accessorio per l'eventuale lavaggio &egrave; fissato in € 10,00 (dieci/00) e verr&agrave; applicato qualora
+                accessorio per l'eventuale lavaggio è fissato in € 10,00 (dieci/00) e verrà applicato qualora
                 il natante risultasse eccessivamente sporco, a insindacabile giudizio del locatario.
             </p>
 
             <h6>Art. 3 - Assicurazione</h6>
             <p>
                 E' quella elencata all'Art. 2; assicura i danni provocati a terzi entro il massimale ed alle condizioni indicati nella polizza.
-                La polizza assicurativa del natante non copre il furto, intero o parziale, del natante, n&eacute; l'incendio,
-                n&eacute; i danni alle persone trasportate. Non sono coperti dall'assicurazione gli effetti personali, gli
-                abiti, i bagagli o altri oggetti trasportati dagli occupanti; l'assicurazione &egrave; nulla in caso di guida
+                La polizza assicurativa del natante non copre il furto, intero o parziale, del natante, né l'incendio,
+                né i danni alle persone trasportate. Non sono coperti dall'assicurazione gli effetti personali, gli
+                abiti, i bagagli o altri oggetti trasportati dagli occupanti; l'assicurazione è nulla in caso di guida
                 in stato di ebbrezza, o sotto l'effetto di stupefacenti o qualora il Locatario avesse fornito false informazioni
-                sulla sua identit&agrave; o sulla validit&agrave; della patente ove prevista. Il natante non &egrave; assicurato
+                sulla sua identità o sulla validità della patente ove prevista. Il natante non è assicurato
                 con polizza kasko o altre formule simili, pertanto i danni provocati allo stesso sono interamente addebitati
                 al Locatario secondo la stima effettuata dal proprietario, o da un Perito qualora il Locatario contestasse
                 il preventivo formulato. Il Locatario dichiara di conoscere le norme riguardanti l'assicurazione dei natanti
                 in Italia e le norme del Codice di Navigazione. Egli si impegna a non porre in essere condotte e fatti che
-                possano provocare l'annullamento o l'inapplicabilit&agrave; della protezione assicurativa garantita dalla
+                possano provocare l'annullamento o l'inapplicabilità della protezione assicurativa garantita dalla
                 polizza di cui agli art. 2 e 3, che dichiara di aver letto anche nelle condizioni di prenotazione alle quali
                 aderisce. Per ogni altro dettaglio si rinvia al documento di polizza del natante, di cui il locatario-conduttore
                 dichiara di essere a conoscenza, avendone preso visione sul certificato e contrassegno.
             </p>
 
-            <h6>Art. 4 - Abilitazione alla conduzione dell'unit&agrave;</h6>
+            <h6>Art. 4 - Abilitazione alla conduzione dell'unità</h6>
             <p>
                 Il locatario-conduttore dichiara di essere fornito di patente nautica o, in mancanza della stessa e compatibilmente con la
                 tipologia di natante prescelta, di essere in grado di guidarlo; a tal fine dichiara di aver ricevuto dal
                 locatore le principali informazioni tecniche relative all'uso del natante ed ogni ulteriore spiegazione relativa
-                al funzionamento del mezzo nautico affidato nonch&eacute; il corretto utilizzo dei segnali di soccorso e
-                delle dotazioni di bordo. Qualora necessario, &egrave; facolt&agrave; del conduttore affidarsi a persona
-                di sua fiducia per la guida del natante, sempre mantenendo in capo a s&eacute; la personale responsabilit&agrave;
-                della navigazione ed ogni relativo e conseguente obbligo; tale scelta &egrave; subordinata al preventivo
-                gradimento del locatore che, in mancanza di accettazione, potr&agrave; liberamente recedere dal contratto
+                al funzionamento del mezzo nautico affidato nonché il corretto utilizzo dei segnali di soccorso e
+                delle dotazioni di bordo. Qualora necessario, è facoltà del conduttore affidarsi a persona
+                di sua fiducia per la guida del natante, sempre mantenendo in capo a sé la personale responsabilità
+                della navigazione ed ogni relativo e conseguente obbligo; tale scelta è subordinata al preventivo
+                gradimento del locatore che, in mancanza di accettazione, potrà liberamente recedere dal contratto
                 senza alcun preavviso e senza restituire alcun anticipo o corrispettivo.
             </p>
 
@@ -1314,7 +1314,7 @@
                 La consegna e la restituzione del natante locato avvengono presso il Posteggio Nautico di Guarino Sebastiano e Enzo sito
                 ad Avola in via Sebastiano Morale sn. Il periodo di locazione pu&ograve; avere inizio e termine in qualsiasi
                 giorno della settimana, con date e orari concordati e contrattualizzati. Al di fuori dei suddetti orari e
-                giorni, per la presa e riconsegna verr&agrave; addebitata una somma accessoria il cui ammontare viene ridefinito
+                giorni, per la presa e riconsegna verrà addebitata una somma accessoria il cui ammontare viene ridefinito
                 tra il locatore e il Locatario.
             </p>
 
@@ -1322,20 +1322,20 @@
             <p>
                 Il mezzo si ritira e si riconsegna presso il Posteggio Nautico di Guarino Sebastiano e Enzo sito ad Avola in via Sebastiano
                 Morale sn. Nel caso in cui il natante venisse noleggiato con richiesta di trasferimento dello stesso ad altro
-                porto o approdo, la responsabilit&agrave; ed i rischi derivanti dal trasferimento saranno a totale carico
+                porto o approdo, la responsabilità ed i rischi derivanti dal trasferimento saranno a totale carico
                 del locatario-conduttore.
             </p>
 
             <h6>Art. 7 - Ritardi</h6>
             <p>
-                Qualora, per qualsiasi motivo, il Locatario dovesse ritardare la restituzione del natante, egli sar&agrave; tenuto a darne
-                immediata comunicazione telefonica al Locatore che potr&agrave;, ove possibile, autorizzare la ritardata
-                consegna indicandone le modalit&agrave; e le condizioni. In difetto di tale comunicazione il Locatore &egrave;
-                autorizzato, decorse ventiquattro ore dall'ora pattuita per la consegna, a denunciarne il furto alle Autorit&agrave;
+                Qualora, per qualsiasi motivo, il Locatario dovesse ritardare la restituzione del natante, egli sarà tenuto a darne
+                immediata comunicazione telefonica al Locatore che potrà, ove possibile, autorizzare la ritardata
+                consegna indicandone le modalità e le condizioni. In difetto di tale comunicazione il Locatore è
+                autorizzato, decorse ventiquattro ore dall'ora pattuita per la consegna, a denunciarne il furto alle Autorità
                 competenti.
             </p>
             <p>
-                In ogni caso di ritardata consegna del natante non concordata, verr&agrave; addebitato al Locatario un importo pari a:
+                In ogni caso di ritardata consegna del natante non concordata, verrà addebitato al Locatario un importo pari a:
             </p>
             <ul>
                 <li>Da 1 a 15 minuti, nessun supplemento;</li>
@@ -1344,16 +1344,16 @@
                 <li>Da 1 a 2 ore, € 80,00 (ottanta/00);</li>
                 <li>Da 2 a 4 ore, € 160,00 (centosessanta/00);</li>
                 <li>Da 4 a 12 ore, € 250,00 (duecentocinquanta/00);</li>
-                <li>Oltre le 12 ore di ritardo verr&agrave; applicata una tariffa giornaliera di € 400,00 (quattrocento/00).</li>
+                <li>Oltre le 12 ore di ritardo verrà applicata una tariffa giornaliera di € 400,00 (quattrocento/00).</li>
             </ul>
 
             <h6>Art. 8 - Riconsegna fuori sede</h6>
             <p>
-                Qualora il natante non venisse riconsegnato nella localit&agrave; pattuita dal Contratto di Locazione, i costi della presa
-                in consegna del natante, del trasporto marino o terrestre fino alla localit&agrave; concordata e dei giorni
+                Qualora il natante non venisse riconsegnato nella località pattuita dal Contratto di Locazione, i costi della presa
+                in consegna del natante, del trasporto marino o terrestre fino alla località concordata e dei giorni
                 eccedenti il periodo di locazione, saranno addebitati al Locatario. Nel caso in cui il natante si dovesse
                 guastare durante il periodo di locazione, il Locatario ha l'obbligo di avvisare prontamente il Locatore e
-                di attendere la riparazione del natante se possibile in tempi brevi non superiori alle tre ore. Non &egrave;
+                di attendere la riparazione del natante se possibile in tempi brevi non superiori alle tre ore. Non è
                 consentito in nessun caso lasciare il natante incustodito presso un pontile o altro punto di approdo e rientrare
                 con altri mezzi. In caso contrario le spese di recupero del natante saranno interamente addebitate al Locatario.
             </p>
@@ -1362,29 +1362,29 @@
             <p>
                 Il Locatario dichiara di aver ispezionato, verificato e controllato il natante, le dotazioni di bordo e gli accessori e di
                 averne riscontrato le buone condizioni di manutenzione, l'assenza di vizi palesi, oltre che il funzionamento,
-                cos&igrave; come la rispondenza nell'inventario Allegato 2 ai documenti di contratto. Il natante deve essere
+                così come la rispondenza nell'inventario Allegato 2 ai documenti di contratto. Il natante deve essere
                 restituito integro, con il lubrificante al livello ed in perfetto stato di funzionamento e di pulizia interna
                 ed esterna. In difetto, i costi di manodopera e materiali per il ripristino alle condizioni richieste saranno
                 addebitati al Locatario.
             </p>
             <h6>Art. 10 - Danni e perdite dotazioni</h6>
             <p>
-                In caso di danni o perdita di tutta o parte delle dotazioni di bordo, al Locatario sar&agrave; addebitato il costo delle
+                In caso di danni o perdita di tutta o parte delle dotazioni di bordo, al Locatario sarà addebitato il costo delle
                 riparazioni o il controvalore dei beni in dotazione a valore a nuovo indicato sullo stampato allegato ai
                 documenti di contratto.
             </p>
 
             <h6>Art. 11 - Carburante</h6>
             <p>
-                Il quantitativo di carburante presente al momento del ritiro del natante &egrave; quello indicato nel Contratto di Locazione,
-                generalmente il pieno, salvo diversa pattuizione indicata in contratto. Al rientro del natante &egrave; previsto
+                Il quantitativo di carburante presente al momento del ritiro del natante è quello indicato nel Contratto di Locazione,
+                generalmente il pieno, salvo diversa pattuizione indicata in contratto. Al rientro del natante è previsto
                 per ogni litro di carburante mancante, l'addebito di € {{contract.fuelCost}}.
             </p>
 
             <h6>Art. 12 - Animali a bordo</h6>
             <p>
-                &Egrave; permesso far salire a bordo del natante animali domestici di piccola taglia. &Egrave; vietato far salire a bordo
-                del natante animali domestici di media e grande taglia; in questo caso, la penale applicat&agrave; sar&agrave;
+                è permesso far salire a bordo del natante animali domestici di piccola taglia. è vietato far salire a bordo
+                del natante animali domestici di media e grande taglia; in questo caso, la penale applicatà sarà
                 di € 100,00 (cento/00) per pulizia, controllo accurato ed eventuale disinfestazione, salvo ulteriori danni.
             </p>
 
@@ -1392,95 +1392,95 @@
             <p>
                 Le spese relative alla riparazione di guasti meccanici non imputabili al Locatario, e da Questi anticipate al Locatore, saranno
                 rimborsate al rientro su presentazione di ricevuta fiscale accompagnata dalle parti eventualmente sostituite.
-                Il rimborso non avverr&agrave; senza che dette parti e ricevute siano esibite al rientro del natante, n&eacute;
+                Il rimborso non avverrà senza che dette parti e ricevute siano esibite al rientro del natante, né
                 se la spesa di riparazione non fosse stata preventivamente comunicata al Locatore.
             </p>
 
             <h6>Art. 14 - Uso del natante</h6>
             <p>
-                Il natante, durante tutto il periodo di locazione, dovr&agrave; essere utilizzato con la massima cura e diligenza; in particolare:
+                Il natante, durante tutto il periodo di locazione, dovrà essere utilizzato con la massima cura e diligenza; in particolare:
             </p>
             <ul>
                 <li>
-                    Non potr&agrave; essere utilizzato e condotto in condizioni di sovraccarico e con a bordo un numero di persone superiore
+                    Non potrà essere utilizzato e condotto in condizioni di sovraccarico e con a bordo un numero di persone superiore
                     a quello autorizzato dall'omologazione della barca e sul Contratto di Locazione;
                 </li>
                 <li>
-                    Non potr&agrave; allontanarsi dalla costa oltre le sei miglia marine;
+                    Non potrà allontanarsi dalla costa oltre le sei miglia marine;
                 </li>
                 <li>
-                    Non potr&agrave; essere condotto al di fuori delle acque nazionali;
+                    Non potrà essere condotto al di fuori delle acque nazionali;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato da persone in stato di affaticamento, ubriachezza, invalidit&agrave; anche temporanea
+                    Non potrà essere utilizzato da persone in stato di affaticamento, ubriachezza, invalidità anche temporanea
                     e sotto l'effetto di sostanze stupefacenti;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato da persone con et&agrave; inferiore a 18 anni e/o superiore a 80 anni;
+                    Non potrà essere utilizzato da persone con età inferiore a 18 anni e/o superiore a 80 anni;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato per finalit&agrave; illecite;
+                    Non potrà essere utilizzato per finalità illecite;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato per trainare altri natanti o imbarcazioni;
+                    Non potrà essere utilizzato per trainare altri natanti o imbarcazioni;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato per gare e competizioni di alcun genere;
+                    Non potrà essere utilizzato per gare e competizioni di alcun genere;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato a velocit&agrave; superiori a quelle consentite dalle norme della Capitaneria di Porto
+                    Non potrà essere utilizzato a velocità superiori a quelle consentite dalle norme della Capitaneria di Porto
                     e, in particolare, a regime superiore a 5000 RpM.
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato per scopi commerciali, quali, ad esempio, il trasporto di merci o persone, la sublocazione
+                    Non potrà essere utilizzato per scopi commerciali, quali, ad esempio, il trasporto di merci o persone, la sublocazione
                     e la cessione di contratto;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato fuori dai limiti di abilitazione dell'imbarcazione anche in relazione alle dotazioni di
-                    sicurezza presenti a bordo o di abilitazione del comandante dell’unit&agrave; cos&igrave; come risultanti
+                    Non potrà essere utilizzato fuori dai limiti di abilitazione dell'imbarcazione anche in relazione alle dotazioni di
+                    sicurezza presenti a bordo o di abilitazione del comandante dell’unità così come risultanti
                     dalla patente nautica;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato per praticare attivit&agrave; pericolose per i terzi trasportati ed i bagnanti;
+                    Non potrà essere utilizzato per praticare attività pericolose per i terzi trasportati ed i bagnanti;
                 </li>
                 <li>
-                    Non potr&agrave; essere utilizzato in condizioni non sicure, come ad esempio navigazione vietata dalle autorit&agrave;, maltempo
-                    o pericolosit&agrave; del mare; in tali casi si raccomanda di non uscire in mare aperto e di rientrare
+                    Non potrà essere utilizzato in condizioni non sicure, come ad esempio navigazione vietata dalle autorità, maltempo
+                    o pericolosità del mare; in tali casi si raccomanda di non uscire in mare aperto e di rientrare
                     subito nel porto pi&ugrave; vicino o posto sufficientemente sicuro, avvertendo immediatamente il locatore
-                    per concordare le modalit&agrave; di rientro;
+                    per concordare le modalità di rientro;
                 </li>
                 <li>
-                    Non potr&agrave; lasciare incustodita l'unit&agrave; da diporto per nessun motivo ed in nessuna circostanza;
+                    Non potrà lasciare incustodita l'unità da diporto per nessun motivo ed in nessuna circostanza;
                 </li>
                 <li>
-                    Non potr&agrave; utilizzare per la pulizia dell'unità, esterna o interna, alcun detergente che possa danneggiarne i materiali;
+                    Non potrà utilizzare per la pulizia dell'unità, esterna o interna, alcun detergente che possa danneggiarne i materiali;
                 </li>
             </ul>
             <p>
-                Ogni responsabilit&agrave; civile, penale e amministrativa o obbligazione derivante dall'utilizzo dell'unit&agrave; in violazione
+                Ogni responsabilità civile, penale e amministrativa o obbligazione derivante dall'utilizzo dell'unità in violazione
                 del contratto o delle norme della navigazione, oltre che della diligenza ordinaria e richiesta dalle circostanze
-                specifiche, sar&agrave; a totale carico del Locatario.
+                specifiche, sarà a totale carico del Locatario.
             </p>
 
-            <h6>Art. 15 - Responsabilit&agrave; penale e civile</h6>
+            <h6>Art. 15 - Responsabilità penale e civile</h6>
             <p>
-                Il Locatario sar&agrave; direttamente responsabile di ogni violazione alle leggi regolanti la Navigazione. In ogni caso,
-                in caso di furto del natante, di tutte o parte delle dotazioni, di incendio o incidente, il Locatario dovr&agrave;
+                Il Locatario sarà direttamente responsabile di ogni violazione alle leggi regolanti la Navigazione. In ogni caso,
+                in caso di furto del natante, di tutte o parte delle dotazioni, di incendio o incidente, il Locatario dovrà
                 darne immediatamente comunicazione verbale telefonica al Locatore e entro e non oltre 24 ore tramite email,
-                raccomandata o fax. Nei casi dei danni provocati a cose di terzi o subiti da terzi, il Locatario dovr&agrave;
+                raccomandata o fax. Nei casi dei danni provocati a cose di terzi o subiti da terzi, il Locatario dovrà
                 compilare in tutte le sue parti i documenti necessari per attivare le procedure che regolano i sinistri in
-                mare. In ogni altro caso il Locatario &egrave; tenuto a richiedere l'intervento delle Autorit&agrave; di
-                Polizia Marittima, curare che sui verbali o segnalazioni di incidente siano riportati generalit&agrave; ed
-                indirizzi delle persone coinvolte, dei testimoni e le generalit&agrave;/caratteristiche dei natanti o imbarcazioni.
-                Sar&agrave; cura del Locatario ottenere copia dei verbali delle Autorit&agrave; di Polizia. Il Locatario
-                inoltre non potr&agrave; accettare responsabilit&agrave; o transigere liti, non potr&agrave; comunque impegnare
-                a riguardo il Locatore; in ogni caso quest'ultimo non risponder&agrave; dei danni occorsi al Locatario e/o
+                mare. In ogni altro caso il Locatario è tenuto a richiedere l'intervento delle Autorità di
+                Polizia Marittima, curare che sui verbali o segnalazioni di incidente siano riportati generalità ed
+                indirizzi delle persone coinvolte, dei testimoni e le generalità/caratteristiche dei natanti o imbarcazioni.
+                Sarà cura del Locatario ottenere copia dei verbali delle Autorità di Polizia. Il Locatario
+                inoltre non potrà accettare responsabilità o transigere liti, non potrà comunque impegnare
+                a riguardo il Locatore; in ogni caso quest'ultimo non risponderà dei danni occorsi al Locatario e/o
                 alle persone trasportate e non, terzi e non terzi rispetto al Locatario.
             </p>
 
             <h6>Art. 16 - Danni al natante e da navigazione</h6>
             <p>
-                Il Locatario risarcir&agrave; il Locatore di ogni danno subito dal natante, per qualunque evento, connesso e non con l'uso
+                Il Locatario risarcirà il Locatore di ogni danno subito dal natante, per qualunque evento, connesso e non con l'uso
                 che derivasse o non da colpa del Locatario. I danni saranno quindi quantificati in base a:
             </p>
             <ul>
@@ -1496,74 +1496,74 @@
                 </li>
             </ul>
             <p>
-                Il preventivo di spesa sar&agrave; per intero rimborsato dal Locatario entro e non oltre dieci giorni solari dall'emissione
-                dello stesso. Trascorsi i dieci giorni il Locatario proceder&agrave; all'incasso della cauzione, se prevista,
+                Il preventivo di spesa sarà per intero rimborsato dal Locatario entro e non oltre dieci giorni solari dall'emissione
+                dello stesso. Trascorsi i dieci giorni il Locatario procederà all'incasso della cauzione, se prevista,
                 provvedendo a rimborsare la differenza in caso di importo inferiore all'importo del preventivo. Viceversa,
-                in caso di importo superiore alla somma della cauzione, se prevista, il Locatore adir&agrave; le vie legali
+                in caso di importo superiore alla somma della cauzione, se prevista, il Locatore adirà le vie legali
                 senza preavviso alcuno. Il Locatario, inoltre, autorizza il Locatore a trattenere la cauzione, se prevista,
-                per l'ipotesi del danno al natante cagionato da terzi e con responsabilit&agrave; di terzi, fino al momento
+                per l'ipotesi del danno al natante cagionato da terzi e con responsabilità di terzi, fino al momento
                 dell'eventuale risarcimento da parte dell'Assicurazione. La cauzione, dedotto quanto non risarcito dall'Assicurazione
-                ed effettuate le altre deduzioni previste dalle Condizioni Generali di Locazione in quanto applicabili, sar&agrave;
+                ed effettuate le altre deduzioni previste dalle Condizioni Generali di Locazione in quanto applicabili, sarà
                 restituita al Locatario, senza interessi, al risarcimento da parte dell'assicurazione. Nel caso di violazione
-                delle norme regolanti la navigazione e di quanto disposto dal presente documento, il Locatario sar&agrave;
+                delle norme regolanti la navigazione e di quanto disposto dal presente documento, il Locatario sarà
                 responsabile per l'intero ammontare del danno e della perdita. Oltre al risarcimento danni di cui al presente
-                articolo, in caso di sinistro verificatosi per colpa attribuibile, anche in concorso, al Locatario, verr&agrave;
+                articolo, in caso di sinistro verificatosi per colpa attribuibile, anche in concorso, al Locatario, verrà
                 applicata allo stesso una penale minima di € 350,00 (trecentocinquanta/00) per ogni sinistro.
             </p>
 
             <h6>Art. 17 - Addebiti per spese sopravvenute e danni occulti</h6>
             <p>
-                Il Locatore avr&agrave; facoltà di addebitare al Locatario ogni somma eventualmente richiesta dalle competenti Autorit&agrave;
+                Il Locatore avrà facoltà di addebitare al Locatario ogni somma eventualmente richiesta dalle competenti Autorità
                 per multe, sanzioni amministrative, non pagati, ecc., relativamente al periodo di locazione. Entro il decimo
-                giorno dalla riconsegna del natante il Locatore avr&agrave; altresì la facolt&agrave; di esigere dal Locatario
+                giorno dalla riconsegna del natante il Locatore avrà altresì la facoltà di esigere dal Locatario
                 le somme dovute per danni occulti e non riscontrati al momento della riconsegna del natante. Il Locatario
-                rimborser&agrave; il Locatore di tutte le spese sopravvenute e/o danni occulti riscontrati, su richiesta
-                del Locatore stesso anche in caso di gi&agrave; avvenuta restituzione del deposito cauzionale, se previsto.
+                rimborserà il Locatore di tutte le spese sopravvenute e/o danni occulti riscontrati, su richiesta
+                del Locatore stesso anche in caso di già avvenuta restituzione del deposito cauzionale, se previsto.
             </p>
 
             <h6>Art. 18 - Danni al locatario ed a terzi</h6>
             <p>
-                Il Locatore non &egrave; responsabile per danni a cose o persone derivanti al Locatario o a terzi in connessione con l'uso
-                del natante, n&eacute; per perdite o inconvenienti da guasti meccanici n&eacute; per ogni altra ragione o
-                fatto, dei quali il Locatario mantiene la piena responsabilit&agrave;.
+                Il Locatore non è responsabile per danni a cose o persone derivanti al Locatario o a terzi in connessione con l'uso
+                del natante, né per perdite o inconvenienti da guasti meccanici né per ogni altra ragione o
+                fatto, dei quali il Locatario mantiene la piena responsabilità.
             </p>
 
-            <h6>Art. 19 - Impossibilit&agrave; nell'uso del natante</h6>
+            <h6>Art. 19 - Impossibilità nell'uso del natante</h6>
             <p>
                 Salvi i casi previsti dal successivo articolo 20, nessun rimborso spese, restituzione o riduzione dell'importo previsto dal
-                Contratto di Locazione sar&agrave; dovuto dal Locatore al Locatario per l'impossibilit&agrave;, da qualunque
+                Contratto di Locazione sarà dovuto dal Locatore al Locatario per l'impossibilità, da qualunque
                 causa determinata, di utilizzare il natante durante il periodo di locazione. Nessuna riduzione o rimborso
                 saranno inoltre riconosciuti per rientri anticipati.
             </p>
 
             <h6>Art. 20 - Condizioni meteo avverse</h6>
             <p>
-                In caso di condizioni meteo avverse, qualora il Locatario avesse gi&agrave; versato un acconto per la prenotazione del natante,
-                la locazione verr&agrave; spostata alla prima data disponibile o rimborsata per intero a scelta del Locatario.
+                In caso di condizioni meteo avverse, qualora il Locatario avesse già versato un acconto per la prenotazione del natante,
+                la locazione verrà spostata alla prima data disponibile o rimborsata per intero a scelta del Locatario.
                 Qualora, in caso di condizioni meteo avverse, il Locatario decidesse di anticipare il rientro entro la mezza
-                giornata, verr&agrave; rimborsato per un importo pari a quello derivante la differenza tra il prezzo dell'intera
+                giornata, verrà rimborsato per un importo pari a quello derivante la differenza tra il prezzo dell'intera
                 giornata e il prezzo della mezza giornata. Qualora, in caso di condizioni meteo avverse, il Locatario decidesse
-                di anticipare il rientro dopo la mezza giornata, nessun importo verr&agrave; rimborsato.
+                di anticipare il rientro dopo la mezza giornata, nessun importo verrà rimborsato.
             </p>
 
             <h6>Art. 21 - Custodia del natante</h6>
             <p>
                 Il Locatario si impegna durante le soste a lasciare il natante solo ed esclusivamente presso pontili autorizzati e con regolare
-                licenza, nonch&eacute; custoditi. Il Locatario dichiara di assumersi la piena responsabilit&agrave; della
+                licenza, nonché custoditi. Il Locatario dichiara di assumersi la piena responsabilità della
                 custodia del natante durante tutto il periodo di locazione.
             </p>
 
             <h6>Art. 22 - Deposito dell'autovettura</h6>
             <p>
                 Qualora il Locatario, durante il periodo di locazione del natante, parcheggiasse la propria autovettura nei pressi del Posteggio
-                Nautico di Guarino Sebastiano e Enzo sito ad Avola in via Sebastiano Morale sn, n&eacute; lo stesso, n&eacute;
+                Nautico di Guarino Sebastiano e Enzo sito ad Avola in via Sebastiano Morale sn, né lo stesso, né
                 il Locatore avranno obbligo di custodia, pertanto non risponderanno di eventuali furti totali o parziali,
                 incendio e/o altri danni altri sulla autovettura.
             </p>
 
             <h6>Art. 23 - Foro esclusivo</h6>
             <p>
-                Per ogni controversia nascente o comunque derivante dal presente contratto sar&agrave; territorialmente competente il Foro
+                Per ogni controversia nascente o comunque derivante dal presente contratto sarà territorialmente competente il Foro
                 di Siracusa competente per valore e per materia secondo la legge.
             </p>
 
@@ -1573,13 +1573,13 @@
                 reciprocamente che i dati personali, forniti obbligatoriamente per la stipula del presente Contratto di Locazione
                 e Condizioni di Locazione, sono oggetto di trattamento informatico e/o manuale e potranno essere utilizzati
                 esclusivamente per gli adempimenti degli obblighi contrattuali, la gestione amministrativa del rapporto locativo,
-                rapporti con l'autorit&agrave; giudiziaria e per adempimenti di legge relativi a norme civilistiche, fiscali
+                rapporti con l'autorità giudiziaria e per adempimenti di legge relativi a norme civilistiche, fiscali
                 e contabili.
             </p>
         </div>
 
         <div class="row mt-4 mb-5">
-            <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
+            <div class="col-sm text-center">Avola, lì {{contract.date | date : 'd/M/yyyy'}}</div>
             <div class="col-sm"></div>
         </div>
 
@@ -1596,15 +1596,15 @@
 
         <p class="font-weight-bold mt-3 small">
             Ai sensi degli artt. 1341 e 1342 C.C. il conduttore dichiara espressamente di aver letto, compreso ed approvato gli Art.
-            3 (Assicurazione), 4 (Abilitazione alla conduzione dell'unit&agrave;), 5 (Consegna e riconsegna), 6 (Rischio
+            3 (Assicurazione), 4 (Abilitazione alla conduzione dell'unità), 5 (Consegna e riconsegna), 6 (Rischio
             di trasferimento del natante), 7 (Ritardi), 9 (Condizioni del natante), 10 (Danni e perdite dotazioni), 14 (Uso
-            del natante), 15 (Responsabilit&agrave; penale e civile), 16 (Danni al natante e da navigazione), 17 (Addebiti
-            per spese sopravvenute e danni occulti), 18 (Danni al locatario ed a terzi), 19 (Impossibilit&agrave; nell'uso
+            del natante), 15 (Responsabilità penale e civile), 16 (Danni al natante e da navigazione), 17 (Addebiti
+            per spese sopravvenute e danni occulti), 18 (Danni al locatario ed a terzi), 19 (Impossibilità nell'uso
             del natante), 20 (Condizioni meteo avverse), 23 (Foro esclusivo), e per accettazione le sottoscrive.
         </p>
 
         <div class="row mt-4 mb-3">
-            <div class="col-sm text-center">Avola, l&igrave; {{contract.date | date : 'd/M/yyyy'}}</div>
+            <div class="col-sm text-center">Avola, lì {{contract.date | date : 'd/M/yyyy'}}</div>
             <div class="col-sm"></div>
         </div>
 

@@ -1,3 +1,4 @@
+const util = require('util');
 const PDFDocumentExtended = require('./pdfkit-extension');
 const language = require('./lang.js');
 
@@ -6,6 +7,25 @@ const headerFontSize = 13;
 const paragraphFontSize = 10;
 const regularFontName = 'Helvetica';
 const boldFontName = 'Helvetica-Bold';
+
+const arrayFormat = function(input) {
+    const result = [];
+    const params = Array.prototype.slice.call(arguments, 1);
+    let globalCount = 0;
+    input.forEach(element => {
+        const count = (typeof element === 'string' ? (element.match(/%s/g) || []).length : 0);
+        if(count > 0) {
+            const utilArgs = params.slice(globalCount, globalCount + count);
+            utilArgs.unshift(element);
+            const line = util.format.apply(util, utilArgs);
+            globalCount += count;
+            result.push(line);
+        } else {
+            result.push(element);
+        }
+    });
+    return result;
+}
 
 module.exports = function (data, stream) {
 
@@ -88,5 +108,33 @@ module.exports = function (data, stream) {
     printSignatures();
     // end firme locatario e conduttore
 
+    doc.addPage();
+    doc.headerText(text.BUSINESS_INFO_DESC);
+    doc.fontSize(paragraphFontSize).font(regularFontName).text(util.format(text.RENTER_DECLARATION, data.renterName, data.birthPlace, data.birthState, data.birthDate, data.homeTown, data.homeState, data.homeAddress));
+    
+    doc.moveDown();
+    doc.twoCol(text.BOAT_TYPE_DESC, data.boat.detailedBoatType, text.BOAT_BRAND, data.boat.detailedBrand);
+    doc.twoCol(text.BOAT_MODEL, data.boat.detailedModel, text.BOAT_CERT, data.boat.ceCertification);
+    doc.twoCol(text.BOAT_LENGTH, data.boat.length, text.BOAT_PEOPLE, data.boat.people);
+    doc.twoCol(text.BOAT_WEIGHT, data.boat.weight, text.BOAT_ENGINES, 'n. 1');
+    doc.twoCol(text.ENGINE_BRAND, data.boat.engineBrand, text.ENGINE_POWER, data.boat.enginePower);
+    doc.twoCol(text.ENGINE_VIN, data.boat.engineVin, text.ENGINE_POWER, data.boat.insurer);
+    doc.twoCol(text.INSURANCE_NO, data.boat.insuranceNumber, text.INSURANCE_EXP, data.boat.insuranceExpiration);
+    doc.rightCol(text.OTHER_CERT, data.boat.otherCertification);
+    
+    doc.moveDown();
+    doc.fontSize(headerFontSize).font(boldFontName).text(text.I_STATE.toUpperCase(), doc.page.margins.left, doc.y, { align: 'center', width: doc.page.width - doc.page.margins.right - doc.page.margins.left });
+    doc.moveDown();
+    
+    const boatLicense = data.boatLicense ? util.format(text.BOAT_LICENSE_YES, data.boatLicenseDetails) : text.BOAT_LICENSE_NO;
+    const l = arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber);
+    doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber));
+
+    // firme locatario e conduttore
+    printSignatures();
+    // end firme locatario e conduttore
+
+    doc.addPage();
+    
     doc.end();
 };

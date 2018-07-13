@@ -40,8 +40,41 @@ module.exports = {
         BALANCE: 'Importo a saldo',
         AGREEMENT: 'Le parti convengono e stipulano il presente contratto di locazione alle condizioni contenute ivi e nei documenti allegati di seguito elencati: [Condizioni di Locazione;][Condizioni Natante in Locazione;][Schema di informazione sull\'attività di locazione;][Informativa sulla privacy dei dati personali.]Tali documenti fanno parte integrante del presente contratto e sono stati letti, compresi ed approvati dalle parti.',
         THE_CUSTOMER: 'Il Locatario/Conduttore',
-        THE_LEASEHOLDER: 'Il Locatore'
-
+        THE_LEASEHOLDER: 'Il Locatore',
+        BUSINESS_INFO_DESC: 'Schema di informazione sull\'attività di locazione',
+        RENTER_DECLARATION: 'Io sottoscritto %s nato a %s (%s) il %s e residente a %s (%s) in %s intendo aderire alla proposta di locazione di un natante da diporto come segue:',
+        BOAT_TYPE_DESC: 'Tipo di natante',
+        BOAT_BRAND: 'Marca',
+        BOAT_MODEL: 'Modello',
+        BOAT_CERT: 'Omolog. C.E.',
+        BOAT_LENGTH: 'L.F.T.',
+        BOAT_PEOPLE: 'Max pers. trasp.',
+        BOAT_WEIGHT: 'Kg.',
+        BOAT_ENGINES: 'Motori',
+        ENGINE_BRAND: 'Marca/Mod.',
+        ENGINE_POWER: 'Pot. max appl. (KW)',
+        ENGINE_VIN: 'Matricola n.',
+        INSURER: 'Assic. R.C.',
+        INSURANCE_NO: 'Polizza n.',
+        INSURANCE_EXP: 'Scadenza',
+        OTHER_CERT: 'Certificato di idoneità al noleggio / Certificato di sicurezza',
+        I_STATE: 'Dichiaro',
+        STATEMENT: [
+            'di aver preso visione e ricevuto copia dell\'Ordinanza n. 11/2015, dell\'Ordinanza di Sicurezza Balneare vigente e dell\'Ordinanza di interdizione dei tratti di costa e degli specchi acquei ricadenti nei Comuni di giurisdizione del Circondario Marittimo di Siracusa, emanate dalla Capitaneria di porto di Siracusa, che disciplinano a livello locale l\'esercizio del diporto nautico per finalità turistico ricreative e, in particolare, per quanto concerne le unità a motore, di essere a conoscenza:', [
+                'che lo specchio acqueo di 250 metri dalle spiagge e di 100 metri dalle scogliere, durante la stagione estiva, è riservato esclusivamente alla balneazione e conseguentemente interdetto alle unità a motore, così come interdetti sono gli ulteriori 50 metri da tale limite verso il largo (costituenti la fascia di rispetto e di sicurezza per evitare commistioni tra attività di balneazione e navigazione);',
+                'che l\'atterraggio e la partenza delle unità a motore deve avvenire utilizzando i previsti corridoi di uscita alla velocità prescritta (non superiore a 3 nodi);',
+                'dei limiti di velocità vigenti nella fascia di mare compresa tra i 300 e i 1000 metri dalla riva (non superiore ai 10 nodi, con scafo in dislocamento);',
+                'del divieto di balneazione, di navigazione, e di ogni attività incompatibile con la natura del rischio accertato o esistente, nella fascia di mare come meglio specificata dall\'art. 1 dell\'Ord. 38/2014 e ss. mm. ed ii. (frane e smottamenti);'
+            ],
+            'di aver ricevuto copia della tabella "B" riportante le dotazioni di sicurezza previste dal D.M. n. 146/2008 del Ministero delle Infrastrutture e dei Trasporti;',
+            'di intendere effettuare una navigazione entro 6 miglia dalla costa in relazione alla quale ricevo dal locatore le dotazioni di sicurezza descritte nella sopracitata tabella;',
+            '%s;',
+            'che in caso di necessità, durante lo svolgimento dell\'attività di locazione, sono disponibili i seguenti numeri di telefonia cellulare: %s;',
+            'estremi di un documento d\'identità in corso di validità: %s (%s);',
+            'di saper nuotare e vogare.'],
+        BOAT_LICENSE_YES: 'di essere in possesso di patente nautica %s',
+        BOAT_LICENSE_NO: 'di non essere in possesso di patente nautica'
+    
 
     }
 };
