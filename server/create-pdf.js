@@ -171,8 +171,52 @@ module.exports = function (data, stream) {
     doc.moveDown();
     doc.fontSize(paragraphFontSize);
     doc.text(text.BOAT_CUSTODY_DECLARATION)
+
+    // firme locatario e conduttore
+    printSignatures();
+    // end firme locatario e conduttore
+
+    doc.addPage();
+
+
+    doc.headerText(text.PRIVACY_TITLE);
+    doc.font(regularFontName).fontSize(paragraphFontSize - 2);
+
+    doc.text(text.PRIVACY_HEADER_1).moveDown().text(text.PRIVACY_HEADER_2).moveDown();
+
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_1).regular().text(text.PRIVACY_CONTENT_TEXT_1).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_2).regular().text(text.PRIVACY_CONTENT_TEXT_2).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_3).regular().text(text.PRIVACY_CONTENT_TEXT_3).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_4).regular().text(text.PRIVACY_CONTENT_TEXT_4).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_5).regular().text(util.format(text.PRIVACY_CONTENT_TEXT_5, data.rentalDescription)).moveDown();    
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_6).regular().text(text.PRIVACY_CONTENT_TEXT_6_1).list(text.PRIVACY_CONTENT_TEXT_6_2).moveDown();
+
+    doc.text(util.format(text.PRIVACY_FOOTER_1, data.rentalDescription, data.rentalEmail));
     doc.moveDown();
+
+    doc.fontSize(paragraphFontSize);
+    doc.text(text.PRIVACY_FOOTER_2);
     doc.moveDown();
+    doc.text(text.PRIVACY_FOOTER_3);
+
+    doc.moveDown();
+    savedY = doc.y;
+    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, savedY);
+    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, savedY);
+    doc.text(text.PRIVACY_AGREEMENT_1, 350, savedY);
+
+    doc.moveDown();
+    savedY = doc.y;
+    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, savedY);
+    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, savedY);
+    doc.text(text.PRIVACY_AGREEMENT_2, 350, savedY);
+
+    doc.moveDown();
+    savedY = doc.y;
+    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, savedY);
+    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, savedY);
+    doc.text(text.PRIVACY_AGREEMENT_3, 350, savedY);
+
 
     // firme locatario e conduttore
     printSignatures();

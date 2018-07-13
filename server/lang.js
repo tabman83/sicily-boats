@@ -81,7 +81,40 @@ module.exports = {
         BOAT_CUSTODY_TERMS_EQUIPMENT: 'Strumentazione',
         BOAT_CUSTODY_TERMS_ENGINE: 'Motore',
         BOAT_CUSTODY_TERMS_FACILITIES: 'Dotazioni',
-        BOAT_CUSTODY_DECLARATION : 'Sottoscrivendo il presente atto il conduttore dichiara espressamente di confermare le condizioni del natante al momento del ritiro, della cuscineria, della strumentazione, del motore, delle dotazioni e dichiara di aver preso adeguata visione e conoscenza della sopra elencata documentazione.'
-
+        BOAT_CUSTODY_DECLARATION : 'Sottoscrivendo il presente atto il conduttore dichiara espressamente di confermare le condizioni del natante al momento del ritiro, della cuscineria, della strumentazione, del motore, delle dotazioni e dichiara di aver preso adeguata visione e conoscenza della sopra elencata documentazione.',
+        PRIVACY_TITLE: 'Informativa sulla tutela della privacy dei dati personali',
+        PRIVACY_HEADER_1: 'Informativa resa ai sensi degli articoli 13-14 del GDPR 2016/679 (General Data Protection Regulation)',
+        PRIVACY_HEADER_2: 'Gentile Signore/a, ai sensi dell’art. 13 del Regolamento UE 2016/679 ed in relazione alle informazioni di cui si entrerà in possesso, ai fini della tutela delle persone e altri soggetti in materia di trattamento di dati personali, si informa quanto segue.',
+        PRIVACY_CONTENT_TITLE_1: '1. Finalità del Trattamento',
+        PRIVACY_CONTENT_TEXT_1: 'I dati da Lei forniti verranno utilizzati allo scopo di fornire il servizio da Lei richiesto, ovvero la Locazione o il noleggio di natanti da diporto.',
+        PRIVACY_CONTENT_TITLE_2: '2. Modalità del Trattamento',
+        PRIVACY_CONTENT_TEXT_2: 'Le modalità con la quale verranno trattati i dati personali contemplano l’ausilio di mezzi informatici quali tablet, smartphone o PC, e supporti cartacei. I dati saranno conservati, ai soli fini fiscali, in archivi sia cartacei che elettronici.',
+        PRIVACY_CONTENT_TITLE_3: '3. Conferimento dei dati',
+        PRIVACY_CONTENT_TEXT_3: 'Il conferimento dei dati per le finalità di cui al precedente punto 1 sono obbligatori poiché richiesti dalle Autorità competenti (Guardia Costiera) e l’eventuale rifiuto dell’autorizzazione comporta la mancata locazione del natante da diporto richiesto.',
+        PRIVACY_CONTENT_TITLE_4: '4. Comunicazione e diffusione dei dati',
+        PRIVACY_CONTENT_TEXT_4: 'I dati forniti potranno essere comunicati, qualora richiesti, alle Autorità di controllo quali la Guardia Costiera, la Capitaneria di Porto, la Guardia di Finanza.',
+        PRIVACY_CONTENT_TITLE_5: '5. Titolare del Trattamento',
+        PRIVACY_CONTENT_TEXT_5: 'Il titolare del trattamento dei dati personali è %s.',
+        PRIVACY_CONTENT_TITLE_6: '6. Diritti dell’interessato',
+        PRIVACY_CONTENT_TEXT_6_1: 'In ogni momento, Lei potrà esercitare, ai sensi degli articoli dal 15 al 22 del Regolamento UE n. 2016/679, il diritto di:',
+        PRIVACY_CONTENT_TEXT_6_2: [
+            'chiedere la conferma dell’esistenza o meno di propri dati personali;',
+            'ottenere le indicazioni circa le finalità del trattamento, le categorie dei dati personali, i destinatari o le categorie di destinatari a cui i dati personali sono stati o saranno comunicati e, quando possibile, il periodo di conservazione;',
+            'ottenere la rettifica e la cancellazione dei dati;',
+            'ottenere la limitazione del trattamento;',
+            'ottenere la portabilità dei dati, ossia riceverli da un titolare del trattamento, in un formato strutturato, di uso comune e leggibile da dispositivo automatico, e trasmetterli a un altro titolare del trattamento senza impedimenti;',
+            'opporsi al trattamento in qualsiasi momento ed anche nel caso di trattamento per finalità di marketing diretto ad un processo decisionale automatizzato relativo alle persone fisiche, compresa la profilazione.',
+            'chiedere al titolare del trattamento l’accesso ai dati personali e la rettifica o la cancellazione degli stessi o la limitazione del trattamento che lo riguardano o di opporsi al loro trattamento, oltre al diritto alla portabilità dei dati;',
+            'revocare il consenso in qualsiasi momento senza pregiudicare la liceità del trattamento basata sul consenso prestato prima della revoca;',
+            'proporre reclamo a un’autorità di controllo.'
+        ],
+        PRIVACY_FOOTER_1: 'Può esercitare i Suoi diritti con richiesta scritta inviata a %s, o all\'indirizzo mail %s.',
+        PRIVACY_FOOTER_2: 'Io sottoscritto/a dichiaro di aver ricevuto l’informativa che precede.',
+        PRIVACY_FOOTER_3: 'Io sottoscritto/a alla luce dell’informativa ricevuta:',
+        PRIVACY_AGREE: 'esprime il consenso',
+        PRIVACY_DISAGREE: 'non esprime il consenso',
+        PRIVACY_AGREEMENT_1: 'al trattamento dei miei dati personali inclusi quelli considerati come categorie particolari di dati.',
+        PRIVACY_AGREEMENT_2: 'alla comunicazione dei miei dati personali a enti pubblici e società di natura privata per le finalità indicate nell\'informativa.',
+        PRIVACY_AGREEMENT_3: 'al trattamento delle categorie particolari dei miei dati personali così come indicati nell\'informativa che precede.'
     }
 };

@@ -52,6 +52,14 @@ class PDFDocumentExtended extends PDFDocument {
         return this;
     }
 
+    bold() {
+        return this.font(this.options.boldFontName);
+    }
+
+    regular() {
+        return this.font(this.options.regularFontName);
+    }
+
     leftCol(content, value) {
         this
             .fontSize(this.options.paragraphFontSize)
