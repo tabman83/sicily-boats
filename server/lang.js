@@ -73,8 +73,15 @@ module.exports = {
             'estremi di un documento d\'identità in corso di validità: %s (%s);',
             'di saper nuotare e vogare.'],
         BOAT_LICENSE_YES: 'di essere in possesso di patente nautica %s',
-        BOAT_LICENSE_NO: 'di non essere in possesso di patente nautica'
-    
+        BOAT_LICENSE_NO: 'di non essere in possesso di patente nautica',
+        BOAT_TERMS: 'allegato 2 - condizioni natante in locazione',
+        BOAT_CUSTODY_TERMS: 'condizioni del natante al momento del ritiro',
+        BOAT_CUSTODY_TERMS_STRUCTURAL: 'Condizioni strutturali del natante',
+        BOAT_CUSTODY_TERMS_CUSHIONS: 'Cuscineria',
+        BOAT_CUSTODY_TERMS_EQUIPMENT: 'Strumentazione',
+        BOAT_CUSTODY_TERMS_ENGINE: 'Motore',
+        BOAT_CUSTODY_TERMS_FACILITIES: 'Dotazioni',
+        BOAT_CUSTODY_DECLARATION : 'Sottoscrivendo il presente atto il conduttore dichiara espressamente di confermare le condizioni del natante al momento del ritiro, della cuscineria, della strumentazione, del motore, delle dotazioni e dichiara di aver preso adeguata visione e conoscenza della sopra elencata documentazione.'
 
     }
 };

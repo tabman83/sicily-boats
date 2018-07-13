@@ -135,6 +135,50 @@ module.exports = function (data, stream) {
     // end firme locatario e conduttore
 
     doc.addPage();
-    
+
+    doc.headerText(text.BOAT_TERMS);
+    doc.twoCol(text.DATE, data.date, text.REGISTRY_NO, data.registryNumber);
+
+    doc.headerText(text.BOAT_DETAILS);
+    doc.twoCol(text.BOAT_TYPE, data.boat.boatType, text.VIN, data.boat.boatVin);
+    doc.twoCol(text.ENGINE, data.boat.engine, text.VIN, data.boat.engineVin);
+    doc.twoCol(text.REG_NO, data.boat.registrationNumber, text.TANK, 'LT. ' + data.boat.tankSize);
+
+    doc.headerText(text.BOAT_CUSTODY_TERMS);
+
+    doc.fontSize(paragraphFontSize - 2);
+
+    doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_STRUCTURAL);
+    doc.font(regularFontName).text(data.boat.descStructural);
+    doc.moveDown();
+
+    doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_CUSHIONS);
+    doc.font(regularFontName).text(data.boat.descCushions);
+    doc.moveDown();
+
+    doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_EQUIPMENT);
+    doc.font(regularFontName).text(data.boat.descEquipment);
+    doc.moveDown();
+
+    doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_ENGINE);
+    doc.font(regularFontName).text(data.boat.descEngine);
+    doc.moveDown();
+
+    doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_FACILITIES);
+    doc.font(regularFontName).text(data.boat.descFacilities);
+    doc.moveDown();
+
+    doc.moveDown();
+    doc.fontSize(paragraphFontSize);
+    doc.text(text.BOAT_CUSTODY_DECLARATION)
+    doc.moveDown();
+    doc.moveDown();
+
+    // firme locatario e conduttore
+    printSignatures();
+    // end firme locatario e conduttore
+
+    doc.addPage();
+
     doc.end();
 };
