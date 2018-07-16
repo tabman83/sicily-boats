@@ -15,6 +15,5 @@ export class AppComponent {
         private appConfig: AppConfig
     ) {
         auth.handleAuthentication();
-        window['emailjs'].init(appConfig.emailJsApiKey);
     }
 }
