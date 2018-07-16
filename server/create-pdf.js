@@ -66,7 +66,7 @@ module.exports = function (data, stream) {
         pageNum++;
         let bottom = doc.page.margins.bottom;
         doc.page.margins.bottom = 0;
-        doc.fontSize(paragraphFontSize - 5).text(`${data.rentalDescription}`,
+        doc.fontSize(paragraphFontSize - 5).regular().text(`${data.rentalDescription}`,
             0.5 * (doc.page.width - 500),
             doc.page.height - 25, {
                 width: 500,
@@ -362,7 +362,7 @@ module.exports = function (data, stream) {
     // end firme locatario e conduttore
 
 
-    doc.bold().fontSize(paragraphFontSize - 4).text(text.RENTAL_TERMS_FOOTER, doc.page.margins.left, doc.y + 60);
+    doc.bold().fontSize(paragraphFontSize).text(text.RENTAL_TERMS_FOOTER, doc.page.margins.left, doc.y + 50);
 
     // firme locatario e conduttore
     printSignatures();
