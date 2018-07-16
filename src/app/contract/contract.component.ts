@@ -21,10 +21,10 @@ export class ContractComponent implements OnInit {
     public contractForm: FormGroup;
     public boats: Boat[];
     public idTypes: string[];
-    public iframeSource: any;
+    public downloadUrl: any;
     public submitting = false;
     public submitted = false;
-    public isFirstStep = true;
+    public contractFileName: string;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -92,15 +92,12 @@ export class ContractComponent implements OnInit {
         this.ssnNumberService.get(firstName, lastName, birthPlace, birthDate, sex).subscribe(x => this.contractForm.patchValue({ ssn: x }));
     }
 
-    print() {
-        setTimeout(() => window.frames[0].print(), 100);
-    }
-
     submit() {
         this.submitted = true;
         if (this.contractForm.valid) {
             this.submitting = true;
             this.mergeData();
+            this.contractFileName = `Contratto_${this.contract.renterName.replace(' ', '_')}_${this.contract.date}.pdf`;
             this.contractService.get(this.contract).subscribe(result => {
                 const byteCharacters = atob(result.content);
                 const byteNumbers = new Array(byteCharacters.length);
@@ -110,9 +107,8 @@ export class ContractComponent implements OnInit {
                 const byteArray = new Uint8Array(byteNumbers);
                 const blob = new Blob([byteArray], { type: 'application/pdf' });
                 const blobUrl = URL.createObjectURL(blob);
-                this.iframeSource = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+                this.downloadUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
                 this.submitting = false;
-                this.isFirstStep = false;
             });
         } else {
             window.scrollTo(0, 0);

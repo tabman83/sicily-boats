@@ -1,4 +1,4 @@
-<form [formGroup]="contractForm" (ngSubmit)="submit()" [hidden]="!isFirstStep">
+<form [formGroup]="contractForm" (ngSubmit)="submit()" [hidden]="submitted && !submitting">
     <h4>Contratto di Locazione</h4>
     <div class="form-group">
         <label for="date">Data</label>
@@ -189,13 +189,12 @@
 
 </form>
 
-<div [hidden]="isFirstStep">
-
-    <button type="button" class="btn btn-primary" (click)="print()">
-        Print
-        <i class="fa fa-print" aria-hidden="true"></i>
-    </button>
-
-    <iframe width="100%" height="775" [src]="iframeSource"></iframe>
-
-</div>
+<a class="btn btn-primary btn-block" [hidden]="!submitted || submitting" [download]="contractFileName" [href]="downloadUrl">
+    Scarica contratto
+    <i class="fa fa-download" aria-hidden="true"></i>
+</a>
+<br>
+<a routerLink="/" class="btn btn-default btn-block" [hidden]="!submitted || submitting">
+    Chiudi
+    <i class="fa fa-close" aria-hidden="true"></i>
+</a>
