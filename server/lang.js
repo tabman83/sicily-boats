@@ -1,5 +1,6 @@
 module.exports = {
     it: {
+        PAGE: 'Pagina',
         LEASE_CONTRACT: 'Contratto di Locazione',
         DATE: 'Data',
         REGISTRY_NO: 'Nr. Registro',
@@ -203,6 +204,7 @@ module.exports = {
         RENTAL_TERMS_FOOTER: 'Ai sensi degli artt. 1341 e 1342 C.C. il conduttore dichiara espressamente di aver letto, compreso ed approvato gli Art. 3 (Assicurazione), 4 (Abilitazione alla conduzione dell’unità), 5 (Consegna e riconsegna), 6 (Rischio di trasferimento del natante), 7 (Ritardi), 9 (Condizioni del natante), 10 (Danni e perdite dotazioni), 14 (Uso del natante), 15 (Responsabilità penale e civile), 16 (Danni al natante e da navigazione), 17 (Addebiti per spese sopravvenute e danni occulti), 18 (Danni al locatario ed a terzi), 19 (Impossibilità nell\'uso del natante), 20 (Condizioni meteo avverse), 23 (Foro esclusivo), e per accettazione le sottoscrive.'
     },
     en: {
+        PAGE: 'Page',
         LEASE_CONTRACT: 'Lease Contract',
         DATE: 'Date',
         REGISTRY_NO: 'Register #',

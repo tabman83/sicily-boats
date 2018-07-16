@@ -43,11 +43,12 @@ module.exports = function (data, stream) {
     }
 
     const doc = new PDFDocumentExtended({
+        autoFirstPage: false,
         size: 'A4',
         margins: {
             left: 40,
-            top: 40,
-            bottom: 25,
+            top: 60,
+            bottom: 50,
             right: 40
         },
         regularFontName: regularFontName,
@@ -58,15 +59,33 @@ module.exports = function (data, stream) {
     });
     const text = language.it;
     let savedY = doc.y;
-
+    let pageNum = 0;
     doc.pipe(stream);
-
+    
     doc.on('pageAdded', () => {
+        pageNum++;
+        let bottom = doc.page.margins.bottom;
+        doc.page.margins.bottom = 0;
+        doc.fontSize(paragraphFontSize - 5).text(`${data.rentalDescription}`,
+            0.5 * (doc.page.width - 500),
+            doc.page.height - 25, {
+                width: 500,
+                align: 'center',
+                lineBreak: false,
+            });
+
+        // Reset text writer position
+        doc.text('', doc.page.margins.left, doc.page.margins.top);
+        doc.page.margins.bottom = bottom;
         
+        if(pageNum > 1) {
+            doc.image('dist/assets/logo_wide.png', (doc.page.width / 2) - 50, 30, { width: 100 });
+        }
     });
 
-    doc.image('dist/assets/logo_wide.png', (doc.page.width / 2) - 110, 40, { width: 220 }).moveDown();
-    doc.fontSize(titleFontSize).font(boldFontName).text(text.LEASE_CONTRACT.toUpperCase(), { align: 'center'});
+    doc.addPage();
+    doc.image('dist/assets/logo_wide.png', (doc.page.width / 2) - 110, 40, { width: 220 });
+    doc.fontSize(titleFontSize).font(boldFontName).text(text.LEASE_CONTRACT.toUpperCase(), doc.x, doc.y + 50, { align: 'center'});
 
     doc.fontSize(paragraphFontSize);
 
@@ -128,7 +147,6 @@ module.exports = function (data, stream) {
     doc.moveDown(2);
     
     const boatLicense = data.boatLicense ? util.format(text.BOAT_LICENSE_YES, data.boatLicenseDetails) : text.BOAT_LICENSE_NO;
-    const l = arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber);
     doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber));
 
     // firme locatario e conduttore
