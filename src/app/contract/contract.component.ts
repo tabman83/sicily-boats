@@ -22,6 +22,7 @@ export class ContractComponent implements OnInit {
     public boats: Boat[];
     public idTypes: string[];
     public iframeSource: any;
+    public submitting = false;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -44,7 +45,7 @@ export class ContractComponent implements OnInit {
         this.contractForm = this.formBuilder.group({
             registryNumber: [environment.contract.registryNumber, Validators.required],
             date: [todayDate, Validators.required],
-            language: ['it', Validators.required],
+            language: [environment.contract.language, Validators.required],
             boat: this.boats[0],
             renterName: [environment.contract.renterName, Validators.required],
             sex: [environment.contract.sex, Validators.required],
@@ -90,19 +91,36 @@ export class ContractComponent implements OnInit {
     }
 
     submit() {
-        this.mergeData();
-        this.contractService.get(this.contract).subscribe(result => {
-            const byteCharacters = atob(result.content);
-            const byteNumbers = new Array(byteCharacters.length);
-            for (let i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            const blob = new Blob([byteArray], {type: 'application/pdf'});
-            const blobUrl = URL.createObjectURL(blob);
-            this.iframeSource = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
-            setTimeout(() => window.frames[0].print(), 500);
-        });
+        if (this.contractForm.valid) {
+            this.submitting = true;
+            this.mergeData();
+            this.contractService.get(this.contract).subscribe(result => {
+                const byteCharacters = atob(result.content);
+                const byteNumbers = new Array(byteCharacters.length);
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'application/pdf' });
+                const blobUrl = URL.createObjectURL(blob);
+                this.iframeSource = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+                setTimeout(() => window.frames[0].print(), 500);
+                this.submitting = false;
+            });
+        } else {
+            console.log(this.contractForm);
+        }
+    }
+
+    isFieldValid(field: string) {
+        return !this.contractForm.get(field).valid && this.contractForm.get(field).touched;
+    }
+
+    displayFieldCss(field: string) {
+        return {
+            'has-error': this.isFieldValid(field),
+            'has-feedback': this.isFieldValid(field)
+        };
     }
 
     mergeData() {

@@ -5,6 +5,7 @@ export const environment = {
         registryNumber: '',
         renterName: '',
         sex: 'M',
+        language: 'it',
         boatLicense: false,
         boatLicenseDetails: '',
         birthPlace: '',

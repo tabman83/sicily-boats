@@ -11,8 +11,7 @@ export class AppComponent {
     title = 'Sicily Boats';
 
     constructor(
-        public auth: AuthService,
-        private appConfig: AppConfig
+        public auth: AuthService
     ) {
         auth.handleAuthentication();
     }

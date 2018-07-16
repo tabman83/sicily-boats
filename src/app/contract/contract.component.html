@@ -1,16 +1,16 @@
-<form [formGroup]="contractForm" (ngSubmit)="submit()">
+<form [formGroup]="contractForm" (ngSubmit)="submit()" class="needs-validation" novalidate>
     <h4>Contratto di Locazione</h4>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="displayFieldCss('date')">
         <label for="date">Data</label>
-        <input formControlName="date" type="date" class="form-control" id="date" aria-describedby="Data" placeholder="Data">
+        <input autocomplete="fake-date" formControlName="date" type="date" class="form-control" id="date" aria-describedby="Data" placeholder="Data">
     </div>
     <div class="form-group">
         <label for="registryNumber">Nr. Registro</label>
-        <input formControlName="registryNumber" type="text" class="form-control" id="registryNumber" aria-describedby="registryNumber"
-            placeholder="Nr. registro">
+        <input autocomplete="fake-registry-number" formControlName="registryNumber" type="text" class="form-control" id="registryNumber" aria-describedby="registryNumber"
+            placeholder="Nr. registro" [ngClass]="{ 'is-invalid': contractForm.dirty && contractForm.controls.registryNumber.invalid }">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" [ngClass]="displayFieldCss('language')">
         <label for="language">Lingua contratto</label>
         <div>
             <div class="form-check form-check-inline">
@@ -35,19 +35,19 @@
     <h4>Anagrafica Locatario/Conduttore</h4>
     <div class="form-group">
         <label for="renter_name">Nome locatario</label>
-        <input type="text" class="form-control" formControlName="renterName" id="renter_name">
+        <input autocomplete="fake-name" type="text" class="form-control" formControlName="renterName" id="renter_name">
     </div>
     <div class="form-group">
         <label for="birth_place">Luogo di nascita</label>
-        <input type="text" class="form-control" formControlName="birthPlace" id="birth_place">
+        <input autocomplete="fake-birthplace" type="text" class="form-control" formControlName="birthPlace" id="birth_place">
     </div>
     <div class="form-group">
         <label for="birth_state">Provincia di nascita o Stato Estero</label>
-        <input type="text" class="form-control" formControlName="birthState" id="birth_state">
+        <input autocomplete="fake-birthstate" type="text" class="form-control" formControlName="birthState" id="birth_state">
     </div>
     <div class="form-group">
         <label for="birth_date">Data di nascita</label>
-        <input type="date" class="form-control" formControlName="birthDate" id="birth_date">
+        <input autocomplete="fake-birthdate" type="date" class="form-control" formControlName="birthDate" id="birth_date">
     </div>
     <div class="form-group">
         <label for="sex">Sesso</label>
@@ -64,20 +64,20 @@
     </div>
     <div class="form-group">
         <label for="home_town">Città di residenza</label>
-        <input type="text" class="form-control" formControlName="homeTown" id="home_town">
+        <input autocomplete="fake-hometown" type="text" class="form-control" formControlName="homeTown" id="home_town">
     </div>
     <div class="form-group">
         <label for="home_state">Provincia di residenza o Stato Estero</label>
-        <input type="text" class="form-control" formControlName="homeState" id="home_state">
+        <input autocomplete="fake-homestate" type="text" class="form-control" formControlName="homeState" id="home_state">
     </div>
     <div class="form-group">
         <label for="home_address">Indirizzo di residenza</label>
-        <input type="text" class="form-control" formControlName="homeAddress" id="home_address">
+        <input autocomplete="fake-homeaddress" type="text" class="form-control" formControlName="homeAddress" id="home_address">
     </div>
     <div class="form-group">
         <label for="ssn">Codice Fiscale</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" formControlName="ssn" id="ssn">
+            <input autocomplete="fake-ssn" type="text" class="form-control" formControlName="ssn" id="ssn">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" (click)="getSsn()" type="button">Calcola</button>
             </div>
@@ -98,15 +98,15 @@
     </div>
     <div class="form-group" [hidden]="!contractForm.value.boatLicense">
         <label for="boat_license_details">Estremi patente nautica</label>
-        <input type="text" class="form-control" formControlName="boatLicenseDetails" id="boat_license_details">
+        <input autocomplete="fake-license" type="text" class="form-control" formControlName="boatLicenseDetails" id="boat_license_details">
     </div>
     <div class="form-group">
         <label for="phone">Telefono</label>
-        <input type="phone" class="form-control" formControlName="phone" id="phone">
+        <input autocomplete="fake-phone" type="phone" class="form-control" formControlName="phone" id="phone">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" formControlName="email" id="email">
+        <input autocomplete="fake-email" type="email" class="form-control" formControlName="email" id="email">
     </div>
     <div class="form-group">
         <label for="id_type">Tipo documento</label>
@@ -116,25 +116,25 @@
     </div>
     <div class="form-group">
         <label for="id_number">Numero documento</label>
-        <input type="text" class="form-control" formControlName="idNumber" id="id_number">
+        <input autocomplete="fake-id-number" type="text" class="form-control" formControlName="idNumber" id="id_number">
     </div>
     <div class="form-group">
         <label for="id_issuer">Rilasciato da</label>
-        <input type="text" class="form-control" formControlName="idIssuer" id="id_issuer">
+        <input autocomplete="fake-id-issuer" type="text" class="form-control" formControlName="idIssuer" id="id_issuer">
     </div>
     <div class="form-group">
         <label for="id_issue_date">Data rilascio</label>
-        <input type="date" class="form-control" formControlName="idIssueDate" id="id_issue_date">
+        <input autocomplete="fake-id-issue-date" type="date" class="form-control" formControlName="idIssueDate" id="id_issue_date">
     </div>
 
     <h4>Dettagli locazione</h4>
     <div class="form-group">
         <label for="start_date">Data inizio</label>
-        <input type="date" class="form-control" formControlName="startDate" id="start_date">
+        <input autocomplete="fake-start-date" type="date" class="form-control" formControlName="startDate" id="start_date">
     </div>
     <div class="form-group">
         <label for="start_time">Ora inizio</label>
-        <input type="time" class="form-control" formControlName="startTime" id="start_time">
+        <input autocomplete="fake-start-time" type="time" class="form-control" formControlName="startTime" id="start_time">
     </div>
 
     <div class="form-group">
@@ -143,7 +143,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">LT</span>
             </div>
-            <input type="text" class="form-control" formControlName="startFuel" id="start_fuel">
+            <input autocomplete="fake-fuel-amount" type="text" class="form-control" formControlName="startFuel" id="start_fuel">
         </div>
     </div>
 
@@ -153,7 +153,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€ / LT</span>
             </div>
-            <input type="number" class="form-control" formControlName="fuelCost" id="fuel_cost">
+            <input autocomplete="fake-fuel-cost" type="number" step="0.01" class="form-control" formControlName="fuelCost" id="fuel_cost">
         </div>
     </div>
 
@@ -163,7 +163,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            <input type="number" class="form-control" formControlName="rentPrice" id="rent_price">
+            <input autocomplete="fake-rent-price" type="number" class="form-control" formControlName="rentPrice" id="rent_price">
         </div>
     </div>
     <div class="form-group">
@@ -172,12 +172,12 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            <input type="number" class="form-control" formControlName="securityDeposit" id="security_deposit">
+            <input autocomplete="fake-security-deposit" type="number" class="form-control" formControlName="securityDeposit" id="security_deposit">
         </div>
     </div>
 
 
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary" [attr.disabled]="submitting ? true : null">
         Continua
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
     </button>

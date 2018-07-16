@@ -9,6 +9,7 @@ export const environment = {
         registryNumber: '005L',
         renterName: 'Antonino Parisi',
         sex: 'M',
+        language: 'it',
         boatLicense: false,
         boatLicenseDetails: 'AZ 1554',
         birthPlace: 'Albenga',
