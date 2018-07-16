@@ -1,4 +1,5 @@
 const util = require('util');
+const moment = require('moment');
 const PDFDocumentExtended = require('./pdfkit-extension');
 const language = require('./lang.js');
 
@@ -7,7 +8,7 @@ const headerFontSize = 13;
 const paragraphFontSize = 10;
 const regularFontName = 'Helvetica';
 const boldFontName = 'Helvetica-Bold';
-
+const dateFormat = 'DD/MM/YYYY';
 const arrayFormat = function(input) {
     const result = [];
     const params = Array.prototype.slice.call(arguments, 1);
@@ -69,7 +70,7 @@ module.exports = function (data, stream) {
 
     doc.fontSize(paragraphFontSize);
 
-    doc.twoCol(text.DATE, data.date, text.REGISTRY_NO, data.registryNumber);
+    doc.twoCol(text.DATE, moment(data.date).format(dateFormat), text.REGISTRY_NO, data.registryNumber);
 
     doc.headerText(text.LEASEHOLDER_DETAILS);
     doc.fontSize(paragraphFontSize).font(regularFontName).text(data.rentalDescription, { align: 'center'});
@@ -81,15 +82,15 @@ module.exports = function (data, stream) {
 
     doc.headerText(text.CUSTOMER_DETAILS);
     doc.leftCol(text.CUSTOMER_NAME, data.renterName);
-    doc.twoCol(text.BIRTH_PLACE, data.birthPlace + '(' + data.birthState + ')', text.BIRTH_DATE, data.birthDate);
+    doc.twoCol(text.BIRTH_PLACE, data.birthPlace + '(' + data.birthState + ')', text.BIRTH_DATE, moment(data.birthDate).format(dateFormat));
     doc.twoCol(text.HOME_TOWN, data.homeTown + '(' + data.homeState + ')', text.HOME_ADDRESS, data.homeAddress);
     doc.twoCol(text.SSN, data.ssn, text.BOAT_LICENSE, data.boatLicense ? data.boatLicenseDetails : text.NONE);
     doc.twoCol(text.PHONE, data.phone, text.EMAIL, data.email);
     doc.twoCol(text.ID_TYPE, data.idType, text.ID_NUMBER, data.idNumber);
-    doc.twoCol(text.ISSUED_BY, data.idIssuer, text.ISSUE_DATE, data.idIssueDate);
+    doc.twoCol(text.ISSUED_BY, data.idIssuer, text.ISSUE_DATE, moment(data.idIssueDate).format(dateFormat));
 
     doc.headerText(text.LEASE_DETAILS);
-    doc.twoCol(text.START_DATE, data.startDate, text.END_DATE, data.endDate);
+    doc.twoCol(text.START_DATE, data.startDate, text.END_DATE, moment(data.endDate).format(dateFormat));
     doc.twoCol(text.START_TIME, data.startTime, text.END_TIME, ' ');
     doc.twoCol(text.START_FUEL, 'LT.', text.END_FUEL, 'LT.');
     doc.twoCol(text.FUEL_COST, '€/LT. ' + data.fuelCost, text.FUEL_TOTAL, '€');
@@ -110,7 +111,7 @@ module.exports = function (data, stream) {
 
     doc.addPage();
     doc.headerText(text.BUSINESS_INFO_DESC);
-    doc.fontSize(paragraphFontSize).font(regularFontName).text(util.format(text.RENTER_DECLARATION, data.renterName, data.birthPlace, data.birthState, data.birthDate, data.homeTown, data.homeState, data.homeAddress));
+    doc.fontSize(paragraphFontSize).font(regularFontName).text(util.format(text.RENTER_DECLARATION, data.renterName, data.birthPlace, data.birthState, moment(data.birthDate).format(dateFormat), data.homeTown, data.homeState, data.homeAddress));
     
     doc.moveDown();
     doc.twoCol(text.BOAT_TYPE_DESC, data.boat.detailedBoatType, text.BOAT_BRAND, data.boat.detailedBrand);
@@ -122,9 +123,9 @@ module.exports = function (data, stream) {
     doc.twoCol(text.INSURANCE_NO, data.boat.insuranceNumber, text.INSURANCE_EXP, data.boat.insuranceExpiration);
     doc.rightCol(text.OTHER_CERT, data.boat.otherCertification);
     
-    doc.moveDown();
+    doc.moveDown(2);
     doc.fontSize(headerFontSize).font(boldFontName).text(text.I_STATE.toUpperCase(), doc.page.margins.left, doc.y, { align: 'center', width: doc.page.width - doc.page.margins.right - doc.page.margins.left });
-    doc.moveDown();
+    doc.moveDown(2);
     
     const boatLicense = data.boatLicense ? util.format(text.BOAT_LICENSE_YES, data.boatLicenseDetails) : text.BOAT_LICENSE_NO;
     const l = arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber);
@@ -137,7 +138,7 @@ module.exports = function (data, stream) {
     doc.addPage();
 
     doc.headerText(text.BOAT_TERMS);
-    doc.twoCol(text.DATE, data.date, text.REGISTRY_NO, data.registryNumber);
+    doc.twoCol(text.DATE, moment(data.date).format(dateFormat), text.REGISTRY_NO, data.registryNumber);
 
     doc.headerText(text.BOAT_DETAILS);
     doc.twoCol(text.BOAT_TYPE, data.boat.boatType, text.VIN, data.boat.boatVin);
@@ -199,22 +200,29 @@ module.exports = function (data, stream) {
     doc.moveDown();
     doc.text(text.PRIVACY_FOOTER_3);
 
+    let middleY = null;
     doc.moveDown();
     savedY = doc.y;
-    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, savedY);
-    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, savedY);
+    doc.moveDown();
+    middleY = doc.y;
+    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
+    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
     doc.text(text.PRIVACY_AGREEMENT_1, 350, savedY);
 
     doc.moveDown();
     savedY = doc.y;
-    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, savedY);
-    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, savedY);
+    doc.moveDown();
+    middleY = doc.y;
+    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
+    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
     doc.text(text.PRIVACY_AGREEMENT_2, 350, savedY);
 
     doc.moveDown();
     savedY = doc.y;
-    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, savedY);
-    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, savedY);
+    doc.moveDown();
+    middleY = doc.y;
+    doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
+    doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
     doc.text(text.PRIVACY_AGREEMENT_3, 350, savedY);
 
 
@@ -223,6 +231,125 @@ module.exports = function (data, stream) {
     // end firme locatario e conduttore
 
     doc.addPage();
+
+    doc.headerText(text.RENTAL_TERMS);
+    
+    doc.fontSize(paragraphFontSize - 4);
+
+    doc.bold().text(text.RENTAL_TERMS_1_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_1_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_2_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_2_DESC_1);
+    doc.regular().list(text.RENTAL_TERMS_2_DESC_2);
+    doc.regular().text(text.RENTAL_TERMS_2_DESC_3);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_3_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_3_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_4_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_4_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_5_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_5_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_6_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_6_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_7_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_7_DESC_1);
+    doc.regular().list(text.RENTAL_TERMS_7_DESC_2);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_8_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_8_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_9_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_9_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_10_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_10_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_11_TITLE);
+    doc.regular().text(util.format(text.RENTAL_TERMS_11_DESC, data.fuelCost));
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_12_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_12_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_13_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_13_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_14_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_14_DESC_1);
+    doc.regular().list(text.RENTAL_TERMS_14_DESC_2);
+    doc.regular().text(text.RENTAL_TERMS_14_DESC_3);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_15_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_15_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_16_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_16_DESC_1);
+    doc.regular().list(text.RENTAL_TERMS_16_DESC_2);
+    doc.regular().text(text.RENTAL_TERMS_16_DESC_3);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_17_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_17_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_18_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_18_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_19_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_19_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_20_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_20_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_21_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_21_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_22_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_22_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_23_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_23_DESC);
+    doc.moveDown();
+
+    doc.bold().text(text.RENTAL_TERMS_24_TITLE);
+    doc.regular().text(text.RENTAL_TERMS_24_DESC);
+    doc.moveDown();
+
+    // firme locatario e conduttore
+    printSignatures();
+    // end firme locatario e conduttore
+
+
+    doc.bold().fontSize(paragraphFontSize - 4).text(text.RENTAL_TERMS_FOOTER, doc.page.margins.left, doc.y + 60);
+
+    // firme locatario e conduttore
+    printSignatures();
+    // end firme locatario e conduttore
+    
 
     doc.end();
 };

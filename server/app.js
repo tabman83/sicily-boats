@@ -7,7 +7,11 @@ const request = require('request');
 const createPdf = require('./create-pdf');
 const sendMail = require('./send-mail');
 const fs = require('fs');
+const tempFileName = 'temp.pdf';
 
+const configUrl = 'https://drive.google.com/uc?export=download&id=' + process.env.CONFIG_FILE_ID;
+
+let config = {};
 // HTTPS only middleware
 const forceSSL = function () {
     return function (req, res, next) {
@@ -27,14 +31,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/api/contract', function (req, res, next) {
     const data = req.body;
-    console.log(data);
-    res.status(200);
-    createPdf(data, res);
+    // console.log(data);
+    // res.status(200);
+    const fileStream = fs.createWriteStream(tempFileName);
+    createPdf(data, fileStream);
+    fileStream.on('finish', () => {
+        fs.readFile(tempFileName, function(err, fileData) {
+            if(err) {
+                res.status(500).send(err);
+            }
+            const attachment = new Buffer(fileData, 'binary').toString('base64');
+            sendMail(config, data, attachment);
+            fs.unlink(tempFileName, () => {});
+            res.status(200).send({status: 'OK', content: attachment});
+        });
+    });
 });
 
 app.get('/api/config', function (req, res, next) {
-    const url = 'https://drive.google.com/uc?export=download&id=' + process.env.CONFIG_FILE_ID;
-    req.pipe(request(url)).pipe(res);
+    res.status(200).send(config);
+
+    // req.pipe(request(url)).pipe(res);
 });
 //
 
@@ -47,5 +64,12 @@ app.use('/', express.static('dist'));
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '..', 'dist/index.html'));
 });
+
+request(configUrl, function (error, res, body) {
+    if (!error && res.statusCode == 200) {
+        config = JSON.parse(body);
+    }
+});
+
 
 module.exports = app;  

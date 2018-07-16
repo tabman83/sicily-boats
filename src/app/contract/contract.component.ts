@@ -41,6 +41,7 @@ export class ContractComponent implements OnInit {
         this.contractForm = this.formBuilder.group({
             registryNumber: [environment.contract.registryNumber, Validators.required],
             date: [todayDate, Validators.required],
+            language: ['it', Validators.required],
             boat: this.boats[0],
             renterName: [environment.contract.renterName, Validators.required],
             sex: [environment.contract.sex, Validators.required],
@@ -70,9 +71,6 @@ export class ContractComponent implements OnInit {
         this.contractForm.get('boatLicense').valueChanges.subscribe(x => {
             console.log(x);
         });
-
-        this.mergeData();
-
     }
 
     getSsn() {
@@ -89,6 +87,7 @@ export class ContractComponent implements OnInit {
     }
 
     submit() {
+        this.mergeData();
         this.contractService.get(this.contractForm.value).subscribe(x => console.log(x));
     }
 
