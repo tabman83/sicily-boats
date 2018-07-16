@@ -6,6 +6,7 @@ import { Boat } from '../_shared/models/boat.model';
 import { SsnNumberService } from '../_shared/services/ssn-number.service';
 import { environment } from '../../environments/environment';
 import { ContractService } from '../_shared/services/contract.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-contract',
@@ -20,6 +21,7 @@ export class ContractComponent implements OnInit {
     public contractForm: FormGroup;
     public boats: Boat[];
     public idTypes: string[];
+    public iframeSource: any;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -28,7 +30,8 @@ export class ContractComponent implements OnInit {
         private formBuilder: FormBuilder,
         private appConfig: AppConfig,
         private ssnNumberService: SsnNumberService,
-        private contractService: ContractService
+        private contractService: ContractService,
+        private domSanitizer: DomSanitizer
     ) {
         this.createForm();
     }
@@ -88,7 +91,18 @@ export class ContractComponent implements OnInit {
 
     submit() {
         this.mergeData();
-        this.contractService.get(this.contractForm.value).subscribe(x => console.log(x));
+        this.contractService.get(this.contract).subscribe(result => {
+            const byteCharacters = atob(result.content);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], {type: 'application/pdf'});
+            const blobUrl = URL.createObjectURL(blob);
+            this.iframeSource = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+            setTimeout(() => window.frames[0].print(), 500);
+        });
     }
 
     mergeData() {
@@ -106,21 +120,6 @@ export class ContractComponent implements OnInit {
         //     Object.assign(this.contract.boat, boatGroup.value);
         // }
         // delete this.contract.boatGroup;
-    }
-
-    sendMail() {
-        const templateParams = {
-            renterName: this.contract.renterName,
-            date: this.contract.date,
-            content: this.contractRef.nativeElement.htmlContent
-        };
-
-        window['emailjs'].send('sendgrid', this.appConfig.emailJsTemplateName, templateParams)
-            .then(function(response) {
-               console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-               console.log('FAILED...', error);
-            });
     }
 
     ngOnInit() {

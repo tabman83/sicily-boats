@@ -6,7 +6,7 @@ export class ContractService {
 
     constructor(private httpClient: HttpClient) { }
 
-    public get(data: any) {
+    public get(data: any): any {
         return this.httpClient.post('/api/contract', data);
     }
 }
