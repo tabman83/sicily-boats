@@ -25,7 +25,7 @@ export const environment = {
         startTime: '',
         startFuel: '',
         fuelCost: 1.8,
-        rentPrice: 0,
+        rentPrice: null,
         securityDeposit: 100
     }
 };

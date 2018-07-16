@@ -23,6 +23,7 @@ export class ContractComponent implements OnInit {
     public idTypes: string[];
     public iframeSource: any;
     public submitting = false;
+    public submitted = false;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -57,7 +58,7 @@ export class ContractComponent implements OnInit {
             homeTown: [environment.contract.homeTown, Validators.required],
             homeState: [environment.contract.homeState, Validators.required],
             homeAddress: [environment.contract.homeAddress, Validators.required],
-            ssn: [environment.contract.ssn],
+            ssn: [environment.contract.ssn, Validators.required],
             phone: [environment.contract.phone, Validators.required],
             email: [environment.contract.email],
             idType: [environment.contract.idType, Validators.required],
@@ -91,6 +92,7 @@ export class ContractComponent implements OnInit {
     }
 
     submit() {
+        this.submitted = true;
         if (this.contractForm.valid) {
             this.submitting = true;
             this.mergeData();
@@ -104,23 +106,16 @@ export class ContractComponent implements OnInit {
                 const blob = new Blob([byteArray], { type: 'application/pdf' });
                 const blobUrl = URL.createObjectURL(blob);
                 this.iframeSource = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
-                setTimeout(() => window.frames[0].print(), 500);
+                setTimeout(() => window.frames[0].print(), 1000);
                 this.submitting = false;
             });
         } else {
-            console.log(this.contractForm);
+            window.scrollTo(0, 0);
         }
     }
 
     isFieldValid(field: string) {
-        return !this.contractForm.get(field).valid && this.contractForm.get(field).touched;
-    }
-
-    displayFieldCss(field: string) {
-        return {
-            'has-error': this.isFieldValid(field),
-            'has-feedback': this.isFieldValid(field)
-        };
+        return this.contractForm.get(field).invalid && (this.submitted || this.contractForm.get(field).touched);
     }
 
     mergeData() {

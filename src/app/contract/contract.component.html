@@ -1,16 +1,17 @@
-<form [formGroup]="contractForm" (ngSubmit)="submit()" class="needs-validation" novalidate>
+<form [formGroup]="contractForm" (ngSubmit)="submit()">
     <h4>Contratto di Locazione</h4>
-    <div class="form-group" [ngClass]="displayFieldCss('date')">
+    <div class="form-group">
         <label for="date">Data</label>
-        <input autocomplete="fake-date" formControlName="date" type="date" class="form-control" id="date" aria-describedby="Data" placeholder="Data">
+        <input autocomplete="fake-date" formControlName="date" type="date" class="form-control" id="date" aria-describedby="Data" 
+            placeholder="Data" [ngClass]="{ 'is-invalid': isFieldValid('date') }">
     </div>
     <div class="form-group">
         <label for="registryNumber">Nr. Registro</label>
         <input autocomplete="fake-registry-number" formControlName="registryNumber" type="text" class="form-control" id="registryNumber" aria-describedby="registryNumber"
-            placeholder="Nr. registro" [ngClass]="{ 'is-invalid': contractForm.dirty && contractForm.controls.registryNumber.invalid }">
+            placeholder="Nr. registro" [ngClass]="{ 'is-invalid': isFieldValid('registryNumber') }">
     </div>
 
-    <div class="form-group" [ngClass]="displayFieldCss('language')">
+    <div class="form-group">
         <label for="language">Lingua contratto</label>
         <div>
             <div class="form-check form-check-inline">
@@ -35,19 +36,19 @@
     <h4>Anagrafica Locatario/Conduttore</h4>
     <div class="form-group">
         <label for="renter_name">Nome locatario</label>
-        <input autocomplete="fake-name" type="text" class="form-control" formControlName="renterName" id="renter_name">
+        <input autocomplete="fake-name" type="text" class="form-control" formControlName="renterName" id="renter_name" [ngClass]="{ 'is-invalid': isFieldValid('renterName') }">
     </div>
     <div class="form-group">
         <label for="birth_place">Luogo di nascita</label>
-        <input autocomplete="fake-birthplace" type="text" class="form-control" formControlName="birthPlace" id="birth_place">
+        <input autocomplete="fake-birthplace" type="text" class="form-control" formControlName="birthPlace" id="birth_place" [ngClass]="{ 'is-invalid': isFieldValid('birthPlace') }">
     </div>
     <div class="form-group">
         <label for="birth_state">Provincia di nascita o Stato Estero</label>
-        <input autocomplete="fake-birthstate" type="text" class="form-control" formControlName="birthState" id="birth_state">
+        <input autocomplete="fake-birthstate" type="text" class="form-control" formControlName="birthState" id="birth_state" [ngClass]="{ 'is-invalid': isFieldValid('birthState') }">
     </div>
     <div class="form-group">
         <label for="birth_date">Data di nascita</label>
-        <input autocomplete="fake-birthdate" type="date" class="form-control" formControlName="birthDate" id="birth_date">
+        <input autocomplete="fake-birthdate" type="date" class="form-control" formControlName="birthDate" id="birth_date" [ngClass]="{ 'is-invalid': isFieldValid('birthDate') }">
     </div>
     <div class="form-group">
         <label for="sex">Sesso</label>
@@ -64,20 +65,20 @@
     </div>
     <div class="form-group">
         <label for="home_town">Città di residenza</label>
-        <input autocomplete="fake-hometown" type="text" class="form-control" formControlName="homeTown" id="home_town">
+        <input autocomplete="fake-hometown" type="text" class="form-control" formControlName="homeTown" id="home_town" [ngClass]="{ 'is-invalid': isFieldValid('homeTown') }">
     </div>
     <div class="form-group">
         <label for="home_state">Provincia di residenza o Stato Estero</label>
-        <input autocomplete="fake-homestate" type="text" class="form-control" formControlName="homeState" id="home_state">
+        <input autocomplete="fake-homestate" type="text" class="form-control" formControlName="homeState" id="home_state" [ngClass]="{ 'is-invalid': isFieldValid('homeState') }">
     </div>
     <div class="form-group">
         <label for="home_address">Indirizzo di residenza</label>
-        <input autocomplete="fake-homeaddress" type="text" class="form-control" formControlName="homeAddress" id="home_address">
+        <input autocomplete="fake-homeaddress" type="text" class="form-control" formControlName="homeAddress" id="home_address" [ngClass]="{ 'is-invalid': isFieldValid('homeAddress') }">
     </div>
     <div class="form-group">
         <label for="ssn">Codice Fiscale</label>
         <div class="input-group mb-3">
-            <input autocomplete="fake-ssn" type="text" class="form-control" formControlName="ssn" id="ssn">
+            <input autocomplete="fake-ssn" type="text" class="form-control" formControlName="ssn" id="ssn" [ngClass]="{ 'is-invalid': isFieldValid('ssn') }">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" (click)="getSsn()" type="button">Calcola</button>
             </div>
@@ -98,43 +99,43 @@
     </div>
     <div class="form-group" [hidden]="!contractForm.value.boatLicense">
         <label for="boat_license_details">Estremi patente nautica</label>
-        <input autocomplete="fake-license" type="text" class="form-control" formControlName="boatLicenseDetails" id="boat_license_details">
+        <input autocomplete="fake-license" type="text" class="form-control" formControlName="boatLicenseDetails" id="boat_license_details" [ngClass]="{ 'is-invalid': isFieldValid('boatLicenseDetails') }">
     </div>
     <div class="form-group">
         <label for="phone">Telefono</label>
-        <input autocomplete="fake-phone" type="phone" class="form-control" formControlName="phone" id="phone">
+        <input autocomplete="fake-phone" type="phone" class="form-control" formControlName="phone" id="phone" [ngClass]="{ 'is-invalid': isFieldValid('phone') }">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input autocomplete="fake-email" type="email" class="form-control" formControlName="email" id="email">
+        <input autocomplete="fake-email" type="email" class="form-control" formControlName="email" id="email" [ngClass]="{ 'is-invalid': isFieldValid('email') }">
     </div>
     <div class="form-group">
         <label for="id_type">Tipo documento</label>
-        <select class="form-control" formControlName="idType" id="id_type">
+        <select class="form-control" formControlName="idType" id="id_type" [ngClass]="{ 'is-invalid': isFieldValid('idType') }">
             <option *ngFor="let idType of idTypes" [value]="idType">{{idType}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="id_number">Numero documento</label>
-        <input autocomplete="fake-id-number" type="text" class="form-control" formControlName="idNumber" id="id_number">
+        <input autocomplete="fake-id-number" type="text" class="form-control" formControlName="idNumber" id="id_number" [ngClass]="{ 'is-invalid': isFieldValid('idNumber') }">
     </div>
     <div class="form-group">
         <label for="id_issuer">Rilasciato da</label>
-        <input autocomplete="fake-id-issuer" type="text" class="form-control" formControlName="idIssuer" id="id_issuer">
+        <input autocomplete="fake-id-issuer" type="text" class="form-control" formControlName="idIssuer" id="id_issuer" [ngClass]="{ 'is-invalid': isFieldValid('idIssuer') }">
     </div>
     <div class="form-group">
         <label for="id_issue_date">Data rilascio</label>
-        <input autocomplete="fake-id-issue-date" type="date" class="form-control" formControlName="idIssueDate" id="id_issue_date">
+        <input autocomplete="fake-id-issue-date" type="date" class="form-control" formControlName="idIssueDate" id="id_issue_date" [ngClass]="{ 'is-invalid': isFieldValid('idIssueDate') }">
     </div>
 
     <h4>Dettagli locazione</h4>
     <div class="form-group">
         <label for="start_date">Data inizio</label>
-        <input autocomplete="fake-start-date" type="date" class="form-control" formControlName="startDate" id="start_date">
+        <input autocomplete="fake-start-date" type="date" class="form-control" formControlName="startDate" id="start_date" [ngClass]="{ 'is-invalid': isFieldValid('startDate') }">
     </div>
     <div class="form-group">
         <label for="start_time">Ora inizio</label>
-        <input autocomplete="fake-start-time" type="time" class="form-control" formControlName="startTime" id="start_time">
+        <input autocomplete="fake-start-time" type="time" class="form-control" formControlName="startTime" id="start_time" [ngClass]="{ 'is-invalid': isFieldValid('startTime') }">
     </div>
 
     <div class="form-group">
@@ -143,7 +144,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">LT</span>
             </div>
-            <input autocomplete="fake-fuel-amount" type="text" class="form-control" formControlName="startFuel" id="start_fuel">
+            <input autocomplete="fake-fuel-amount" type="text" class="form-control" formControlName="startFuel" id="start_fuel" [ngClass]="{ 'is-invalid': isFieldValid('startFuel') }">
         </div>
     </div>
 
@@ -153,7 +154,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€ / LT</span>
             </div>
-            <input autocomplete="fake-fuel-cost" type="number" step="0.01" class="form-control" formControlName="fuelCost" id="fuel_cost">
+            <input autocomplete="fake-fuel-cost" type="number" step="0.01" class="form-control" formControlName="fuelCost" id="fuel_cost" [ngClass]="{ 'is-invalid': isFieldValid('fuelCost') }">
         </div>
     </div>
 
@@ -163,7 +164,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            <input autocomplete="fake-rent-price" type="number" class="form-control" formControlName="rentPrice" id="rent_price">
+            <input autocomplete="fake-rent-price" type="number" class="form-control" formControlName="rentPrice" id="rent_price" [ngClass]="{ 'is-invalid': isFieldValid('rentPrice') }">
         </div>
     </div>
     <div class="form-group">
@@ -172,7 +173,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            <input autocomplete="fake-security-deposit" type="number" class="form-control" formControlName="securityDeposit" id="security_deposit">
+            <input autocomplete="fake-security-deposit" type="number" class="form-control" formControlName="securityDeposit" id="security_deposit" [ngClass]="{ 'is-invalid': isFieldValid('securityDeposit') }">
         </div>
     </div>
 
