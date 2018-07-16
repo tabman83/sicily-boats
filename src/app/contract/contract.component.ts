@@ -24,6 +24,7 @@ export class ContractComponent implements OnInit {
     public iframeSource: any;
     public submitting = false;
     public submitted = false;
+    public isFirstStep = true;
 
     private readonly datePipe = new DatePipe(navigator.language);
     private contract: any = {};
@@ -91,6 +92,10 @@ export class ContractComponent implements OnInit {
         this.ssnNumberService.get(firstName, lastName, birthPlace, birthDate, sex).subscribe(x => this.contractForm.patchValue({ ssn: x }));
     }
 
+    print() {
+        setTimeout(() => window.frames[0].print(), 100);
+    }
+
     submit() {
         this.submitted = true;
         if (this.contractForm.valid) {
@@ -106,8 +111,8 @@ export class ContractComponent implements OnInit {
                 const blob = new Blob([byteArray], { type: 'application/pdf' });
                 const blobUrl = URL.createObjectURL(blob);
                 this.iframeSource = this.domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
-                setTimeout(() => window.frames[0].print(), 1000);
                 this.submitting = false;
+                this.isFirstStep = false;
             });
         } else {
             window.scrollTo(0, 0);
