@@ -27,6 +27,7 @@ export const environment = {
         idIssueDate: '2008-06-15',
         startDate: '2018-08-04',
         startTime: '09:20',
+        endTime: '19:00',
         startFuel: '10',
         fuelCost: 1.8,
         rentPrice: 150,

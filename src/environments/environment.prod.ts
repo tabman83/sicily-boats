@@ -23,6 +23,7 @@ export const environment = {
         idIssueDate: '',
         startDate: '',
         startTime: '',
+        endTime: '',
         startFuel: '',
         fuelCost: 1.8,
         rentPrice: null,

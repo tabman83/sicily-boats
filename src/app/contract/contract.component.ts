@@ -42,7 +42,7 @@ export class ContractComponent implements OnInit {
         this.idTypes = this.appConfig.idTypes;
 
         this.contractForm = this.formBuilder.group({
-            registryNumber: [environment.contract.registryNumber, Validators.required],
+            registryNumber: [environment.contract.registryNumber],
             date: [todayDate, Validators.required],
             language: [environment.contract.language, Validators.required],
             boat: this.boats[0],
@@ -65,6 +65,7 @@ export class ContractComponent implements OnInit {
             idIssueDate: [environment.contract.idIssueDate, Validators.required],
             startDate: [environment.contract.startDate, Validators.required],
             startTime: [environment.contract.startTime, Validators.required],
+            endTime: [environment.contract.endTime, Validators.required],
             startFuel: [environment.contract.startFuel, Validators.required],
             fuelCost: [environment.contract.fuelCost, Validators.required],
             rentPrice: [environment.contract.rentPrice, Validators.required],

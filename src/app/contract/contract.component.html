@@ -8,7 +8,7 @@
     <div class="form-group">
         <label for="registryNumber">Nr. Registro</label>
         <input autocomplete="fake-registry-number" formControlName="registryNumber" type="text" class="form-control" id="registryNumber"
-            aria-describedby="registryNumber" placeholder="Nr. registro" [ngClass]="{ 'is-invalid': isFieldValid('registryNumber') }">
+            aria-describedby="registryNumber" placeholder="Nr. registro">
     </div>
 
     <div class="form-group">
@@ -28,7 +28,7 @@
     <h4>Dati natante locato</h4>
     <div class="form-group">
         <label for="boat_name">Nome</label>
-        <select class="form-control" formControlName="boat" id="boat_name">
+        <select class="form-control" formControlName="boat" id="boat_name" autocomplete="fake_boat_name">
             <option *ngFor="let boat of boats" [ngValue]="boat">{{boat.name}}</option>
         </select>
     </div>
@@ -138,6 +138,10 @@
     <div class="form-group">
         <label for="start_time">Ora inizio</label>
         <input autocomplete="fake-start-time" type="time" class="form-control" formControlName="startTime" id="start_time" [ngClass]="{ 'is-invalid': isFieldValid('startTime') }">
+    </div>
+    <div class="form-group">
+        <label for="end_time">Ora fine</label>
+        <input autocomplete="fake-end-time" type="time" class="form-control" formControlName="endTime" id="end_time" [ngClass]="{ 'is-invalid': isFieldValid('endTime') }">
     </div>
 
     <div class="form-group">

@@ -32,21 +32,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/api/contract', function (req, res, next) {
     const data = req.body;
 
-    // createPdf(data, res);
+    createPdf(data, res);
     
-    const fileStream = fs.createWriteStream(tempFileName);
-    createPdf(data, fileStream);
-    fileStream.on('finish', () => {
-        fs.readFile(tempFileName, function(err, fileData) {
-            if(err) {
-                res.status(500).send(err);
-            }
-            const attachment = new Buffer(fileData, 'binary').toString('base64');
-            sendMail(config, data, attachment);
-            fs.unlink(tempFileName, () => {});
-            res.status(200).send({status: 'OK', content: attachment});
-        });
-    });
+    // const fileStream = fs.createWriteStream(tempFileName);
+    // createPdf(data, fileStream);
+    // fileStream.on('finish', () => {
+    //     fs.readFile(tempFileName, function(err, fileData) {
+    //         if(err) {
+    //             res.status(500).send(err);
+    //         }
+    //         const attachment = new Buffer(fileData, 'binary').toString('base64');
+    //         sendMail(config, data, attachment);
+    //         fs.unlink(tempFileName, () => {});
+    //         res.status(200).send({status: 'OK', content: attachment});
+    //     });
+    // });
 });
 
 app.get('/api/config', function (req, res, next) {
