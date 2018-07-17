@@ -219,11 +219,13 @@ module.exports = function (data, stream) {
     doc.text(text.PRIVACY_FOOTER_3);
 
     let middleY = null;
+    let agreeWidth = doc.widthOfString(text.PRIVACY_AGREE.toUpperCase());
     doc.moveDown();
     savedY = doc.y;
     doc.moveDown();
     middleY = doc.y;
     doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
+    doc.fontSize(paragraphFontSize + 10).text('X', doc.page.margins.left + agreeWidth/2, middleY - 3).fontSize(paragraphFontSize);
     doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
     doc.text(text.PRIVACY_AGREEMENT_1, 350, savedY);
 
@@ -232,6 +234,7 @@ module.exports = function (data, stream) {
     doc.moveDown();
     middleY = doc.y;
     doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
+    doc.fontSize(paragraphFontSize + 10).text('X', doc.page.margins.left + agreeWidth/2, middleY - 3).fontSize(paragraphFontSize);
     doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
     doc.text(text.PRIVACY_AGREEMENT_2, 350, savedY);
 
@@ -240,6 +243,7 @@ module.exports = function (data, stream) {
     doc.moveDown();
     middleY = doc.y;
     doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
+    doc.fontSize(paragraphFontSize + 10).text('X', doc.page.margins.left + agreeWidth/2, middleY - 3).fontSize(paragraphFontSize);
     doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
     doc.text(text.PRIVACY_AGREEMENT_3, 350, savedY);
 
