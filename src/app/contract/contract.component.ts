@@ -15,9 +15,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ContractComponent implements OnInit {
 
-    @ViewChild('contractEl')
-    contractRef: ElementRef;
-
     public contractForm: FormGroup;
     public boats: Boat[];
     public idTypes: string[];
@@ -26,7 +23,7 @@ export class ContractComponent implements OnInit {
     public submitted = false;
     public contractFileName: string;
 
-    private readonly datePipe = new DatePipe(navigator.language);
+    private readonly datePipe = new DatePipe('en-US'); // navigator.language
     private contract: any = {};
 
     constructor(

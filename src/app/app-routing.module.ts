@@ -7,7 +7,7 @@ import { ContractComponent } from './contract/contract.component';
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'callback', component: CallbackComponent },
-    { path: 'new', component: ContractComponent},
+    { path: 'new', component: ContractComponent },
     { path: '**', redirectTo: '' }
 ];
 
