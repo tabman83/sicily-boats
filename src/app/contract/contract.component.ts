@@ -122,16 +122,11 @@ export class ContractComponent implements OnInit {
             rentalName: this.appConfig.rentalName,
             rentalDescription: this.appConfig.rentalDescription,
             rentalEmail: this.appConfig.rentalEmail,
+            rentalAddresses: this.appConfig.rentalAddresses,
             emergencyContacts: this.appConfig.emergencyContacts,
             deposit: this.contractForm.value.rentPrice + this.contractForm.value.securityDeposit,
             endDate: this.contractForm.value.startDate
         }, this.contractForm.value);
-
-        // const boatGroup = this.contractForm.get('boatGroup');
-        // if (boatGroup.enabled) {
-        //     Object.assign(this.contract.boat, boatGroup.value);
-        // }
-        // delete this.contract.boatGroup;
     }
 
     ngOnInit() {

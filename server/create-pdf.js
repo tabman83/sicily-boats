@@ -77,13 +77,24 @@ module.exports = function (data, stream) {
         pageNum++;
         let bottom = doc.page.margins.bottom;
         doc.page.margins.bottom = 0;
-        doc.fontSize(paragraphFontSize - 5).regular().text(`${data.rentalDescription}`,
-            0.5 * (doc.page.width - 500),
-            doc.page.height - 25, {
+        doc.fontSize(paragraphFontSize - 5).regular();
+        doc.text('', doc.x, doc.page.height - 50);
+        for(let i = 0; i < data.rentalDescription.length; i++) {
+            let rentalDescriptionToken = data.rentalDescription[i];
+            doc.text(rentalDescriptionToken, 0.5 * (doc.page.width - 500), doc.y, {
                 width: 500,
                 align: 'center',
                 lineBreak: false,
             });
+        }
+        
+        doc.text(data.rentalAddresses, 0.5 * (doc.page.width - 500), doc.y, {
+            width: 500,
+            align: 'center',
+            lineBreak: false,
+        });
+
+        doc.moveTo(doc.page.margins.left, doc.page.height - 53).lineTo(doc.page.width - doc.page.margins.left - doc.page.margins.right, doc.page.height - 53).stroke();
 
         // Reset text writer position
         doc.text('', doc.page.margins.left, doc.page.margins.top);
@@ -108,7 +119,10 @@ module.exports = function (data, stream) {
     doc.twoCol(text.DATE, moment(data.date).format(dateFormat), text.REGISTRY_NO, data.registryNumber);
 
     doc.headerText(text.LEASEHOLDER_DETAILS);
-    doc.fontSize(paragraphFontSize).font(regularFontName).text(data.rentalDescription, { align: 'center' });
+    doc.fontSize(paragraphFontSize).font(regularFontName);
+    for(let i = 0; i < data.rentalDescription.length; i++) {
+        doc.text(data.rentalDescription[i], { align: 'center' });
+    }
 
     doc.headerText(text.BOAT_DETAILS);
     doc.twoCol(text.BOAT_TYPE, data.boat.boatType, text.VIN, data.boat.boatVin);
@@ -162,7 +176,7 @@ module.exports = function (data, stream) {
     doc.fontSize(headerFontSize).font(boldFontName).text(text.I_STATE.toUpperCase(), doc.page.margins.left, doc.y, { align: 'center', width: doc.page.width - doc.page.margins.right - doc.page.margins.left });
     doc.moveDown(2);
 
-    doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber));
+    doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber), doc.x, doc.y, { align: 'justify' });
 
     doc.moveDown(2);
     doc.text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
@@ -182,7 +196,10 @@ module.exports = function (data, stream) {
     doc.twoCol(text.DATE, moment(data.date).format(dateFormat), text.REGISTRY_NO, data.registryNumber);
 
     doc.headerText(text.LEASEHOLDER_DETAILS);
-    doc.fontSize(paragraphFontSize).font(regularFontName).text(data.rentalDescription, { align: 'center' });
+    doc.fontSize(paragraphFontSize).font(regularFontName);
+    for(let i = 0; i < data.rentalDescription.length; i++) {
+        doc.text(data.rentalDescription[i], { align: 'center' });
+    }
 
     doc.headerText(text.BOAT_DETAILS);
     doc.twoCol(text.BOAT_TYPE, data.boat.boatType, text.VIN, data.boat.boatVin);
@@ -236,7 +253,7 @@ module.exports = function (data, stream) {
     doc.fontSize(headerFontSize).font(boldFontName).text(text.I_STATE.toUpperCase(), doc.page.margins.left, doc.y, { align: 'center', width: doc.page.width - doc.page.margins.right - doc.page.margins.left });
     doc.moveDown(2);
 
-    doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber));
+    doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber), doc.x, doc.y, { align: 'justify' });
 
     doc.moveDown(2);
     doc.text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
@@ -261,28 +278,28 @@ module.exports = function (data, stream) {
     doc.fontSize(paragraphFontSize - 2);
 
     doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_STRUCTURAL);
-    doc.font(regularFontName).text(data.boat.descStructural);
+    doc.font(regularFontName).text(data.boat.descStructural, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_CUSHIONS);
-    doc.font(regularFontName).text(data.boat.descCushions);
+    doc.font(regularFontName).text(data.boat.descCushions, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_EQUIPMENT);
-    doc.font(regularFontName).text(data.boat.descEquipment);
+    doc.font(regularFontName).text(data.boat.descEquipment, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_ENGINE);
-    doc.font(regularFontName).text(data.boat.descEngine);
+    doc.font(regularFontName).text(data.boat.descEngine, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.font(boldFontName).text(text.BOAT_CUSTODY_TERMS_FACILITIES);
-    doc.font(regularFontName).text(data.boat.descFacilities);
+    doc.font(regularFontName).text(data.boat.descFacilities, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.moveDown();
     doc.fontSize(paragraphFontSize);
-    doc.text(text.BOAT_CUSTODY_DECLARATION)
+    doc.text(text.BOAT_CUSTODY_DECLARATION, doc.x, doc.y, { align: 'justify' })
 
     // firme locatario e conduttore
     printSignatures();
@@ -294,16 +311,18 @@ module.exports = function (data, stream) {
     doc.headerText(text.PRIVACY_TITLE);
     doc.font(regularFontName).fontSize(paragraphFontSize - 2);
 
-    doc.text(text.PRIVACY_HEADER_1).moveDown().text(text.PRIVACY_HEADER_2).moveDown();
+    doc.text(text.PRIVACY_HEADER_1, doc.x, doc.y, { align: 'justify' }).moveDown().text(text.PRIVACY_HEADER_2, doc.x, doc.y, { align: 'justify' }).moveDown();
 
-    doc.bold().text(text.PRIVACY_CONTENT_TITLE_1).regular().text(text.PRIVACY_CONTENT_TEXT_1).moveDown();
-    doc.bold().text(text.PRIVACY_CONTENT_TITLE_2).regular().text(text.PRIVACY_CONTENT_TEXT_2).moveDown();
-    doc.bold().text(text.PRIVACY_CONTENT_TITLE_3).regular().text(text.PRIVACY_CONTENT_TEXT_3).moveDown();
-    doc.bold().text(text.PRIVACY_CONTENT_TITLE_4).regular().text(text.PRIVACY_CONTENT_TEXT_4).moveDown();
-    doc.bold().text(text.PRIVACY_CONTENT_TITLE_5).regular().text(util.format(text.PRIVACY_CONTENT_TEXT_5, data.rentalDescription)).moveDown();
-    doc.bold().text(text.PRIVACY_CONTENT_TITLE_6).regular().text(text.PRIVACY_CONTENT_TEXT_6_1).list(text.PRIVACY_CONTENT_TEXT_6_2).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_1).regular().text(text.PRIVACY_CONTENT_TEXT_1, doc.x, doc.y, { align: 'justify' }).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_2).regular().text(text.PRIVACY_CONTENT_TEXT_2, doc.x, doc.y, { align: 'justify' }).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_3).regular().text(text.PRIVACY_CONTENT_TEXT_3, doc.x, doc.y, { align: 'justify' }).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_4).regular().text(text.PRIVACY_CONTENT_TEXT_4, doc.x, doc.y, { align: 'justify' }).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_5).regular().text(util.format(text.PRIVACY_CONTENT_TEXT_5, data.rentalDescription), doc.x, doc.y, { align: 'justify' }).moveDown();
+    doc.bold().text(text.PRIVACY_CONTENT_TITLE_6).regular().text(text.PRIVACY_CONTENT_TEXT_6_1, doc.x, doc.y, { align: 'justify' }).list(text.PRIVACY_CONTENT_TEXT_6_2, doc.x, doc.y, { align: 'justify' }).moveDown();
 
-    doc.text(util.format(text.PRIVACY_FOOTER_1, data.rentalDescription, data.rentalEmail));
+    console.log(data.rentalEmail);
+    console.log(data);
+    doc.text(util.format(text.PRIVACY_FOOTER_1, data.rentalDescription.join(', '), data.rentalEmail), doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.fontSize(paragraphFontSize);
@@ -320,7 +339,7 @@ module.exports = function (data, stream) {
     doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
     doc.fontSize(paragraphFontSize + 10).text('X', doc.page.margins.left + agreeWidth / 2, middleY - 3).fontSize(paragraphFontSize);
     doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
-    doc.text(text.PRIVACY_AGREEMENT_1, 350, savedY);
+    doc.text(text.PRIVACY_AGREEMENT_1, 350, savedY, { align: 'justify' });
 
     doc.moveDown();
     savedY = doc.y;
@@ -329,7 +348,7 @@ module.exports = function (data, stream) {
     doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
     doc.fontSize(paragraphFontSize + 10).text('X', doc.page.margins.left + agreeWidth / 2, middleY - 3).fontSize(paragraphFontSize);
     doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
-    doc.text(text.PRIVACY_AGREEMENT_2, 350, savedY);
+    doc.text(text.PRIVACY_AGREEMENT_2, 350, savedY, { align: 'justify' });
 
     doc.moveDown();
     savedY = doc.y;
@@ -338,7 +357,7 @@ module.exports = function (data, stream) {
     doc.text(text.PRIVACY_AGREE.toUpperCase(), doc.page.margins.left, middleY);
     doc.fontSize(paragraphFontSize + 10).text('X', doc.page.margins.left + agreeWidth / 2, middleY - 3).fontSize(paragraphFontSize);
     doc.text(text.PRIVACY_DISAGREE.toUpperCase(), 175, middleY);
-    doc.text(text.PRIVACY_AGREEMENT_3, 350, savedY);
+    doc.text(text.PRIVACY_AGREEMENT_3, 350, savedY, { align: 'justify' });
 
     doc.moveDown(2);
     doc.text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`, doc.page.margins.left, doc.y);
@@ -355,106 +374,106 @@ module.exports = function (data, stream) {
     doc.fontSize(paragraphFontSize - 4);
 
     doc.bold().text(text.RENTAL_TERMS_1_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_1_DESC);
+    doc.regular().text(text.RENTAL_TERMS_1_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_2_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_2_DESC_1);
-    doc.regular().list(text.RENTAL_TERMS_2_DESC_2);
-    doc.regular().text(text.RENTAL_TERMS_2_DESC_3);
+    doc.regular().text(text.RENTAL_TERMS_2_DESC_1, doc.x, doc.y, { align: 'justify' });
+    doc.regular().list(text.RENTAL_TERMS_2_DESC_2, doc.x, doc.y, { align: 'justify' });
+    doc.regular().text(text.RENTAL_TERMS_2_DESC_3, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_3_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_3_DESC);
+    doc.regular().text(text.RENTAL_TERMS_3_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_4_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_4_DESC);
+    doc.regular().text(text.RENTAL_TERMS_4_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_5_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_5_DESC);
+    doc.regular().text(text.RENTAL_TERMS_5_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_6_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_6_DESC);
+    doc.regular().text(text.RENTAL_TERMS_6_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_7_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_7_DESC_1);
-    doc.regular().list(text.RENTAL_TERMS_7_DESC_2);
+    doc.regular().text(text.RENTAL_TERMS_7_DESC_1, doc.x, doc.y, { align: 'justify' });
+    doc.regular().list(text.RENTAL_TERMS_7_DESC_2, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_8_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_8_DESC);
+    doc.regular().text(text.RENTAL_TERMS_8_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_9_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_9_DESC);
+    doc.regular().text(text.RENTAL_TERMS_9_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_10_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_10_DESC);
+    doc.regular().text(text.RENTAL_TERMS_10_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_11_TITLE);
-    doc.regular().text(util.format(text.RENTAL_TERMS_11_DESC, data.fuelCost));
+    doc.regular().text(util.format(text.RENTAL_TERMS_11_DESC, data.fuelCost), doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_12_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_12_DESC);
+    doc.regular().text(text.RENTAL_TERMS_12_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_13_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_13_DESC);
+    doc.regular().text(text.RENTAL_TERMS_13_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_14_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_14_DESC_1);
-    doc.regular().list(text.RENTAL_TERMS_14_DESC_2);
-    doc.regular().text(text.RENTAL_TERMS_14_DESC_3);
+    doc.regular().text(text.RENTAL_TERMS_14_DESC_1, doc.x, doc.y, { align: 'justify' });
+    doc.regular().list(text.RENTAL_TERMS_14_DESC_2, doc.x, doc.y, { align: 'justify' });
+    doc.regular().text(text.RENTAL_TERMS_14_DESC_3, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_15_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_15_DESC);
+    doc.regular().text(text.RENTAL_TERMS_15_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_16_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_16_DESC_1);
-    doc.regular().list(text.RENTAL_TERMS_16_DESC_2);
-    doc.regular().text(text.RENTAL_TERMS_16_DESC_3);
+    doc.regular().text(text.RENTAL_TERMS_16_DESC_1, doc.x, doc.y, { align: 'justify' });
+    doc.regular().list(text.RENTAL_TERMS_16_DESC_2, doc.x, doc.y, { align: 'justify' });
+    doc.regular().text(text.RENTAL_TERMS_16_DESC_3, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_17_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_17_DESC);
+    doc.regular().text(text.RENTAL_TERMS_17_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_18_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_18_DESC);
+    doc.regular().text(text.RENTAL_TERMS_18_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_19_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_19_DESC);
+    doc.regular().text(text.RENTAL_TERMS_19_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_20_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_20_DESC);
+    doc.regular().text(text.RENTAL_TERMS_20_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_21_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_21_DESC);
+    doc.regular().text(text.RENTAL_TERMS_21_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_22_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_22_DESC);
+    doc.regular().text(text.RENTAL_TERMS_22_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_23_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_23_DESC);
+    doc.regular().text(text.RENTAL_TERMS_23_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.bold().text(text.RENTAL_TERMS_24_TITLE);
-    doc.regular().text(text.RENTAL_TERMS_24_DESC);
+    doc.regular().text(text.RENTAL_TERMS_24_DESC, doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
     doc.moveDown(2);
@@ -466,7 +485,7 @@ module.exports = function (data, stream) {
     // end firme locatario e conduttore
 
 
-    doc.bold().fontSize(paragraphFontSize).text(text.RENTAL_TERMS_FOOTER, doc.page.margins.left, doc.y + 50).regular();
+    doc.bold().fontSize(paragraphFontSize).text(text.RENTAL_TERMS_FOOTER, doc.page.margins.left, doc.y + 40, { align: 'justify' }).regular();
 
     doc.moveDown(2);
     doc.fontSize(paragraphFontSize).text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
