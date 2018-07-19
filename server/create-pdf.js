@@ -30,19 +30,7 @@ const arrayFormat = function (input) {
 
 module.exports = function (data, stream) {
 
-    const printSignatures = function () {
-        savedY = doc.y + 60;
-        doc.fontSize(paragraphFontSize).font(boldFontName)
-        doc.text(text.THE_CUSTOMER, doc.page.margins.left, savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.left });
-        doc.text(text.THE_LEASEHOLDER, (doc.page.width / 2), savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.right });
-
-        savedY = doc.y + 10;
-        doc.fontSize(paragraphFontSize).font(regularFontName)
-        doc.text(data.renterName, doc.page.margins.left, savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.left });
-        doc.text(data.rentalName, (doc.page.width / 2), savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.right });
-    }
-
-    function titleCase(str) {
+    const titleCase = function(str) {
         const splitStr = str.toLowerCase().split(' ');
         for (let i = 0; i < splitStr.length; i++) {
             // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -51,6 +39,18 @@ module.exports = function (data, stream) {
         }
         // Directly return the joined string
         return splitStr.join(' ');
+    }
+
+    const printSignatures = function () {
+        savedY = doc.y + 60;
+        doc.fontSize(paragraphFontSize).font(boldFontName)
+        doc.text(text.THE_CUSTOMER, doc.page.margins.left, savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.left });
+        doc.text(text.THE_LEASEHOLDER, (doc.page.width / 2), savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.right });
+
+        savedY = doc.y + 10;
+        doc.fontSize(paragraphFontSize).font(regularFontName)
+        doc.text(titleCase(data.renterName), doc.page.margins.left, savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.left });
+        doc.text(data.rentalName, (doc.page.width / 2), savedY, { align: 'center', width: (doc.page.width / 2) - doc.page.margins.right });
     }
 
     const doc = new PDFDocumentExtended({
@@ -320,8 +320,6 @@ module.exports = function (data, stream) {
     doc.bold().text(text.PRIVACY_CONTENT_TITLE_5).regular().text(util.format(text.PRIVACY_CONTENT_TEXT_5, data.rentalDescription), doc.x, doc.y, { align: 'justify' }).moveDown();
     doc.bold().text(text.PRIVACY_CONTENT_TITLE_6).regular().text(text.PRIVACY_CONTENT_TEXT_6_1, doc.x, doc.y, { align: 'justify' }).list(text.PRIVACY_CONTENT_TEXT_6_2, doc.x, doc.y, { align: 'justify' }).moveDown();
 
-    console.log(data.rentalEmail);
-    console.log(data);
     doc.text(util.format(text.PRIVACY_FOOTER_1, data.rentalDescription.join(', '), data.rentalEmail), doc.x, doc.y, { align: 'justify' });
     doc.moveDown();
 
