@@ -179,7 +179,7 @@ module.exports = function (data, stream) {
     doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber), doc.x, doc.y, { align: 'justify' });
 
     doc.moveDown(2);
-    doc.text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
+    doc.text(`${text.DATE_LOCATION} ${moment(data.date).format(dateFormat)}`);
 
     // firme locatario e conduttore
     printSignatures();
@@ -256,7 +256,7 @@ module.exports = function (data, stream) {
     doc.fontSize(paragraphFontSize).font(regularFontName).list(arrayFormat(text.STATEMENT, boatLicense, data.emergencyContacts, data.idType, data.idNumber), doc.x, doc.y, { align: 'justify' });
 
     doc.moveDown(2);
-    doc.text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
+    doc.text(`${text.DATE_LOCATION} ${moment(data.date).format(dateFormat)}`);
 
     // firme locatario e conduttore
     printSignatures();
@@ -358,7 +358,7 @@ module.exports = function (data, stream) {
     doc.text(text.PRIVACY_AGREEMENT_3, 350, savedY, { align: 'justify' });
 
     doc.moveDown(2);
-    doc.text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`, doc.page.margins.left, doc.y);
+    doc.text(`${text.DATE_LOCATION} ${moment(data.date).format(dateFormat)}`, doc.page.margins.left, doc.y);
     doc.text('', doc.x, doc.y - 30);
 
     // firme locatario e conduttore
@@ -475,7 +475,7 @@ module.exports = function (data, stream) {
     doc.moveDown();
 
     doc.moveDown(2);
-    doc.fontSize(paragraphFontSize).text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
+    doc.fontSize(paragraphFontSize).text(`${text.DATE_LOCATION} ${moment(data.date).format(dateFormat)}`);
     doc.text('', doc.x, doc.y - 30);
 
     // firme locatario e conduttore
@@ -486,7 +486,7 @@ module.exports = function (data, stream) {
     doc.bold().fontSize(paragraphFontSize).text(text.RENTAL_TERMS_FOOTER, doc.page.margins.left, doc.y + 40, { align: 'justify' }).regular();
 
     doc.moveDown(2);
-    doc.fontSize(paragraphFontSize).text(`${text.DATE_LOCATION} ${moment(data.birthDate).format(dateFormat)}`);
+    doc.fontSize(paragraphFontSize).text(`${text.DATE_LOCATION} ${moment(data.date).format(dateFormat)}`);
     doc.text('', doc.x, doc.y - 30);
 
     // firme locatario e conduttore
